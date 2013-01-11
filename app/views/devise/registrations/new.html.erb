@@ -12,7 +12,7 @@
   <div><%= f.label :'Confirma tu contraseña'%><br />
   <%= f.password_field :password_confirmation%></div>
 
-  <div><%= f.submit "Paso 2"%></div>
+  <div><%= f.submit "Paso 2 #{redirect_to product_path}" %></div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

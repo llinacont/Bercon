@@ -11,7 +11,7 @@ Bercon::Application.routes.draw do
   
   resources :clients
   
-  resources :products
+  resources :products 
   
   root :to => 'home#hello'
   # The priority is based upon order of creation:
