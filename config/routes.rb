@@ -1,5 +1,8 @@
 Bercon::Application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    resources :products 
+    resources :clients
+  end
    
   namespace :home do
     get 'hello'
@@ -8,10 +11,6 @@ Bercon::Application.routes.draw do
     get 'company'
     get 'contact'
   end
-  
-  resources :clients
-  
-  resources :products 
   
   root :to => 'home#hello'
   # The priority is based upon order of creation:
