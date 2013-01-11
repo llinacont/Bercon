@@ -1,6 +1,6 @@
 Bercon::Application.routes.draw do
   devise_for :users
-  
+   
   namespace :home do
     get 'hello'
     get 'info'
