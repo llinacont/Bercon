@@ -6,7 +6,6 @@ Bercon::Application.routes.draw do
     resources :clients
   
   end
-  
    
   namespace :home do
     get 'hello'
