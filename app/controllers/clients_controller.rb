@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
+  before_filter :authenticate_user!
+  
   def index
     @clients = Client.where(user_id:current_user.id)
 

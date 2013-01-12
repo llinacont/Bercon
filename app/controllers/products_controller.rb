@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
+  before_filter :authenticate_user!
+  
   def index
-  @products = Product.where(user_id:current_user.id)
-
+    @products = Product.where(user_id:current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
