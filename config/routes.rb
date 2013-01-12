@@ -1,8 +1,12 @@
 Bercon::Application.routes.draw do
   devise_for :users do
-    resources :products 
+    
+    resources :products
+     
     resources :clients
+  
   end
+  
    
   namespace :home do
     get 'hello'
