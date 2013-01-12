@@ -1,4 +1,4 @@
-<h1>Listing products</h1>
+<h1>Tus Productos</h1>
 
 <table>
   <tr>
@@ -17,14 +17,14 @@
     <td><%= product.description %></td>
     <td><%= product.price %></td>
     <td><%= product.image_url %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', product %></td>
+    <td><%= link_to 'Editar', edit_product_path(product) %></td>
+    <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'Crear Producto', new_product_path %>
 <%= link_to 'Clientes', :controller => '/clients', :action => 'index' %>
