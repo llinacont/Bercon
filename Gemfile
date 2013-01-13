@@ -38,3 +38,5 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 gem 'devise', '2.1'
+
+gem 'composite_primary_keys'

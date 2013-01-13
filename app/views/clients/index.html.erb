@@ -10,7 +10,7 @@
     <th></th>
   </tr>
 
-<% @clients.find(:user_id => current_user.id) do |client| %>
+<% @clients.each do |client| %>
   <tr>
     <td><%= client.name %></td>
     <td><%= client.cif %></td>

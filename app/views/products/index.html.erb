@@ -11,7 +11,7 @@
     <th></th>
   </tr>
 
-<% @products.find(:user_id => current_user.id) do |product| %>
+<% @products.each do |product| %>
   <tr>
     <td><%= product.title %></td>
     <td><%= product.description %></td>
