@@ -1,9 +1,9 @@
 Bercon::Application.routes.draw do
   devise_for :users do
     
-    resources :products
-     
-    resources :clients
+  resources :products
+    
+  resources :clients 
   
   end
    
