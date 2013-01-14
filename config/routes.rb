@@ -1,4 +1,7 @@
 Bercon::Application.routes.draw do
+  resources :demands
+
+
   devise_for :users do
     
   resources :products
