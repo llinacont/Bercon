@@ -1,4 +1,14 @@
 <h1>New demand</h1>
 
 <%= render 'form' %>
+
+<% @products = Product.all%>
+<% @products.each do |product| %>
+  <p>
+    <b><%= product.title %></b>
+    <b><%= product.price %></b>
+    <b><%= product.image_url %></b>
+    <%= button_to 'Añadir al Pedido', line_items_path(:product_id => product.id) %>
+  </p>
+<% end %>
 <%= link_to 'Back', demands_path %>

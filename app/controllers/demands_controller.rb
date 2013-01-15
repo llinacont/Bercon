@@ -42,6 +42,8 @@ class DemandsController < ApplicationController
   # POST /demands
   # POST /demands.json
   def create
+    @product = Product.find(params[:product_id])
+    @line_item = @demand.LineItem.build(:product => product)
     @demand = Demand.new(params[:demand])
 
     respond_to do |format|

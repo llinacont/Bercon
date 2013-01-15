@@ -1,12 +1,13 @@
 Bercon::Application.routes.draw do
   resources :demands
-
-
+   
+  resources :line_items
+  
   devise_for :users do
     
-  resources :products
+    resources :products 
     
-  resources :clients 
+    resources :clients 
   
   end
    

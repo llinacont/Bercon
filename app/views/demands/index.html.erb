@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Product</th>
     <th>Client</th>
     <th></th>
     <th></th>
@@ -11,7 +10,6 @@
 
 <% @demands.each do |demand| %>
   <tr>
-    <td><%= demand.product_id %></td>
     <td><%= demand.client_id %></td>
     <td><%= link_to 'Show', demand %></td>
     <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
@@ -22,6 +20,4 @@
 
 <br />
 
-<%= link_to 'Crear Pedido', new_demand_path %>
-<%= link_to 'Atrás', :controller => '/clients', :action => 'index' %>
-<%= link_to 'Pedidos', :controller => '/demands', :action => 'index' %>
+<%= link_to 'New Demand', new_demand_path %>
