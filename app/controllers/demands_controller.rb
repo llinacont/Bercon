@@ -26,7 +26,7 @@ class DemandsController < ApplicationController
   # GET /demands/new
   # GET /demands/new.json
   def new
-    @demand = Demand.new
+    @demand = Demand.create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,9 +42,7 @@ class DemandsController < ApplicationController
   # POST /demands
   # POST /demands.json
   def create
-    @product = Product.find(params[:product_id])
-    @line_item = @demand.LineItem.build(:product => product)
-    @demand = Demand.new(params[:demand])
+    @demand = Demand.new(params[:id])
 
     respond_to do |format|
       if @demand.save

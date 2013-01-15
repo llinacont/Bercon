@@ -40,13 +40,11 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @demand = Demand.last
-    @product = Product.find(params[:product_id])
-    @line_item = @demand.LineItem.build(:product => product)
+   @line_item = LineItem.new(params[:id])
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.demand, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
         format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
