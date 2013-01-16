@@ -26,7 +26,12 @@ class DemandsController < ApplicationController
   # GET /demands/new
   # GET /demands/new.json
   def new
-    @demand = Demand.create
+    @demand = Demand.last
+    if @demand.client_id == nil
+      @demand
+    else
+      @demand = Demand.create
+    end
 
     respond_to do |format|
       format.html # new.html.erb
