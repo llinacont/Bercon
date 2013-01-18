@@ -10,11 +10,15 @@
 
 <% @demands.each do |demand| %>
   <tr>
-    <td><%= demand.client_id %></td>
+  	<% @client = Client.where(:id => demand.client_id) %>
+  	<% @client.each do |client| %>
+    <td><%= client.name %></td>
+    <td><%= demand.update_at %></td>
     <td><%= link_to 'Show', demand %></td>
     <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
     <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+<% end %>
 <% end %>
 </table>
 
