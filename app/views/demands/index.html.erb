@@ -6,10 +6,12 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @demands.each do |demand| %>
   <tr>
+  	<!--<% demand.update_at %>-->
   	<% @client = Client.where(:id => demand.client_id) %>
   	<% @client.each do |client| %>
     <td><%= client.name %></td>

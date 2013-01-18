@@ -4,14 +4,15 @@
   <b>Client:</b>
   <%= Client.find(@demand.client_id).name %>
 </p>
+<% end %> 
 
-<tr>
-<% @line_item = LineItem.find(@demand.id) %>
+<% @line_item = LineItem.where(:demand_id => @demand.id) %>
 <% @line_item.each do |line_item| %>
   <p>
     <td><%= Product.find(line_item.product_id).title %></td>
     <td><%= link_to 'Destruir', line_item, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
   </p>
+  
 <% end %> 
 
 <%= link_to 'Edit', edit_demand_path(@demand) %> |
