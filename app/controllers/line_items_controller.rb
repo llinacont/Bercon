@@ -40,7 +40,8 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-   @line_item = LineItem.new(params[:id])
+    
+   @line_item = LineItem.new(:demand_id => params[:demand_id], :product_id => params[:product_id])
 
     respond_to do |format|
       if @line_item.save
