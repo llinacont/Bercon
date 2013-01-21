@@ -4,7 +4,7 @@
   <b>Client:</b>
   <%= Client.find(@demand.client_id).name %>
 </p>
-<% end %> 
+
 
 <% @line_item = LineItem.where(:demand_id => @demand.id) %>
 <% @line_item.each do |line_item| %>
@@ -14,6 +14,5 @@
   </p>
   
 <% end %> 
-
 <%= link_to 'Edit', edit_demand_path(@demand) %> |
 <%= link_to 'Back', demands_path %>
