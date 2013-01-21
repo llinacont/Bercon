@@ -1,3 +1,21 @@
 // Place all the styles related to the Registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#titulo{
+    font:  200% sans-serif;
+    color: blue;
+    text-align: left;
+}
+
+#input{
+     font:  100% sans-serif;
+     color: blue;
+     text-align:center;
+}
+
+#form{
+  text-align:center;
+  margin-left: auto;
+  border: 1px solid black;
+  
+}

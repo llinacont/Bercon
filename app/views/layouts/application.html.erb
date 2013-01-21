@@ -10,7 +10,7 @@
   <% end %>
 </div>
 <head>
-  <title>Bercon</title>
+  <h1 id="bercon">BERCON</h1>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -20,25 +20,25 @@
 <%= yield %>
 
 </body>
-
-<p>
-	<a href="/home/hello" >Inicio</a>
-</p>
-
-<p>
-	<a href="/home/info" >Información</a>
-</p>
-
-<p>
-	<a href="/home/infoProd/" >Productos</a>
-</p>
-
-<p>
-	<a href="/home/company" >Compañía</a>
-</p>
-
-<p>
-	<a href="/home/contact" >Contacto</a>
-</p>
-
+<div id="final">
+<table id="table">
+	<tr>
+	<td>
+			<a id="a1" href="/home/hello" >Inicio</a>
+	</td>
+	<td>
+			<a id="a1" href="/home/info" >Información</a>
+	</td>
+	<td>
+			<a id="a1" href="/home/infoProd/" >Productos</a>
+	</td>
+	<td>
+			<a id="a1" href="/home/company" >Compañía</a>
+	</td>
+	<td>
+			<a id="a1" href="/home/contact" >Contacto</a>
+	</td>
+	</tr>
+</table>
+</div>
 </html>

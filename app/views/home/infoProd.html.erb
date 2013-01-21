@@ -1,24 +1,47 @@
-<h1>Productos</h1>
+  <%= stylesheet_link_tag    "aplication", :media => "all" %>
+  <%= javascript_include_tag "aplication" %>
+  <%= csrf_meta_tags %>
 
-<p>
-	<a href="/say/hello" >Inicio</a>
-</p>
+<div id="titulo">
+	<h1>Productos</h1>
+</div>
 
-<p>
-	Rutas óptimas de reparto:
-	<img src="/images/mapa.gif" />
-<p>
-	Lista de productos:
-	<table>
-		<dl>coca cola</dl>
-		<dl>fanta naranja</dl>
-		<dl>fanta limón</dl>
-		<dl>sprite</dl>
+<div id="contenido">
+	<table id="table2">
+	<tr>
+	<td>
+		<div>
+			<div id="a1">
+				Rutas óptimas de reparto:
+			</div>
+			<div id="imagen">
+				<img src="/images/mapa.gif" />
+			</div>
+		</div>
+	</td>
+	<td>
+		<div>
+			<div id="a1">
+				Lista de productos:
+			</div>
+			<div>
+				<table id="table2">
+					<th>coca cola</th>
+					<th>fanta naranja</th>
+					<th>fanta limón</th>
+					<th>sprite</th>
+				</table>
+			</div>
+		</div>
+	</td>
+	<td>
+		<div id="a1">
+			Estadísticas de ventas:
+		</div>
+		<div id="imagen">
+			<img src="/images/grafica.jpg" />
+		</div>
+	</td>
+	</tr>
 	</table>
-
-</p>
-<p>
-	Estadísticas de ventas:
-	<img src="/images/grafica.jpg" />
-<p>
-<p>...........................................................</p>
+</div>

@@ -11,3 +11,86 @@
  *= require_self
  *= require_tree .
  */
+#user_nav{
+  font-size:    medium;
+  text-align:   left;
+  color: blue;
+}
+
+#bercon{
+	font:  300% sans-serif;
+    color: #226;
+    text-align: center;
+}
+
+#final{
+	margin-bottom: 0;
+	bottom:0;
+	position:absolute;
+	width:100%;
+}
+
+#table{
+    border-collapse: separate;
+    text-align: center;
+    margin-left: auto;
+	margin-right: auto;
+	background: grey;
+	border: 1px solid black;
+}
+
+#table td {
+    padding: 15px;
+    width: 80px;
+    border: 1px solid black;
+}
+
+#a1{
+  	color: blue;
+  	font-size: medium;
+}
+
+#titulo{
+    font:  150% sans-serif;
+    color: red;
+	
+}
+
+#contenido{
+	font:  100% sans-serif;
+    text-align: center;
+}
+
+#table2{
+    border-collapse: separate;
+    text-align: center;
+    margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+}
+
+#imagen{
+	vertical-align:bottom;
+}
+
+.field1{
+	color: blue;
+	padding-left: 25%;
+	float: left;
+}
+
+.field2{
+	color: blue;
+	padding-right: 25%;
+	float: right;
+}
+
+.field3{
+	color: blue;
+	padding-left: 40%;
+}
+
+.actions{
+	color: blue;
+}
+

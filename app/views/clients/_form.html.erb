@@ -13,19 +13,21 @@
   
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <div class="field">
+<div class="field3">
+  <div>
     <%= f.label :Nombre%><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div>
     <%= f.label :CIF %><br />
     <%= f.text_field :cif %>
   </div>
-  <div class="field">
+  <div>
     <%= f.label :Dirección %><br />
-    <%= f.text_area :address %>
+    <%= f.text_field :address %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
 <% end %>
