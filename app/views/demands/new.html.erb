@@ -1,4 +1,25 @@
 <h1>New demand</h1>
 
 <%= render 'form' %>
+
+<% @products = Product.all%>
+<% @products.each do |product| %>
+  <p>
+    <b><%= product.title %></b>
+    <b><%= product.price %></b>
+    <b><%= product.image_url %></b>
+    <%= button_to 'Añadir al Pedido', line_items_path(:product_id => product.id, :demand_id => @demand.id) %>
+  </p>
+<% end %>
+
+<% @demand = Demand.last %>
+<% @line_item = LineItem.where(:demand_id => @demand.id) %>
+
+<% @line_item.each do |line_item| %>
+  <p>
+    <td><%= Product.find(line_item.product_id).title %></td>
+    <td><%= link_to 'Destruir', line_item, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+  </p>
+<% end %>
+
 <%= link_to 'Back', demands_path %>
