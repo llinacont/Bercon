@@ -1,15 +1,9 @@
 <h1 id="titulo3">Listing demands</h1>
 
-<<<<<<< HEAD
+
 <table id="table3">
   <tr id="th3">
-    <th id="th3">Product</th>
     <th id="th3">Client</th>
-=======
-<table>
-  <tr>
-    <th>Client</th>
->>>>>>> 1ab025e33b79878e85460db61dbff5e80380fefc
     <th></th>
     <th></th>
     <th></th>
@@ -17,35 +11,22 @@
   </tr>
 
 <% @demands.each do |demand| %>
-<<<<<<< HEAD
+
   <tr id="tr3">
-    <td id="td3"><%= demand.product_id %></td>
-    <td id="td3"><%= demand.client_id %></td>
-    <td id="td3"><%= link_to 'Show', demand %></td>
-    <td id="td3"><%= link_to 'Edit', edit_demand_path(demand) %></td>
-    <td id="td3"><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-=======
-  <tr>
   	<% @client = Client.where(:id => demand.client_id) %>
   	<% @client.each do |client| %>
-    <td><%= client.name %></td>
+    <td id="td3"><%= client.name %></td>
     <td><%= link_to 'Show', demand %></td>
     <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
     <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
->>>>>>> 1ab025e33b79878e85460db61dbff5e80380fefc
   </tr>
 <% end %>
 <% end %>
 </table>
 
 <br />
-<<<<<<< HEAD
 <div id="boton3">
 	<%= link_to 'Crear Pedido', new_demand_path %>
 	<%= link_to 'Atrás', :controller => '/clients', :action => 'index' %>
 	<%= link_to 'Pedidos', :controller => '/demands', :action => 'index' %>
 </div>
-=======
-
-<%= link_to 'New Demand', new_demand_path %>
->>>>>>> 1ab025e33b79878e85460db61dbff5e80380fefc
