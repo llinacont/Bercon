@@ -17,7 +17,8 @@
 
 <% @line_item.each do |line_item| %>
   <p>
-    <td><%= Product.find(line_item.product_id).title %></td>
+    <td><%= Product.find(line_item.product_id).title %> ; <%= line_item.quantity %> &times</td>
+
     <td><%= link_to 'Destruir', line_item, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
   </p>
 <% end %>

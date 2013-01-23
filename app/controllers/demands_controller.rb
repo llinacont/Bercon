@@ -75,7 +75,6 @@ class DemandsController < ApplicationController
       end
     end
   end
-
   # DELETE /demands/1
   # DELETE /demands/1.json
   def destroy
@@ -87,4 +86,5 @@ class DemandsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

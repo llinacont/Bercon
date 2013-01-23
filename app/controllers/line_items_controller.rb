@@ -1,6 +1,8 @@
 class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
+  before_filter :authenticate_user!
+  
   def index
     @line_items = LineItem.all
 
@@ -41,7 +43,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     
-   @line_item = LineItem.new(:demand_id => params[:demand_id], :product_id => params[:product_id])
+   @line_item = LineItem.new(:demand_id => params[:demand_id], :product_id => [product.id])
 
     respond_to do |format|
       if @line_item.save
