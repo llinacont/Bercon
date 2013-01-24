@@ -44,8 +44,18 @@ class LineItemsController < ApplicationController
   def create
     
    @line_item = LineItem.new(:demand_id => params[:demand_id], :product_id => params[:product_id])
-
-    respond_to do |format|
+   @line_items= LineItem.where(:demand_id => params[:demand_id], :product_id => params[:product_id])
+   @quantity = 1
+   
+   if @line_items != nil
+   @line_items.each do |item|
+     @quantity += item.quantity
+     LineItem.find(item.id).destroy
+   end
+   @line_item.update_attributes(:quantity => @quantity)
+   end
+  
+   respond_to do |format|
       if @line_item.save
         format.html { redirect_to :back, notice: 'Line item was successfully created.' }
         format.json { render json: @line_item, status: :created, location: @line_item }
