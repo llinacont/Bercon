@@ -45,7 +45,7 @@
   	
    <tr>
    	<td><%= item.quantity %>&times;</td>
-   	<td><%= Product.find(item.product_id).title %></td>
+   	<td><%= Product.find(item.product_id).title %> </td>
    	<td><%= link_to 'Destruir', item, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
    </tr>
    
