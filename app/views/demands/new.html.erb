@@ -1,8 +1,8 @@
-<h1>Nuevo Pedido</h1>
+<h2>Nuevo Pedido</h2>
 
-<%= render 'form' %>
-
-
+<div id="demands">
+	<div id="left_col">
+	<%= render 'form' %>
 
 <%@line_item = LineItem.new%>
 <%= form_for(@line_item) do |l| %>
@@ -41,20 +41,24 @@
 	<%= button_to 'Añadir al Pedido', line_items_path(:product_id => @line_item.product_id, :demand_id => @line_item.demand_id, :quantity => @line_item.quantity) %>
 	<% end %>
   </div>
+ </div>
   
   <% @demand = Demand.last %>
   <% @line_items = LineItem.where(:demand_id => @demand.id) %>
   <% @line_items.each do |item|%>
   
   <div>
-  	
+   </div>
+   
+   <div id="right_col">
    <tr>
    	<td><%= item.quantity %>&times;</td>
    	<td><%= Product.find(item.product_id).title %> </td>
    	<td><%= link_to 'Destruir', item, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
    </tr>
-   
-  </div>
-   
+   </div>
+ 
+</div> 
+  
 <% end %>
 <%= link_to 'Atrás', demands_path %>

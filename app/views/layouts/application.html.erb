@@ -25,8 +25,8 @@
               
               <ul class="nav actions pull-right">
               	  <li class="divider-vertical"></li>
-                  <li><a href="https://kippt.com/login/" data-link="modal" data-target="#login-modal">Log In</a></li>
-                  <li><a href="https://kippt.com/signup/" data-link="modal" data-target="#signup-modal">Sign Up</a></li>
+                  <li><a href="users/sign_in" data-link="modal" data-target="#login-modal">Accede</a></li>
+                  <li><a href="users/sign_up" data-link="modal" data-target="#signup-modal">Regístrate</a></li>
               </ul>
               
           </div><!--/.nav-collapse -->
@@ -35,23 +35,27 @@
     
     </nav>
     
+      
     <div class="container">
       <%= yield %>
     </div>
     
-  </body>
-  
-  <footer>
+    <footer>
+  		
+  		
         <p>
-			<a href="/home/info" >Información</a>
-			<a href="/home/infoProd/" >Productos</a>
-			<a href="/home/company" >Compañía</a>
-			<a href="/home/contact" >Contacto</a>
-	
+        	
+			<a href="/home/info" class="btn btn-link" >Información</a>
+			<a href="/home/infoProd/" class="btn btn-link" >Productos</a>
+			<a href="/home/company" class="btn btn-link" >Compañía</a>
+			<a href="/home/contact" class="btn btn-link" >Contacto</a>
+			
         </p>
         
         <p>
-        &copy; 2012-2013 BerconTeam. 
+        	<%= image_tag("footerLogo.png", :width => "86", :height => "46", :class => "brand", :id => "footerLogoL") %>
+        	&copy; 2012-2013 BerconTeam. 
+        	<%= image_tag("footerLogo.png", :alt => "BerconLogo4", :width => "86", :height => "46", :class => "brand", :id => "footerLogoR") %>
         </p> 
         
         <div class="follow-buttons">
@@ -59,8 +63,7 @@
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";
             fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
         </div>  
-        
-        
-     
-	</footer>
+  
+  	</footer>
+  </body>
 </html>
