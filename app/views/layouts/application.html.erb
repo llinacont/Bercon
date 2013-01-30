@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html>
-	<div id="user_nav">
-  <% if user_signed_in? %>
-    <%= current_user.email %>. 
-    <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Regístrate", new_user_registration_path %> o
-    <%= link_to "Accede a tu cuenta", new_user_session_path %>
-  <% end %>
-</div>
-<head>
-  <h1 id="bercon">BERCON</h1>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+	<body class="home home-new  logged-out ">
+		
+  		<nav class="navbar">
+  			
+        	<div class="navbar navbar-static-top">
+        	  <div class="container">
+          		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            	  <span class="icon-bar"></span>
+            	  <span class="icon-bar"></span>
+            	  <span class="icon-bar"></span>
+          		</a>
+          		<a href="/home/hello"><%= image_tag("BerconLogo4.jpg", :alt => "BerconLogo4", :width => "86", :height => "46", :class => "brand") %></a>
+          		<div class="nav-collapse">
+              
+              
+              <ul class="nav actions pull-right">
+              	  <li class="divider-vertical"></li>
+                  <li><a href="https://kippt.com/login/" data-link="modal" data-target="#login-modal">Log In</a></li>
+                  <li><a href="https://kippt.com/signup/" data-link="modal" data-target="#signup-modal">Sign Up</a></li>
+              </ul>
+              
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    
+    </nav>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
+    
+  </body>
+  
+  <footer>
+        <p>
+			<a href="/home/info" >Información</a>
+			<a href="/home/infoProd/" >Productos</a>
+			<a href="/home/company" >Compañía</a>
+			<a href="/home/contact" >Contacto</a>
 	
-<%= yield %>
-
-</body>
-<div id="final">
-<table id="table">
-	<tr>
-	<td>
-			<a id="a1" href="/home/hello" >Inicio</a>
-	</td>
-	<td>
-			<a id="a1" href="/home/info" >Información</a>
-	</td>
-	<td>
-			<a id="a1" href="/home/infoProd/" >Productos</a>
-	</td>
-	<td>
-			<a id="a1" href="/home/company" >Compañía</a>
-	</td>
-	<td>
-			<a id="a1" href="/home/contact" >Contacto</a>
-	</td>
-	</tr>
-</table>
-</div>
+        </p>
+        
+        <p>
+        &copy; 2012-2013 BerconTeam. 
+        </p> 
+        
+        <div class="follow-buttons">
+            <div style="vertical-align:middle"><a href="https://twitter.com/berconTeam" class="twitter-follow-button" data-show-count="false">Follow @berconTeam</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+        </div>  
+        
+        
+     
+	</footer>
 </html>

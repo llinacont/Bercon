@@ -1,0 +1,22 @@
+@import "bootstrap";
+
+html {
+  overflow-y: scroll;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+footer{
+  text-align: center;  
+}
+
+#bercon{
+    text-align: center;
+}
+

@@ -40,3 +40,5 @@ gem 'jquery-rails'
 gem 'devise', '2.1'
 
 gem 'composite_primary_keys'
+
+gem 'bootstrap-sass', '2.1'
