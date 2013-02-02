@@ -23,5 +23,16 @@
 }
 
 #back{
-  
+  left: 600px;
+  position: absolute;
+  bottom: 200px;
+}
+
+#back:hover{
+  opacity: 0;
+  visibility: visible;
+}
+
+#destroyButton{
+  text_align: right;
 }

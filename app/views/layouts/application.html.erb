@@ -26,8 +26,8 @@
               <ul class="nav actions pull-right">
               	  <li class="divider-vertical"></li>
               	  <% if user_signed_in? %>
-              	   	<li><a id = "logout_link" <%= link_to "Salir", destroy_user_session_path, :method => :delete%></a></li>
-              	   	<li><%= current_user.email %></li>
+              	   	<li><a <%= link_to "Salir", destroy_user_session_path, :method => :delete %></a></li>
+        			<li> <%= current_user.email %> </li>
               	  <% else %>
                   	<li><a href="users/sign_in" data-link="modal" data-target="#login-modal">Accede</a></li>
                   	<li><a href="users/sign_up" data-link="modal" data-target="#signup-modal">Regístrate</a></li>
@@ -48,14 +48,14 @@
     <footer>
   		
   		
-        <p>
+        <u1 class = "inline">
         	
 			<a href="/home/info" class="btn btn-link" >Información</a>
 			<a href="/home/infoProd/" class="btn btn-link" >Productos</a>
 			<a href="/home/company" class="btn btn-link" >Compañía</a>
 			<a href="/home/contact" class="btn btn-link" >Contacto</a>
 			
-        </p>
+        </u1>
         
         <p>
         	<%= image_tag("footerLogo.png", :width => "86", :height => "46", :class => "brand", :id => "footerLogoL") %>

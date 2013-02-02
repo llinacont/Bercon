@@ -51,16 +51,27 @@
    </div>
    
    <div id="right_col">
-   <tr>
-   	<td><%= item.quantity %>&times;</td>
-   	<td><%= Product.find(item.product_id).title %> </td>
-   	<td><%= link_to 'Destruir', item, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-   </tr>
+   		<table class="table table-striped">
+    		<thead>
+    		  <tr>
+         		<th>Producto</th>
+         		<th>Cantidad</th>
+        	  </tr>
+			</thead>
+   	
+   			<tbody>
+   	  			<td><%= Product.find(item.product_id).title %></td>
+   	  			<td><%= item.quantity %></td>
+   	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+     		</tbody> 
+    	</table>       
+   
    </div>
  
 </div> 
   
 <% end %>
 <div id="back">
-<%= link_to 'Atrás', demands_path %>
+<%= link_to '', demands_path, :class  => "icon-arrow-left"%>
 </div>
