@@ -19,6 +19,11 @@ Bercon::Application.routes.draw do
     get 'contact'
   end
   
+  resources :center, :only => 'index' do
+    get 'index'
+  end
+  
+  
   root :to => 'home#hello'
   # The priority is based upon order of creation:
   # first created -> highest priority.
