@@ -19,9 +19,7 @@ Bercon::Application.routes.draw do
     get 'contact'
   end
   
-  resources :center, :only => 'index' do
-    get 'index'
-  end
+  resources :center
   
   
   root :to => 'home#hello'
