@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20130123092721) do
     t.integer  "client_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "quantity"
   end
 
   create_table "line_items", :force => true do |t|

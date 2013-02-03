@@ -31,17 +31,17 @@
       		<ul class="nav nav-list">
   				
   				<li class="nav-header">Productos</li>
-  					<li><%= link_to 'Crear', demands_path %></li>
-  					<li><%= link_to 'Editar', demands_path %></li>
-  					<li><%= link_to 'Mostrar', demands_path %></li>
+  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd"%></li>
+  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
   				<li class="nav-header">Clientes</li>
-  					<li><%= link_to 'Crear', demands_path %></li>
-  					<li><%= link_to 'Editar', demands_path %></li>
-  					<li><%= link_to 'Mostrar', demands_path %></li>
+  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
   				<li class="nav-header">Pedidos</li>
-  					<li><%= link_to 'Crear', demands_path %></li>
-  					<li><%= link_to 'Editar', demands_path %></li>
-  					<li><%= link_to 'Mostrar', demands_path %></li>
+  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
   				<li class="divider"></li>
   				<li><%= link_to 'Editar usuario', edit_user_registration_path %></li>
   				
@@ -72,15 +72,15 @@
   			 <div class="span6">
   			 	<table class="table table-striped">
   					<tr>
+    					<th>CIF</th>
     					<th>Nombre</th>
-    					<th>Precio</th>
     				</tr>
   
-					<% @products = Product.all %>
-					<% @products.each do |product| %>
+					<% @clients = Client.all %>
+					<% @clients.each do |client| %>
   					<tr>
-    					<td><%= product.title %></td>
-    					<td><%= product.price %></td>
+  						<td><%= client.cif %></td>
+    					<td><%= client.name %></td>
   					</tr>
 					<% end %>
 				</table>
@@ -90,15 +90,15 @@
 			<div class="row">
  			 <table class="table table-striped">
   					<tr>
-    					<th>Nombre</th>
-    					<th>Precio</th>
+    					<th>Fecha</th>
+    					<th>Cliente</th>
     				</tr>
   
-					<% @products = Product.all %>
-					<% @products.each do |product| %>
+					<% @demands = Demand.all %>
+					<% @demands.each do |demand| %>
   					<tr>
-    					<td><%= product.title %></td>
-    					<td><%= product.price %></td>
+    					<td><%= localize(demand.created_at, :format => :short) %></td>
+    					<td><%= Client.find(1).name %></td>
   					</tr>
 					<% end %>
 				</table>
