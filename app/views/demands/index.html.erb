@@ -1,9 +1,9 @@
-<h1 id="titulo3">Listing demands</h1>
+<h1>Listing demands</h1>
 
 
-<table id="table3">
-  <tr id="th3">
-    <th id="th3">Client</th>
+<table>
+  <tr>
+    <th>Client</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,10 +12,10 @@
 
 <% @demands.each do |demand| %>
 
-  <tr id="tr3">
+  <tr>
   	<% @client = Client.where(:id => demand.client_id) %>
   	<% @client.each do |client| %>
-    <td id="td3"><%= client.name %></td>
+    <td><%= client.name %></td>
     <td><%= link_to 'Show', demand %></td>
     <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
     <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
