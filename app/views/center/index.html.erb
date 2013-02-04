@@ -30,10 +30,10 @@
       		<!--Sidebar content-->
       		<ul class="nav nav-list">
   				
-  				<li class="nav-header">Productos</li>
-  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd"%></li>
-  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
+	  			<li class="nav-header">Productos</li>
+	  				<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd"%></li>
+	  				<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
+	  				<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
   				<li class="nav-header">Clientes</li>
   					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
   					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
@@ -97,7 +97,7 @@
 					<% @demands = Demand.all %>
 					<% @demands.each do |demand| %>
   					<tr>
-    					<td><%= localize(demand.created_at, :format => :short) %></td>
+    					<td><%= localize(demand.created_at, :format => :long) %></td>
     					<td><%= Client.find(1).name %></td>
   					</tr>
 					<% end %>

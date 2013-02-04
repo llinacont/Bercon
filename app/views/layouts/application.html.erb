@@ -29,8 +29,8 @@
               	   	<li><a <%= link_to "Salir", destroy_user_session_path, :method => :delete %></a></li>
         			<li> <%= current_user.email %> </li>
               	  <% else %>
-                  	<li><a href="users/sign_in" data-link="modal" data-target="#login-modal">Accede</a></li>
-                  	<li><a href="users/sign_up" data-link="modal" data-target="#signup-modal">Regístrate</a></li>
+                  	<li><a href="/users/sign_in" data-link="modal" data-target="#login-modal">Accede</a></li>
+                  	<li><a href="/users/sign_up" data-link="modal" data-target="#signup-modal">Regístrate</a></li>
                   <% end %>
               </ul>
                         

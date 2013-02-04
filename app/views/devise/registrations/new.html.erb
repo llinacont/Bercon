@@ -1,21 +1,39 @@
 <div>
-	<h2 id="titulo">Regístrate</h2>
+	<h3>Regístrate</h3>
 </div>
 
-<div id="form">
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div>
+    	
+    	 <div class="active item">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  		<%= devise_error_messages! %>
 
-  <div id="input"><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  		<div id="input"><%= f.label :email %><br />
+  		<%= f.email_field :email %></div>
 
-  <div id="input"><%= f.label :Contraseña %><br />
-  <%= f.password_field :password %></div>
+  		<div id="input"><%= f.label :Contraseña %><br />
+  		<%= f.password_field :password %></div>
 
-  <div id="input"><%= f.label :'Confirma tu contraseña'%><br />
-  <%= f.password_field :password_confirmation%></div>
-
-  <div><%= f.submit "Paso 2" %></div>
+  		<div id="input"><%= f.label :'Confirma tu contraseña'%><br />
+  		<%= f.password_field :password_confirmation%></div>
+  		</div>
+  		
+  		<div class="item">…</div>
+  		
+  		<div class="item">…</div>
+  	
+  	</div>
+  <!-- Carousel nav -->
+  <!-- <%= f.submit "", :class => "carousel-control right" %> -->
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+<div class="progress progress-striped active">
+  <div class="bar" style="width: 33%;">Regístrate</div>
+  
+</div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
