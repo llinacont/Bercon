@@ -1,7 +1,13 @@
 <h3>Tus Clientes</h3>
 
 <div class="row">
-  <div class="span5">
+	
+  <div style="text-align: left">
+  	<%= button_to 'Productos', :class =>"btn btn-mini", :controller => '/products', :action => 'index' %>
+  </div>
+  
+  <div class="span4">
+  	
   	<%@client = Client.new%>
 	<%= form_for(@client) do |f| %>
 	  <% if @client.errors.any? %>
@@ -37,7 +43,12 @@
 	</div>
 	<% end %>
   </div>
-  <div class="span5">
+  <div class="span7">
+  	
+  	<div style="text-align: right">
+  	<%= button_to 'Terminar Registro', :class =>"btn btn-mini", :controller => '/center', :action => 'index' %>
+  	</div>
+  	
   	<table class="table table-striped">
   		<tr>
     		<th>Nombre</th>
@@ -50,19 +61,15 @@
     		<td><%= client.name %></td>
     		<td><%= client.cif %></td>
     		<td><%= client.address %></td>
-    		<td><%= link_to '.', edit_client_path(client) %></td>
-    		<td><%= link_to '.', client, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+    		<td><%= link_to '', edit_client_path(client), :class => "icon-edit" %></td>
+    		<td><%= link_to '', client, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
 		  </tr>
 		<% end %>
 	</table>
   </div>
 </div>
 
-<div>
-	<%= link_to 'Atrás', :controller => '/products', :action => 'index' %>
-	<%= link_to 'Home', :controller => '/center', :action => 'index' %>
-</div>
-
 <div class="progress progress-striped active">
-  <div class="bar" style="width: 33%;">Regístrate</div>
+  <div class="bar" style="width: 99%;">Añade a tus Clientes</div>
 </div>

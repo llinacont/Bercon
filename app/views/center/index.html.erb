@@ -31,17 +31,11 @@
       		<ul class="nav nav-list">
   				
 	  			<li class="nav-header">Productos</li>
-	  				<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd"%></li>
-	  				<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
-	  				<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
+	  				<li><%= link_to 'Crear', new_product_path, :style => "color:#049cbd"%></li>
   				<li class="nav-header">Clientes</li>
-  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
   				<li class="nav-header">Pedidos</li>
-  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Crear', new_demands_path, :style => "color:#049cbd" %></li>
   				<li class="divider"></li>
   				<li><%= link_to 'Editar usuario', edit_user_registration_path %></li>
   				
@@ -50,7 +44,7 @@
     		</div>
     	<div class="span10">
       		
-      		<div class="row">
+      		<div class="rowcent">
  			 <div class="span6">
  			 	
  			 	<table class="table table-striped">
@@ -87,7 +81,7 @@
   			 </div>
 			</div>
 			
-			<div class="row">
+			<div class="rowcent">
  			 <table class="table table-striped">
   					<tr>
     					<th>Fecha</th>
