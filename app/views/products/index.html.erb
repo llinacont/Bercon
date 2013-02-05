@@ -1,8 +1,8 @@
-<h1 id="titulo3">Tus Productos</h1>
+<h3>Tus Productos</h3>
 
-<div id="products">
-	<div id="left_col">
-		<%@product = Product.new%>
+  <div class="row2">
+  	<div class="span5">
+  		<%@product = Product.new%>
 		<%= form_for(@product) do |f| %>
   			<% if @product.errors.any? %>
   			  <div id="error_explanation">
@@ -17,7 +17,8 @@
   			<% end %>
   
   			<%= f.hidden_field :user_id, :value => current_user.id%> 
-  		<form class="form-horizontal">
+  			
+  			<form class="form-horizontal">
   			<div class="control-group">
     			<label class="control-label" for="inputName">Nombre</label>
     			<div class="controls">
@@ -33,7 +34,7 @@
   			<div class="control-group">
     			<label class="control-label" for="inputDescripcion">Descripción</label>
     			<div>
-    			  <%= f.text_area :description %>
+    			  <%= f.text_area :description, :rows => 3 %>
     			</div>
   			</div>
   			<div class="control-group">
@@ -47,38 +48,32 @@
   			</div> 		
 	  <% end %>	
 	</form>
-	</div>
-	
-	<div id="right_col">
-		
-		<table>
+  	</div>
+  	
+  	<div class="span5">
+  		<table class="table table-striped">
  		 <tr>
+ 		 	<th>Imagen</th>
  		    <th>Nombre</th>
-    		<th>Descripción</th>
     		<th>Precio</th>
-    		<th>Image url</th>
-    		<th></th>
-    		<th></th>
-    		<th></th>
   		</tr>
 
 		<% @products.each do |product| %>
 		  <tr>
+		  	<td><%= image_tag("product.jpg",:size => "32x20", :alt => "")%></td>
 		    <td><%= product.title %></td>
-    		<td><%= product.description %></td>
     		<td><%= product.price %></td>
-    		<td><%= product.image_url %></td>
-    		<td><%= link_to 'Mostrar', product %></td>
-    		<td><%= link_to 'Editar', edit_product_path(product) %></td>
-    		<td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+    		<td><%= link_to '', edit_product_path(product), :class => "icon-edit" %></td>
+    		<td><%= link_to '', product, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
   		  </tr>
 		<% end %>
 		</table>
-		
+  	</div>
 	</div>
 </div>
+</div>
 
-<br />
-<div>
-	<%= link_to 'Paso 3', :controller => '/clients', :action => 'index' %>
+<div class="progress progress-striped active">
+  		<div class="bar" style="width: 33%;">Regístrate</div>
 </div>

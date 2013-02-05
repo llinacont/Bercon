@@ -1,9 +1,8 @@
-<h1>Tus Clientes</h1>
+<h3>Tus Clientes</h3>
 
-<div id="clients">
-	<div id="left_col">
-		
-		<%@client = Client.new%>
+<div class="row">
+  <div class="span5">
+  	<%@client = Client.new%>
 	<%= form_for(@client) do |f| %>
 	  <% if @client.errors.any? %>
 	    <div id="error_explanation">
@@ -37,19 +36,13 @@
 	  </div>
 	</div>
 	<% end %>
-
-	
-	</div>
-	
-	<div id="right_col">
-		<table>
+  </div>
+  <div class="span5">
+  	<table class="table table-striped">
   		<tr>
     		<th>Nombre</th>
     		<th>CIF</th>
     		<th>Dirección</th>
-    		<th></th>
-    		<th></th>
-   			<th></th>
 		</tr>
 
 		<% @clients.each do |client| %>
@@ -57,19 +50,19 @@
     		<td><%= client.name %></td>
     		<td><%= client.cif %></td>
     		<td><%= client.address %></td>
-    		<td><%= link_to 'Mostrar', client %></td>
-    		<td><%= link_to 'Editar', edit_client_path(client) %></td>
-    		<td><%= link_to 'Destruir', client, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+    		<td><%= link_to '.', edit_client_path(client) %></td>
+    		<td><%= link_to '.', client, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
 		  </tr>
 		<% end %>
-		</table>
-	</div>
+	</table>
+  </div>
 </div>
 
-
-
-<br />
 <div>
 	<%= link_to 'Atrás', :controller => '/products', :action => 'index' %>
 	<%= link_to 'Home', :controller => '/center', :action => 'index' %>
+</div>
+
+<div class="progress progress-striped active">
+  <div class="bar" style="width: 33%;">Regístrate</div>
 </div>
