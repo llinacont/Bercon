@@ -20,20 +20,20 @@
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	
 	<div>
-	  <div>
+	  <div class="field">
 	    <%= f.label :Nombre%>
 	    <%= f.text_field :name %>
 	  </div>
-	  <div>
+	  <div class="field">
 	    <%= f.label :CIF %>
 	    <%= f.text_field :cif %>
 	  </div>
-	  <div>
+	  <div class="field">
 	    <%= f.label :Dirección %>
 	    <%= f.text_field :address %>
 	  </div>
 	  <div>
-	    <%= f.submit :Crear%>
+	  	<%= button_to 'Añadir Cliente', clients_path(:user_id => @client.user_id, :name => @client.name, :cif => @client.cif, :address => @client.address) %>
 	  </div>
 	</div>
 	<% end %>
@@ -42,7 +42,8 @@
 	</div>
 	
 	<div id="right_col">
-		<table>
+		<table class="table table-striped">
+  		<thead>
   		<tr>
     		<th>Nombre</th>
     		<th>CIF</th>
@@ -51,16 +52,18 @@
     		<th></th>
    			<th></th>
 		</tr>
-
+		</thead>
+		
 		<% @clients.each do |client| %>
-  		<tr>
+  		<tbody>
     		<td><%= client.name %></td>
     		<td><%= client.cif %></td>
     		<td><%= client.address %></td>
     		<td><%= link_to 'Mostrar', client %></td>
     		<td><%= link_to 'Editar', edit_client_path(client) %></td>
-    		<td><%= link_to 'Destruir', client, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-		  </tr>
+    		<td><%= link_to '', client, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+		  </tbody>
 		<% end %>
 		</table>
 	</div>
@@ -69,7 +72,7 @@
 
 
 <br />
-<div>
+<div id="back">
 	<%= link_to 'Atrás', :controller => '/products', :action => 'index' %>
 	<%= link_to 'Home', :controller => '/center', :action => 'index' %>
 </div>
