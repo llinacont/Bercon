@@ -18,7 +18,7 @@
       </ul>
     </div>
   <% end %>
-
+	
    <div class="field">
     <%= l.label :Producto %><br />
     <%= l.select :product_id , options_from_collection_for_select(Product.where(:user_id => current_user.id), 'id', 'title'), :multiple => true %>
