@@ -1,19 +1,19 @@
-<h2>Clients</h2>
+<h2>Clientes</h2>
 
 <table class = "table table-striped">
   <tr>
-    <th>Client</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Imagen</th>
+    <th>Nombre</th>
+    <th>CIF</th>
+    <th>Dirección</th>
   </tr>
+  
 <% @Clients = Client.where(:user_id => current_user.id)%>
 <% @Clients.each do |client| %>
 
   <tr>
   	<tr>
-    <td><%= image_tag("client.jpg",:size => "32x20", :alt => "")%></td>
+    <td><%= image_tag("client.png",:size => "32x20", :alt => "")%></td>
     <td><%= client.name %></td>
     <td><%= client.cif %></td>
     <td><%= client.address %></td>
@@ -27,4 +27,4 @@
 
 <br />
 
-<%= link_to 'Atrás', center_path %>
+<%= link_to 'Atrás', :controller => '/center', :action => 'index' %>

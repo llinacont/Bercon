@@ -2,11 +2,10 @@
 
 <table class = "table table-striped">
   <tr>
-    <th>Product</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Imagen</th>
+    <th>Producto</th>
+    <th>Precio</th>
+    <th>Descripción</th>
   </tr>
   
 <% @Products = Product.where(:user_id => current_user.id) %>
