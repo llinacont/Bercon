@@ -2,7 +2,7 @@
 
 <div class="row">
   
-  <div class="span5">
+  <div class="span4">
 	<%= render 'form' %>
 
 	<%@line_item = LineItem.new%>
@@ -21,7 +21,7 @@
 
    <div class="field">
     <%= l.label :Producto %><br />
-    <%= l.select :product_id , options_from_collection_for_select(Product.all, 'id', 'title'), :multiple => true %>
+    <%= l.select :product_id , options_from_collection_for_select(Product.where(:user_id => current_user.id), 'id', 'title'), :multiple => true %>
   </div>
   
    <div class="field">
@@ -38,7 +38,7 @@
   </div>
   <% end %>
 	</div>
-  <div class="span5">
+  <div class="span8">
   	 <% @demand = Demand.last %>
   	 <% @line_items = LineItem.where(:demand_id => @demand.id) %>
   	 <% @line_items.each do |item|%>
@@ -56,9 +56,10 @@
    	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
    	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
      		</tbody> 
-    	</table>       
+    	</table> 
+    	<%end%>      
 	</div>
-	<%end%>
+
 </div>
 
 <div style="text-align: center">

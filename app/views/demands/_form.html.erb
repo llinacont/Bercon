@@ -17,7 +17,7 @@
   
   <div class="field">
     <%= f.label :Cliente %><br />
-    <%= f.select :client_id , options_from_collection_for_select(Client.all, 'id', 'name'), :multiple => true %>
+    <%= f.select :client_id , options_from_collection_for_select(Client.where(:user_id => current_user.id), 'id', 'name'), :multiple => true %>
   </div>
   <div class="actions">
     
