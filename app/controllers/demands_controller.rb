@@ -54,7 +54,7 @@ class DemandsController < ApplicationController
 
     respond_to do |format|
       if @demand.save
-        format.html { redirect_to @demand, notice: 'Demand was successfully created.' }
+        format.html { redirect_to :back, notice: 'Demand was successfully created.' }
         format.json { render json: @demand, status: :created, location: @demand }
       else
         format.html { render action: "new" }
