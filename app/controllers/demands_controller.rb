@@ -70,7 +70,7 @@ class DemandsController < ApplicationController
 
     respond_to do |format|
       if @demand.update_attributes(params[:demand])
-        format.html { redirect_to @demand, notice: 'Demand was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Demand was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
