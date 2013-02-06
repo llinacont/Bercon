@@ -1,6 +1,47 @@
 <h1 id="titulo3">Editing product</h1>
 
-<%= render 'form' %>
+		<%= form_for(@product) do |f| %>
+  			<% if @product.errors.any? %>
+  			  <div id="error_explanation">
+    			  <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+			
+    			  <ul>
+    			  <% @product.errors.full_messages.each do |msg| %>
+    			    <li><%= msg %></li>
+    			  <% end %>
+   			   </ul>
+    			</div>
+  			<% end %>
+  
+  			<%= f.hidden_field :user_id, :value => current_user.id%> 
+  		<form class="form-horizontal">
+  			<div class="control-group">
+    			<label class="control-label" for="inputName">Nombre</label>
+    			<div class="controls">
+    			  <%= f.text_field :title %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputPrecio">Precio</label>
+    			<div class="controls">
+    			  <%= f.text_field :price %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputDescripcion">Descripción</label>
+    			<div>
+    			  <%= f.text_area :description, :rows => 3 %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputImage_url">url imagen</label>
+    			<div class="controls">
+    			  <%= f.text_field :image_url %>
+    			</div>
+  			</div>
+  			<div>
+  				<%= f.submit "Crear Producto"%>
+  			</div> 		
+	  <% end %>		
 
-<%= link_to 'Mostrar', @product %> |
-<%= link_to 'Atrás', products_path %>
+<%= link_to 'Atrás', :controller => '/center', :action => 'index' %>

@@ -1,6 +1,38 @@
-<h1 id="titulo3">Editing client</h1>
+<h2>Editing client</h2>
 
-<%= render 'form' %>
+	<%= form_for(@client) do |f| %>
+	  <% if @client.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+	
+	      <ul>
+	      <% @client.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	<% end %>
+	  
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	
+	<div>
+	  <div>
+	    <%= f.label :Nombre%>
+	    <%= f.text_field :name %>
+	  </div>
+	  <div>
+	    <%= f.label :CIF %>
+	    <%= f.text_field :cif %>
+	  </div>
+	  <div>
+	    <%= f.label :Dirección %>
+	    <%= f.text_field :address %>
+	  </div>
+	  <div>
+	    <%= f.submit :Crear%>
+	  </div>
+	</div>
+	<% end %>
 
 <%= link_to 'Mostrar Clientes', @client %> |
 <%= link_to 'Atrás', clients_path %>

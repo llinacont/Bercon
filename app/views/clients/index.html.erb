@@ -1,80 +1,30 @@
-<h3>Tus Clientes</h3>
+<h2>Clients</h2>
 
- <div style="text-align: left">
-  	<a href="/products" ><button class="btn btn-medium" type="button">Atrás</a>
-  </div>
-  
-<div class="row">
-	
- 
-  
-  <div class="span4">
-  	
-  	<%@client = Client.new%>
-	<%= form_for(@client) do |f| %>
-	  <% if @client.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
-	
-	      <ul>
-	      <% @client.errors.full_messages.each do |msg| %>
-	        <li><%= msg %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	<% end %>
-	  
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-	
-	<div>
-	  <div class="field">
-	    <%= f.label :Nombre%>
-	    <%= f.text_field :name %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :CIF %>
-	    <%= f.text_field :cif %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :Dirección %>
-	    <%= f.text_field :address %>
-	  </div>
-	  <div>
-	  	<%= button_to 'Añadir Cliente', clients_path(:user_id => @client.user_id, :name => @client.name, :cif => @client.cif, :address => @client.address) %>
-	  </div>
-	</div>
-	<% end %>
+<table class = "table table-striped">
+  <tr>
+    <th>Client</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @Clients = Client.where(:user_id => current_user.id)%>
+<% @Clients.each do |client| %>
 
-  </div>
-  <div class="span8">
-	<div class="rowcent">
-  	<table class="table table-striped">
-  		<tr>
-    		<th>Nombre</th>
-    		<th>CIF</th>
-    		<th>Dirección</th>
-		</tr>
-		</thead>
-		
-		<% @clients.each do |client| %>
-  		<tbody>
-    		<td><%= client.name %></td>
-    		<td><%= client.cif %></td>
-    		<td><%= client.address %></td>
-    		<td><%= link_to '', edit_client_path(client), :class => "icon-edit" %></td>
-    		<td><%= link_to '', client, :class => 'destroyButton', method: :delete,
-   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
-		  </tr>
-		<% end %>
-	</table>
-	</div>
-  </div>
-</div>
+  <tr>
+  	<tr>
+    <td><%= image_tag("client.jpg",:size => "32x20", :alt => "")%></td>
+    <td><%= client.name %></td>
+    <td><%= client.cif %></td>
+    <td><%= client.address %></td>
+    <td><%= link_to '', client_path(client), :class => "icon-share" %></td>
+    <td><%= link_to '', edit_client_path(client), :class => "icon-edit" %></td>
+    <td><%= link_to '', client, :class => 'destroyButton', method: :delete,
+   	  		data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+  </tr>
+<% end %>
+</table>
 
-<div style="text-align: right">
-	<a href="/center"><button class="btn btn-primary" type="button">Terminar Registro</button></a>
-</div>
+<br />
 
-<div class="progress progress-striped active">
-  <div class="bar" style="width: 100%;">Añade a tus Clientes</div>
-</div>
+<%= link_to 'Atrás', center_path %>
