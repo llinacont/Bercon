@@ -21,7 +21,10 @@ Bercon::Application.routes.draw do
   
   resources :center
   
+  get 'registration_products', :controller => 'products', :action => 'registration_products'
   
+  get 'registration_clients', :controller => 'clients', :action => 'registration_clients'
+    
   root :to => 'home#hello'
   # The priority is based upon order of creation:
   # first created -> highest priority.

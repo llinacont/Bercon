@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<h3>Tus Productos</h3>
+
+  <div class="row">
+
+  	<div style="text-align: left">
+  			<%= button_to 'Atrás', edit_user_registration_path %>
+  	</div>
+
+	<div style="text-align: right">
+		<a href="/registration_clients"><button class="btn btn-small" type="button">Siguiente</button></a>
+	</div>
+
+  	<div class="span4">
+  		
+  		<%@product = Product.new%>
+		<%= form_for(@product) do |f| %>
+  			<% if @product.errors.any? %>
+  			  <div id="error_explanation">
+    			  <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+			
+    			  <ul>
+    			  <% @product.errors.full_messages.each do |msg| %>
+    			    <li><%= msg %></li>
+    			  <% end %>
+   			   </ul>
+    			</div>
+  			<% end %>
+  
+  			<%= f.hidden_field :user_id, :value => current_user.id%> 
+  		<form class="form-horizontal">
+  			<div class="control-group">
+    			<label class="control-label" for="inputName">Nombre</label>
+    			<div class="controls">
+    			  <%= f.text_field :title %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputPrecio">Precio</label>
+    			<div class="controls">
+    			  <%= f.text_field :price %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputDescripcion">Descripción</label>
+    			<div>
+    			  <%= f.text_area :description, :rows => 3 %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputImage_url">url imagen</label>
+    			<div class="controls">
+    			  <%= f.text_field :image_url %>
+    			</div>
+  			</div>
+  			<div>
+  				<%= f.submit "Crear Producto"%>
+  			</div> 		
+	  <% end %>		
+  	</div>
+  	
+  	<div class="span6">
+  		<div class="rowcent">
+  		<table class="table table-striped">
+ 		 <tr>
+ 		 	<th>Imagen</th>
+ 		    <th>Nombre</th>
+    		<th>Precio</th>
+  		</tr>
+  		</thead>
+  		<tbody>
+  		<% @products = Product.where(:user_id => current_user.id) %>
+  		<% @products.each do |product| %>
+		  <tr>
+		  	<td><%= image_tag("product.jpg",:size => "32x20", :alt => "")%></td>
+		    <td><%= product.title %></td>
+    		<td><%= product.price %></td>
+    		<td><%= link_to '', edit_product_path(product), :class => "icon-edit" %></td>
+    		<td><%= link_to '', product, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+  		  </tr>
+		<% end %>
+		</tbody>
+		</table>
+		</div>
+  	</div>
+
+</div>
+
+<div style="text-align: right">
+	<a href="/center"><button class="btn btn-primary" type="button">Terminar Registro</button></a>
+</div>
+
+<div class="progress progress-striped active">
+  		<div class="bar" style="width: 66%;">Añade tus Productos</div>
+</div>
