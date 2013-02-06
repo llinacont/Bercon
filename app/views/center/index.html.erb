@@ -54,6 +54,12 @@
     				</tr>
   
 					<% @products = Product.where(:user_id => current_user.id) %>
+					<% if Product.where(:user_id => current_user.id).count == 0 %>
+					  <div class="alert">
+  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+  						<strong>Warning!</strong> Tu lista de productos está vacia
+					  </div> 	
+					<%end%>
 					<% @products.each do |product| %>
   					<tr>
     					<td><%= product.title %></td>
@@ -71,11 +77,10 @@
     				</tr>
   
 					<% @clients = Client.where(:user_id => current_user.id) %>
-	
-					<% if @clients.nil? %>
+					<% if Client.where(:user_id => current_user.id).count == 0 %>
 					  <div class="alert">
   						<button type="button" class="close" data-dismiss="alert">&times;</button>
-  						<strong>Warning!</strong> Best check yo self, you're not looking too good.
+  						<strong>Warning!</strong> Tu lista de clientes está vacia
 					  </div> 	
 					<%end%>
 					
@@ -98,14 +103,19 @@
     				</tr>
   
 					<% @demands = Demand.where(:user_id => current_user.id) %>
-					<% if @demands.nil? %>
-					  ...	
+					<% if Demand.where(:user_id => current_user.id).count == 0 %>
+					  <div class="alert">
+  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+  						<strong>Warning!</strong> Tu lista de pedidos está vacia
+					  </div> 	
 					<%end%>
 					<% @demands.each do |demand| %>
   					<tr>
+  						
     					<td><%= localize(demand.created_at, :format => :long) %></td>
     					<td><%= Client.find(1).name %></td>
   					</tr>
+  					
 					<% end %>
 				</table>
 			</div>
