@@ -35,7 +35,7 @@
   				<li class="nav-header">Clientes</li>
   					<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
   				<li class="nav-header">Pedidos</li>
-  					<li><%= link_to 'Crear', new_demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
   				<li class="divider"></li>
   				<li><%= link_to 'Editar usuario', edit_user_registration_path %></li>
   				
@@ -53,7 +53,7 @@
     					<th>Precio</th>
     				</tr>
   
-					<% @products = Product.all %>
+					<% @products = Product.where(:user_id => current_user.id) %>
 					<% @products.each do |product| %>
   					<tr>
     					<td><%= product.title %></td>
@@ -70,8 +70,17 @@
     					<th>Nombre</th>
     				</tr>
   
-					<% @clients = Client.all %>
+					<% @clients = Client.where(:user_id => current_user.id) %>
+	
+					<% if @clients.nil? %>
+					  <div class="alert">
+  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+  						<strong>Warning!</strong> Best check yo self, you're not looking too good.
+					  </div> 	
+					<%end%>
+					
 					<% @clients.each do |client| %>
+					
   					<tr>
   						<td><%= client.cif %></td>
     					<td><%= client.name %></td>
@@ -88,7 +97,10 @@
     					<th>Cliente</th>
     				</tr>
   
-					<% @demands = Demand.all %>
+					<% @demands = Demand.where(:user_id => current_user.id) %>
+					<% if @demands.nil? %>
+					  ...	
+					<%end%>
 					<% @demands.each do |demand| %>
   					<tr>
     					<td><%= localize(demand.created_at, :format => :long) %></td>

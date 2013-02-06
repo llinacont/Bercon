@@ -1,10 +1,12 @@
 <h3>Tus Clientes</h3>
 
+ <div style="text-align: left">
+  	<a href="/products" ><button class="btn btn-medium" type="button">Atrás</a>
+  </div>
+  
 <div class="row">
 	
-  <div style="text-align: left">
-  	<%= button_to 'Productos', :class =>"btn btn-mini", :controller => '/products', :action => 'index' %>
-  </div>
+ 
   
   <div class="span4">
   	
@@ -45,10 +47,6 @@
   </div>
   <div class="span7">
   	
-  	<div style="text-align: right">
-  	<%= button_to 'Terminar Registro', :class =>"btn btn-mini", :controller => '/center', :action => 'index' %>
-  	</div>
-  	
   	<table class="table table-striped">
   		<tr>
     		<th>Nombre</th>
@@ -70,6 +68,10 @@
   </div>
 </div>
 
+<div style="text-align: right">
+	<a href="/center"><button class="btn btn-primary" type="button">Terminar Registro</button></a>
+</div>
+
 <div class="progress progress-striped active">
-  <div class="bar" style="width: 99%;">Añade a tus Clientes</div>
+  <div class="bar" style="width: 100%;">Añade a tus Clientes</div>
 </div>
