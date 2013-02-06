@@ -27,7 +27,7 @@
               	  <li class="divider-vertical"></li>
               	  <% if user_signed_in? %>
 
-              	   	<li><a id="logout_link"><i class="icon-user"></i><%= current_user.email %></a></li>
+              	   	<li><a href="/center" id="logout_link"><i class="icon-user"></i><%= current_user.email %></a></li>
               	  	<li><a id = "logout_link" <%= link_to "Salir", destroy_user_session_path, :method => :delete%></a></li>
 
               	  <% else %>

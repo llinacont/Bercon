@@ -1,33 +1,64 @@
-<%= form_for(@client) do |f| %>
-  <% if @client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
-      <% @client.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row">
+	
+ 
   
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-
-<div class="field3">
-  <div>
-    <%= f.label :Nombre%><br />
-    <%= f.text_field :name %>
+  <div class="span4">
+  	
+  	<%@client = Client.new%>
+	<%= form_for(@client) do |f| %>
+	  <% if @client.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+	
+	      <ul>
+	      <% @client.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	<% end %>
+	  
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	
+	<div>
+	  <div>
+	    <%= f.label :Nombre%>
+	    <%= f.text_field :name %>
+	  </div>
+	  <div>
+	    <%= f.label :CIF %>
+	    <%= f.text_field :cif %>
+	  </div>
+	  <div>
+	    <%= f.label :Dirección %>
+	    <%= f.text_field :address %>
+	  </div>
+	  <div>
+	    <%= f.submit :Crear%>
+	  </div>
+	</div>
+	<% end %>
   </div>
-  <div>
-    <%= f.label :CIF %><br />
-    <%= f.text_field :cif %>
-  </div>
-  <div>
-    <%= f.label :Dirección %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="span8">
+  	<div class="rowcent">
+  	<table class="table table-striped">
+  		<tr>
+    		<th>Nombre</th>
+    		<th>CIF</th>
+    		<th>Dirección</th>
+		</tr>
+		<% @clients = Client.where(:user_id => current_user.id)%>
+		<% @clients.each do |client| %>
+  		<tr>
+    		<td><%= client.name %></td>
+    		<td><%= client.cif %></td>
+    		<td><%= client.address %></td>
+    		<td><%= link_to '', edit_client_path(client), :class => "icon-edit" %></td>
+    		<td><%= link_to '', client, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+		  </tr>
+		<% end %>
+	</table>
+	</div>
   </div>
 </div>
-<% end %>

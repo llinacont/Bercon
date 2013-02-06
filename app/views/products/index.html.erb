@@ -1,8 +1,21 @@
-<h1 id="titulo3">Tus Productos</h1>
+<h3>Tus Productos</h3>
 
-<div id="products">
-	<div id="left_col">
-		<%@product = Product.new%>
+  <div class="row">
+
+  	<div style="text-align: left">
+  			<%= button_to 'Atrás', edit_user_registration_path %>
+  	</div>
+
+	<div style="text-align: right">
+		<a href="/clients"><button class="btn btn-small" type="button">Siguiente</button></a>
+	</div>
+ 
+
+  	<div class="span5">
+  		
+  		
+  		
+  		<%@product = Product.new%>
 		<%= form_for(@product) do |f| %>
   			<% if @product.errors.any? %>
   			  <div id="error_explanation">
@@ -17,63 +30,68 @@
   			<% end %>
   
   			<%= f.hidden_field :user_id, :value => current_user.id%> 
-  			<div class="field">
-  				<%= f.label :Nombre%>
-			    <%= f.text_field :title %>
-    		</div>
-  			<div class="field">
-    			<%= f.label :Precio%>
-			    <%= f.text_field :price %>
-    		</div>
-  			<div class="field">
-    			<%= f.label :Descripción%>
-			    <%= f.text_area :description %>
-    		</div>
-  			<div class="field">
-    			<%= f.label :imagen%>
-			    <%= f.text_field :image_url %>
-    		</div>
+  		<form class="form-horizontal">
+  			<div class="control-group">
+    			<label class="control-label" for="inputName">Nombre</label>
+    			<div class="controls">
+    			  <%= f.text_field :title %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputPrecio">Precio</label>
+    			<div class="controls">
+    			  <%= f.text_field :price %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputDescripcion">Descripción</label>
+    			<div>
+    			  <%= f.text_area :description, :rows => 3 %>
+    			</div>
+  			</div>
+  			<div class="control-group">
+    			<label class="control-label" for="inputImage_url">url imagen</label>
+    			<div class="controls">
+    			  <%= f.text_field :image_url %>
+    			</div>
+  			</div>
   			<div>
-  				<%= button_to 'Añadir Producto', products_path(:title => @product.title, :price => @product.price, :description => @product.description, :image_url => @product.image_url) %>
-			</div> 		
-	  <% end %>
-	</div>
-	
-	<div id="right_col">
-		
-		<table class="table table-striped">
-		<thead>
+  				<%= f.submit "Crear Producto"%>
+  			</div> 		
+	  <% end %>		
+  	</div>
+  	
+  	<div class="span5">
+  		
+  		<table class="table table-striped">
  		 <tr>
+ 		 	<th>Imagen</th>
  		    <th>Nombre</th>
-    		<th>Descripción</th>
     		<th>Precio</th>
-    		<th>Image url</th>
-    		<th></th>
-    		<th></th>
-    		<th></th>
   		</tr>
   		</thead>
   		
   		<tbody>
   		<% @products.each do |product| %>
 		  <tr>
+		  	<td><%= image_tag("product.jpg",:size => "32x20", :alt => "")%></td>
 		    <td><%= product.title %></td>
-    		<td><%= product.description %></td>
     		<td><%= product.price %></td>
-    		<td><%= product.image_url %></td>
-    		<td><%= link_to 'Mostrar', product %></td>
-    		<td><%= link_to 'Editar', edit_product_path(product) %></td>
+    		<td><%= link_to '', edit_product_path(product), :class => "icon-edit" %></td>
     		<td><%= link_to '', product, :class => 'destroyButton', method: :delete,
    	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
   		  </tr>
 		<% end %>
 		</tbody>
 		</table>
-		
-	</div>
+  	</div>
+
 </div>
 
-<br />
-<div id="back">
-	<%= link_to 'Paso 3', :controller => '/clients', :action => 'index' %>
+<div style="text-align: right">
+	<a href="/center"><button class="btn btn-primary" type="button">Terminar Registro</button></a>
+</div>
+
+<div class="progress progress-striped active">
+  		<div class="bar" style="width: 66%;">Añade tus Productos</div>
 </div>

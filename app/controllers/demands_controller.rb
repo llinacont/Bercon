@@ -27,6 +27,9 @@ class DemandsController < ApplicationController
   # GET /demands/new.json
   def new
     @demand = Demand.last
+    if @demand == nil
+      @demand = Demand.create
+    end
     if @demand.client_id == nil
       @demand
     else

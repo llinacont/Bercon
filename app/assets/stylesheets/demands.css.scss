@@ -3,23 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
-#demands {
-   width:800px;
-   margin:0 auto;
-}
-#left_col {
-   float:left;
-   width:300px;
-}
-#right_col {
-   float:right;
-   width:300px;
-}
-
 #createDemand{
   position: absolute;
   top: 403px;
-  left: 500px;
+  left: 420px;
 }
 
 #back{

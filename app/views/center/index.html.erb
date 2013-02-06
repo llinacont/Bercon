@@ -31,17 +31,11 @@
       		<ul class="nav nav-list">
   				
 	  			<li class="nav-header">Productos</li>
-	  				<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd"%></li>
-	  				<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
-	  				<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
+	  				<li><%= link_to 'Crear', new_product_path, :style => "color:#049cbd"%></li>
   				<li class="nav-header">Clientes</li>
-  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
   				<li class="nav-header">Pedidos</li>
-  					<li><%= link_to 'Crear', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Editar', demands_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Mostrar', demands_path, :style => "color:#049cbd" %></li>
+  					<li><%= link_to 'Crear', new_demand_path, :style => "color:#049cbd" %></li>
   				<li class="divider"></li>
   				<li><%= link_to 'Editar usuario', edit_user_registration_path %></li>
   				
@@ -50,7 +44,7 @@
     		</div>
     	<div class="span10">
       		
-      		<div class="row">
+      		<div class="rowcent">
  			 <div class="span6">
  			 	
  			 	<table class="table table-striped">
@@ -59,7 +53,13 @@
     					<th>Precio</th>
     				</tr>
   
-					<% @products = Product.all %>
+					<% @products = Product.where(:user_id => current_user.id) %>
+					<% if Product.where(:user_id => current_user.id).count == 0 %>
+					  <div class="alert">
+  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+  						<strong>Warning!</strong> Tu lista de productos está vacia
+					  </div> 	
+					<%end%>
 					<% @products.each do |product| %>
   					<tr>
     					<td><%= product.title %></td>
@@ -76,8 +76,16 @@
     					<th>Nombre</th>
     				</tr>
   
-					<% @clients = Client.all %>
+					<% @clients = Client.where(:user_id => current_user.id) %>
+					<% if Client.where(:user_id => current_user.id).count == 0 %>
+					  <div class="alert">
+  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+  						<strong>Warning!</strong> Tu lista de clientes está vacia
+					  </div> 	
+					<%end%>
+					
 					<% @clients.each do |client| %>
+					
   					<tr>
   						<td><%= client.cif %></td>
     					<td><%= client.name %></td>
@@ -87,19 +95,27 @@
   			 </div>
 			</div>
 			
-			<div class="row">
+			<div class="rowcent">
  			 <table class="table table-striped">
   					<tr>
     					<th>Fecha</th>
     					<th>Cliente</th>
     				</tr>
   
-					<% @demands = Demand.all %>
+					<% @demands = Demand.where(:user_id => current_user.id) %>
+					<% if Demand.where(:user_id => current_user.id).count == 0 %>
+					  <div class="alert">
+  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+  						<strong>Warning!</strong> Tu lista de pedidos está vacia
+					  </div> 	
+					<%end%>
 					<% @demands.each do |demand| %>
   					<tr>
+  						
     					<td><%= localize(demand.created_at, :format => :long) %></td>
     					<td><%= Client.find(1).name %></td>
   					</tr>
+  					
 					<% end %>
 				</table>
 			</div>

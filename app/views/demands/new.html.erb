@@ -1,12 +1,13 @@
 <h2>Nuevo Pedido</h2>
 
-<div id="demands">
-	<div id="left_col">
+<div class="row">
+  
+  <div class="span5">
 	<%= render 'form' %>
 
-<%@line_item = LineItem.new%>
-<%= form_for(@line_item) do |l| %>
-  <% if @line_item.errors.any? %>
+	<%@line_item = LineItem.new%>
+	<%= form_for(@line_item) do |l| %>
+  	<% if @line_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
 
@@ -18,11 +19,6 @@
     </div>
   <% end %>
 
-<!--  <div class="field">
-    <%= l.label :Producto %><br />
-    <%= l.number_field :product_id %>
-</div> -->
-	
    <div class="field">
     <%= l.label :Producto %><br />
     <%= l.select :product_id , options_from_collection_for_select(Product.all, 'id', 'title'), :multiple => true %>
@@ -39,19 +35,14 @@
   
   <div>
 	<%= button_to 'Añadir Producto', line_items_path(:product_id => @line_item.product_id, :demand_id => @line_item.demand_id, :quantity => @line_item.quantity) %>
-	<% end %>
   </div>
- </div>
-  
-  <% @demand = Demand.last %>
-  <% @line_items = LineItem.where(:demand_id => @demand.id) %>
-  <% @line_items.each do |item|%>
-  
-  <div>
-   </div>
-   
-   <div id="right_col">
-   		<table class="table table-striped">
+  <% end %>
+	</div>
+  <div class="span5">
+  	 <% @demand = Demand.last %>
+  	 <% @line_items = LineItem.where(:demand_id => @demand.id) %>
+  	 <% @line_items.each do |item|%>
+  	<table class="table table-striped">
     		<thead>
     		  <tr>
          		<th>Producto</th>
@@ -66,12 +57,10 @@
    	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
      		</tbody> 
     	</table>       
-   
-   </div>
- 
-</div> 
-  
-<% end %>
-<div id="back">
-<%= link_to '', demands_path, :class  => "icon-arrow-left"%>
+	</div>
+	<%end%>
+</div>
+
+<div style="text-align: center">
+	<a href="/center"><button class="btn btn-medium" type="button">Atrás</button></a>
 </div>
