@@ -2,12 +2,10 @@
 	<h3>Regístrate</h3>
 </div>
 
-<div id="myCarousel" class="carousel slide">
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <div>
-    	
-    	 <div class="active item">
+<div style="text-align: center">
+
+  <div>
+    
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   		<%= devise_error_messages! %>
 
@@ -19,17 +17,13 @@
 
   		<div id="input"><%= f.label :'Confirma tu contraseña'%><br />
   		<%= f.password_field :password_confirmation%></div>
-  		</div>
-  		
-  		<div class="item">…</div>
-  		
-  		<div class="item">…</div>
-  	
-  	</div>
-  <!-- Carousel nav -->
-  <%= f.submit ">", :class => "carousel-control right" %>
-  <!-- <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
+  
+  </div>
+  
+  <div><%= f.submit "Acceder" %></div>
+  
 </div>
+  
 <div class="progress progress-striped active">
   <div class="bar" style="width: 33%;">Regístrate</div>
 </div>
