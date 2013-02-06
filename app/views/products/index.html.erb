@@ -69,8 +69,10 @@
  		    <th>Nombre</th>
     		<th>Precio</th>
   		</tr>
-
-		<% @products.each do |product| %>
+  		</thead>
+  		
+  		<tbody>
+  		<% @products.each do |product| %>
 		  <tr>
 		  	<td><%= image_tag("product.jpg",:size => "32x20", :alt => "")%></td>
 		    <td><%= product.title %></td>
@@ -80,6 +82,7 @@
    	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
   		  </tr>
 		<% end %>
+		</tbody>
 		</table>
   	</div>
 
