@@ -1,32 +1,30 @@
-<h1>Listing demands</h1>
+<h2>Pedidos</h2>
 
-
-<table>
+<table class = "table table-striped">
   <tr>
-    <th>Client</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Fecha</th>
+    <th>Cliente</th>
+    <th>Estado</th>
   </tr>
-
+  
+<% @demands = Demand.where(:user_id => current_user.id)%>
 <% @demands.each do |demand| %>
 
   <tr>
-  	<% @client = Client.where(:id => demand.client_id) %>
-  	<% @client.each do |client| %>
-    <td><%= client.name %></td>
-    <td><%= link_to 'Show', demand %></td>
-    <td><%= link_to 'Edit', edit_demand_path(demand) %></td>
-    <td><%= link_to 'Destroy', demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  	<td><%= localize(demand.created_at, :format => :long) %></td>
+  	<% @clients = Client.where(:id => demand.client_id)%>
+  	<% @clients.each do |client|%>
+  	<td><%= client.name %></td>
+    <td><%= demand.state %></td>
+    <td><%= link_to '', demand_path(demand), :class => "icon-share" %></td>
+    <td><%= link_to '', edit_demand_path(demand), :class => "icon-edit" %></td>
+    <td><%= link_to '', demand, :class => 'destroyButton', method: :delete,
+   	  		data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+   	<% end %>
   </tr>
-<% end %>
 <% end %>
 </table>
 
 <br />
-<div id="boton3">
-	<%= link_to 'Crear Pedido', new_demand_path %>
-	<%= link_to 'Atrás', :controller => '/clients', :action => 'index' %>
-	<%= link_to 'Pedidos', :controller => '/demands', :action => 'index' %>
-</div>
+
+<%= link_to 'Atrás', :controller => '/center', :action => 'index' %>

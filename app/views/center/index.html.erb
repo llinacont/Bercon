@@ -113,11 +113,23 @@
 					<%end%>
 					<% @demands = Demand.where(:user_id => current_user.id) %>
 					<% @demands.each do |demand| %>
-  					<tr>
+					<%if demand.state == 'creado'%>
+  					<tr style="color: #049cdb">
+    					<td><%= localize(demand.created_at, :format => :long) %></td>
+    					<% @clients = Client.where(:id => demand.client_id)%>
+  						<% @clients.each do |client|%>
+  						<td><%= client.name %></td>
+    					<td><%= demand.state %></td>
+    					<% end %>
+  					</tr>
+  					<% end %>
+  					<%if demand.state == 'En proceso'%>
+  					<tr style="color:  #f89406">
     					<td><%= localize(demand.created_at, :format => :long) %></td>
     					<td><%= Client.where(:id => demand.client_id).name %></td>
     					<td><%= demand.state %></td>
   					</tr>
+  					<% end %>
 					<% end %>
 				</table>
 			</div>

@@ -30,6 +30,16 @@
   </div>
   
   <div class="field">
+    <%= l.label :Estado %><br />
+   <select name="l[state]">
+  	<option style= "color: #049cdb" value="Aceptado">Aceptado</option>
+  	<option style= "color: #f89406" value="En proceso">En proceso</option>
+  	<option style= "color: #ffc40d" value="En ruta">En ruta</option>
+  	<option style= "color: #46a546" value="Entregado">Entregado</option>
+	</select>
+  </div>
+  
+  <div class="field">
     <%= l.hidden_field :demand_id, :value => @demand.id %>
   </div>
   
@@ -38,26 +48,27 @@
   </div>
   <% end %>
 	</div>
+  
   <div class="span8">
-  	 <% @demand = Demand.last %>
-  	 <% @line_items = LineItem.where(:demand_id => @demand.id) %>
-  	 <% @line_items.each do |item|%>
   	<table class="table table-striped">
-    		<thead>
+  		
+    		
     		  <tr>
          		<th>Producto</th>
          		<th>Cantidad</th>
         	  </tr>
-			</thead>
-   	
-   			<tbody>
+			<% @demand = Demand.last %>
+  	 		<% @line_items = LineItem.where(:demand_id => @demand.id) %>
+  	 		<% @line_items.each do |item|%>
+			  <tr>	
    	  			<td><%= Product.find(item.product_id).title %></td>
    	  			<td><%= item.quantity %></td>
    	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
    	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
-     		</tbody> 
-    	</table> 
-    	<%end%>      
+   	  		  </tr>
+   	  		<%end%>
+    </table> 
+    	      
 	</div>
 
 </div>
