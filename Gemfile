@@ -23,6 +23,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'rails3-jquery-autocomplete'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -43,4 +45,4 @@ gem 'composite_primary_keys'
 
 gem 'bootstrap-sass', '2.1'
 
- gem 'rails-i18n' 
+gem 'rails-i18n' 

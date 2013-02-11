@@ -3,6 +3,8 @@ class DemandsController < ApplicationController
   # GET /demands.json
   before_filter :authenticate_user!
   
+  autocomplete :client, :name
+  
   def index
     @demands = Demand.all
 
