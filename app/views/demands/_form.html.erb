@@ -1,3 +1,36 @@
+     <script>
+ $(function() {
+ 
+    $( "#client" ).autocomplete({
+      minLength: 2,
+      source: function(request, response) {
+		   $.ajax({
+				url: "/demands/autocomplete_client_name",
+				dataType: "json",
+				data: {term: request.term},
+			success: function( data ) {
+			response( data );
+				}
+			})
+		},
+      focus: function( event, ui ) {
+        $( "#client" ).val( ui.item.name );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#client-name" ).val( ui.item.name );
+        $( "#client-id" ).val( ui.item.id );
+        return false;
+      }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.name + "</a>" )
+        .appendTo( ul );
+    };
+  });
+  </script>
+
 <%= form_for(@demand) do |f| %>
   <% if @demand.errors.any? %>
     <div id="error_explanation">
@@ -14,12 +47,11 @@
   <div id="createDemand">
   	<%= f.submit "Hacer Pedido" %>
   </div>
-  <%= f.hidden_field :user_id, :value => current_user.id%>
   
   <div class="field">
-    <%= f.label :Cliente %><br />
-    <%= f.autocomplete_field :client_id, autocomplete_client_name_demands_path, :id => '#client_id' %>
-  <div class="actions">
-    
+  	Cliente <br /> <br />
+ 	<input id="client" />
+	<input type="hidden" id="client_id" />
   </div>
+  
 <% end %>

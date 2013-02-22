@@ -1,3 +1,33 @@
+ <script>
+     $( "#product" ).autocomplete({
+      minLength: 1,
+      source:  function(request, response) {
+		   $.ajax({
+				url: "/autocomplete.js",
+				dataType: "json",
+				data: {term: request.term},
+			success: function( data ) {
+			response( data );
+				}
+      focus: function( event, ui ) {
+        $( "#product" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#product" ).val( ui.item.label );
+        $( "#product-id" ).val( ui.item.value );
+ 
+        return false;
+      }
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.label + "</a>" )
+        .appendTo( ul );
+    };
+  });
+  </script>
+
 <h2>Nuevo Pedido</h2>
 
 <div class="row">
@@ -20,8 +50,9 @@
   <% end %>
 	
    <div class="field">
-    <%= l.label :Producto %><br />
-    <%= l.select :product_id , options_from_collection_for_select(Product.where(:user_id => current_user.id), 'id', 'title'), :multiple => true %>
+  	Producto <br /> <br />
+ 	<input id="product" />
+	<input type="hidden" id="product_id" />
   </div>
   
    <div class="field">

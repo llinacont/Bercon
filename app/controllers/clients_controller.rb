@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   
   def index
     @clients = Client.where(user_id:current_user.id)
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }
@@ -59,6 +59,9 @@ class ClientsController < ApplicationController
   # PUT /clients/1.json
   def update
     @client = Client.find(params[:id])
+    if @client.id == String.class
+      @client.id = Client.where(:name => @client.id).id
+    end
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
@@ -82,4 +85,5 @@ class ClientsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

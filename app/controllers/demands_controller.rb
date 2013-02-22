@@ -3,8 +3,6 @@ class DemandsController < ApplicationController
   # GET /demands.json
   before_filter :authenticate_user!
   
-  autocomplete :client, :name
-  
   def index
     @demands = Demand.all
 
@@ -69,7 +67,7 @@ class DemandsController < ApplicationController
   # PUT /demands/1.json
   def update
     @demand = Demand.find(params[:id])
-
+    
     respond_to do |format|
       if @demand.update_attributes(params[:demand])
         format.html { redirect_to :back, notice: 'Demand was successfully updated.' }
@@ -91,5 +89,16 @@ class DemandsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  respond_to :js
+  
+  def autocomplete_client_name
+    @clients = Client.where(["LOWER(name) LIKE ?", "#{params[:term].downcase}%"]).select('name')
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @clients }
+    end
+  end
+  
 end
