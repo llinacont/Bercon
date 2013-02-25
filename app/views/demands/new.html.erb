@@ -1,28 +1,30 @@
- <script>
-     $( "#product" ).autocomplete({
-      minLength: 1,
-      source:  function(request, response) {
+     <script>
+ $(function() {
+ 
+    $( "#product" ).autocomplete({
+      minLength: 2,
+      source: function(request, response) {
 		   $.ajax({
-				url: "/autocomplete.js",
+				url: "/demands/autocomplete_product_title",
 				dataType: "json",
 				data: {term: request.term},
 			success: function( data ) {
 			response( data );
 				}
+			})
+		},
       focus: function( event, ui ) {
-        $( "#product" ).val( ui.item.label );
+        $( "#product" ).val( ui.item.title);
         return false;
       },
       select: function( event, ui ) {
-        $( "#product" ).val( ui.item.label );
-        $( "#product-id" ).val( ui.item.value );
- 
+        $( "#product" ).val( ui.item.id );
         return false;
-      }
+      }	
     })
     .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
       return $( "<li>" )
-        .append( "<a>" + item.label + "</a>" )
+        .append( "<a>" + item.title + "</a>" )
         .appendTo( ul );
     };
   });
@@ -51,8 +53,7 @@
 	
    <div class="field">
   	Producto <br /> <br />
- 	<input id="product" />
-	<input type="hidden" id="product_id" />
+ 	<input id="product" name="line_item[product_id]" size="30" %>
   </div>
   
    <div class="field">

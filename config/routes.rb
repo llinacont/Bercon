@@ -2,6 +2,7 @@ Bercon::Application.routes.draw do
 
   resources :demands do
     get :autocomplete_client_name, :on => :collection
+    get :autocomplete_product_title, :on => :collection
   end
    
   resources :line_items

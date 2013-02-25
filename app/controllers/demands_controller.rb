@@ -93,11 +93,20 @@ class DemandsController < ApplicationController
   respond_to :js
   
   def autocomplete_client_name
-    @clients = Client.where(["LOWER(name) LIKE ?", "#{params[:term].downcase}%"]).select('name')
+    @clients = Client.where(["LOWER(name) LIKE ?", "#{params[:term].downcase}%"])
     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }
+    end
+  end
+  
+  def autocomplete_product_title
+    @products = Product.where(["LOWER(title) LIKE ?", "#{params[:term].downcase}%"])
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @products }
     end
   end
   

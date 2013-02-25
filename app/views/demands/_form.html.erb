@@ -14,14 +14,13 @@
 			})
 		},
       focus: function( event, ui ) {
-        $( "#client" ).val( ui.item.name );
+        $( "#client" ).val( ui.item.name);
         return false;
       },
       select: function( event, ui ) {
-        $( "#client-name" ).val( ui.item.name );
-        $( "#client-id" ).val( ui.item.id );
+        $( "#client" ).val( ui.item.id );
         return false;
-      }
+      }	
     })
     .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
       return $( "<li>" )
@@ -43,15 +42,14 @@
       </ul>
     </div>
   <% end %>
-  
+  <%= f.hidden_field :user_id, :value => current_user.id%>
   <div id="createDemand">
   	<%= f.submit "Hacer Pedido" %>
   </div>
   
   <div class="field">
   	Cliente <br /> <br />
- 	<input id="client" />
-	<input type="hidden" id="client_id" />
+ 	<input id="client" name="demand[client_id]" size= "30" %>
   </div>
   
 <% end %>
