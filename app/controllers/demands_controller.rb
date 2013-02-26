@@ -93,7 +93,7 @@ class DemandsController < ApplicationController
   respond_to :js
   
   def autocomplete_client_name
-    @clients = Client.where(["LOWER(name) LIKE ?", "#{params[:term].downcase}%"])
+    @clients = Client.where(["LOWER(name) LIKE ? AND user_id=?", "#{params[:term].downcase}%", current_user.id])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -102,7 +102,7 @@ class DemandsController < ApplicationController
   end
   
   def autocomplete_product_title
-    @products = Product.where(["LOWER(title) LIKE ?", "#{params[:term].downcase}%"])
+    @products = Product.where(["LOWER(title) LIKE ? AND user_id=?", "#{params[:term].downcase}%", current_user.id])
     
     respond_to do |format|
       format.html # index.html.erb
