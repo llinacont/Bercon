@@ -38,7 +38,7 @@
 	<%= render 'form' %>
 
 	<%@line_item = LineItem.new%>
-	<%= form_for(@line_item) do |l| %>
+	<%= form_for (@line_item), :remote => true , :url=>{:controller => "line_items", :action => "create"} do |l| %>
   	<% if @line_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
@@ -91,8 +91,8 @@
         	  </tr>
 			<% @demand = Demand.last %>
   	 		<% @line_items = LineItem.where(:demand_id => @demand.id) %>
-  	 		<% @line_items.each do |item|%>
-			  <tr>	
+  	 		<% @line_items.each, :remote => true, do |item|%>
+ 			  <tr>	
    	  			<td><%= Product.find(item.product_id).title %></td>
    	  			<td><%= item.quantity %></td>
    	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
