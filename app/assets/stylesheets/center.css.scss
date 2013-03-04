@@ -3,5 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .rowcent{
   height: 300px; 
+}
+
+.span6{
   overflow-y: scroll;
+}
+
+#demand_table{
+  overflow-y: scroll;
+}
+
+a.table-striped:hover{
+  text-decoration:underline;
 }

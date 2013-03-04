@@ -2,7 +2,7 @@
  $(function() {
  
     $( "#client" ).autocomplete({
-      minLength: 2,
+      minLength: 0,
       source: function(request, response) {
 		   $.ajax({
 				url: "/demands/autocomplete_client_name",
@@ -18,7 +18,7 @@
         return false;
       },
       select: function( event, ui ) {
-        $( "#client" ).val( ui.item.id );
+        $( "#client_id" ).val( ui.item.id );
         return false;
       }	
     })
@@ -50,6 +50,7 @@
   <div class="field">
   	Cliente <br /> <br />
  	<input id="client" name="demand[client_id]" size= "30" %>
+ 	<input id="client_id" type="hidden" name="demand[client_id]" %>
   </div>
   
 <% end %>

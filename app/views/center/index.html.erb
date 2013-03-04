@@ -70,7 +70,7 @@
  			 	
  			 </div>
   			 <div class="span6">
-  		
+  				
   			 	<a href="/clients"><table class="table table-striped"> </a>
   					<tr>
     					<th>CIF</th>
@@ -97,6 +97,7 @@
 			</div>
 			
 			<div class="rowcent">
+				<div id="demand_table">
  			 <a href="/demands"><table class="table table-striped"></a>
   					<tr>
     					<th>Fecha</th>
@@ -111,27 +112,28 @@
   						<strong>Ojo!</strong> Tu lista de pedidos está vacia
 					  </div> 	
 					<%end%>
-					<% @demands = Demand.where(:user_id => current_user.id) %>
+					<% @demands = Demand.where(:user_id => current_user.id)%>
 					<% @demands.each do |demand| %>
-					<%if demand.state == 'creado'%>
-  					<tr style="color: #049cdb">
-    					<td><%= localize(demand.created_at, :format => :long) %></td>
-    					<% @clients = Client.where(:id => demand.client_id)%>
-  						<% @clients.each do |client|%>
+
+  					<tr>
+  						<td><%= localize(demand.created_at, :format => :long) %></td>
+  							<% @clients = Client.where(:id => demand.client_id)%>
+  							<% @clients.each do |client|%>
   						<td><%= client.name %></td>
     					<td><%= demand.state %></td>
-    					<% end %>
-  					</tr>
-  					<% end %>
-  					<%if demand.state == 'En proceso'%>
-  					<tr style="color:  #f89406">
-    					<td><%= localize(demand.created_at, :format => :long) %></td>
-    					<td><%= Client.where(:id => demand.client_id).name %></td>
-    					<td><%= demand.state %></td>
-  					</tr>
-  					<% end %>
-					<% end %>
-				</table>
+    					<td><%= link_to '', demand_path(demand), :class => "icon-share" %></td>
+    					<td><%= link_to '', edit_demand_path(demand), :class => "icon-edit" %></td>
+    					<td><%= link_to '', demand, :class => 'destroyButton', method: :delete,
+   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+   					
+   					<% end %>
+  				    
+  				    </tr>
+  				    
+				<% end %>
+				
+		     </table>
+		     </div>			
 			</div>
 			
     	</div>

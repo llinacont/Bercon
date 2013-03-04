@@ -2,7 +2,7 @@
  $(function() {
  
     $( "#product" ).autocomplete({
-      minLength: 2,
+      minLength: 0,
       source: function(request, response) {
 		   $.ajax({
 				url: "/demands/autocomplete_product_title",
@@ -18,7 +18,7 @@
         return false;
       },
       select: function( event, ui ) {
-        $( "#product" ).val( ui.item.id );
+        $( "#product_id" ).val( ui.item.id );
         return false;
       }	
     })
@@ -38,7 +38,9 @@
 	<%= render 'form' %>
 
 	<%@line_item = LineItem.new%>
-	<%= form_for (@line_item), :remote => true , :url=>{:controller => "line_items", :action => "create"} do |l| %>
+	<!--<%= form_for (@line_item), :remote => true , :url=>{:controller => "line_items", 
+		:action => "create"} do |l| %> -->
+	<%= form_for (@line_item) do |l| %>
   	<% if @line_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
@@ -54,6 +56,7 @@
    <div class="field">
   	Producto <br /> <br />
  	<input id="product" name="line_item[product_id]" size="30" %>
+ 	<input id="product_id" type="hidden" name="line_item[product_id]" %>
   </div>
   
    <div class="field">
@@ -91,7 +94,7 @@
         	  </tr>
 			<% @demand = Demand.last %>
   	 		<% @line_items = LineItem.where(:demand_id => @demand.id) %>
-  	 		<% @line_items.each, :remote => true, do |item|%>
+  	 		<% @line_items.each do |item|%>
  			  <tr>	
    	  			<td><%= Product.find(item.product_id).title %></td>
    	  			<td><%= item.quantity %></td>
@@ -104,7 +107,7 @@
 	</div>
 
 </div>
-
+<%end%>
 <div style="text-align: center">
 	<a href="/center"><button class="btn btn-medium" type="button">Atrás</button></a>
 </div>
