@@ -23,8 +23,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'rails3-jquery-autocomplete'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -40,6 +38,8 @@ gem 'rails3-jquery-autocomplete'
 # To use debugger
 # gem 'debugger'
 gem 'devise', '2.1'
+
+gem 'cancan'
 
 gem 'composite_primary_keys'
 

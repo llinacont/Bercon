@@ -1,5 +1,11 @@
 Bercon::Application.routes.draw do
 
+  resources :events
+
+
+  resources :companies
+
+
   resources :demands do
     get :autocomplete_client_name, :on => :collection
     get :autocomplete_product_title, :on => :collection
