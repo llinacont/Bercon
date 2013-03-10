@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   before_filter :authenticate_user!
+  load_and_authorize_resource
   
   def index
     @products = Product.where(user_id:current_user.id)

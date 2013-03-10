@@ -1,4 +1,4 @@
-class UsersHaveAndBelongToManyRoles < ActiveRecord::Migration
+class UsersHaveAndBelongsToManyRoles < ActiveRecord::Migration
   def up
     create_table :roles_users, :id => false do |t|
       t.references :role, :user

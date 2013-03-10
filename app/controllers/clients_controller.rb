@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   before_filter :authenticate_user!
+  load_and_authorize_resource
   
   def index
     @clients = Client.where(user_id:current_user.id)

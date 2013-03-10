@@ -14,7 +14,18 @@
 
   		<div id="input"><%= f.label :Contraseña %><br />
   		<%= f.password_field :password %></div>
-
+		
+		<% @company = Company.new %>
+		<%= form_for(@company) do |c| %>
+		
+		<div id="input">
+			<%= c.label :Empresa %><br />
+  			<%= c.password_field :name %>
+  		</div>
+  		
+  		<% end %>
+  		<%= f.hidden_field :company_id, :value => @company.id%>
+  		
   		<div id="input"><%= f.label :'Confirma tu contraseña'%><br />
   		<%= f.password_field :password_confirmation%></div>
   

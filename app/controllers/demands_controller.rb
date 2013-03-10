@@ -2,6 +2,7 @@ class DemandsController < ApplicationController
   # GET /demands
   # GET /demands.json
   before_filter :authenticate_user!
+  load_and_authorize_resource
   
   def index
     @demands = Demand.all
