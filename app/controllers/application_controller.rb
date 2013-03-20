@@ -8,9 +8,10 @@ class ApplicationController < ActionController::Base
   private
     def after_sign_in_path_for(resource)
       if current_user.sign_in_count == 1
-        registration_products_path 
+        registration_companies_path 
       else
       center_index_path
       end
     end
+    
 end

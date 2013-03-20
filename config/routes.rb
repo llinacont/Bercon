@@ -5,7 +5,8 @@ Bercon::Application.routes.draw do
 
   resources :companies
 
-
+  resources :roles
+  
   resources :demands do
     get :autocomplete_client_name, :on => :collection
     get :autocomplete_product_title, :on => :collection
@@ -31,6 +32,8 @@ Bercon::Application.routes.draw do
   
   resources :center
   
+  get 'registration_companies', :controller => 'companies', :action => 'registration_companies'
+    
   get 'registration_products', :controller => 'products', :action => 'registration_products'
   
   get 'registration_clients', :controller => 'clients', :action => 'registration_clients'
