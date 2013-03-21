@@ -20,6 +20,8 @@ Bercon::Application.routes.draw do
     
     resources :clients 
   
+    get 'users/new_worker', :controller => 'devise/registrations', :action => 'new_worker'
+    
   end
    
   namespace :home do
@@ -37,6 +39,8 @@ Bercon::Application.routes.draw do
   get 'registration_products', :controller => 'products', :action => 'registration_products'
   
   get 'registration_clients', :controller => 'clients', :action => 'registration_clients'
+  
+ 
     
   root :to => 'home#hello'
   # The priority is based upon order of creation:
