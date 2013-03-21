@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+.userstyle{
+	font-size: medium;
+}
+
 #user_nav{
   font-size:    medium;
   text-align:   left;

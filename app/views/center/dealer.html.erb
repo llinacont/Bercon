@@ -21,7 +21,7 @@
 <body>
   <div>
     <header>
-      <h2>Tu empresa</h2>
+      <h2>Repartidor</h2>
     </header>
    
 	<div class="container-fluid">
@@ -29,74 +29,22 @@
     		<div class="span2">
       		<!--Sidebar content-->
       		<ul class="nav nav-list">
-  				<li><%= link_to 'Comercial', seller_path %></li>
-	  			<li><%= link_to 'Repartidor', dealer_path %></li>
-	  			<li class="nav-header">Productos</li>
-	  				<li><%= link_to 'Crear', new_product_path, :style => "color:#049cbd"%></li>
-  				<li class="nav-header">Clientes</li>
-  					<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
-  				<li class="nav-header">Pedidos</li>
-  					<li><%= link_to 'Crear', new_demand_path, :style => "color:#049cbd" %></li>
-  				<li class="divider"></li>
-  				<li><%= link_to 'Editar usuario', edit_user_registration_path %></li>
-  				
+  				<div class="span4">
+  						<%= image_tag("furgo.jpg", :alt => "tabla feed") %>
+  				</div>
+	  			<div class="span8">
+	  				<li>
+	  					
+	  				</li>
+					<li class="nav-header">Pedidos</li>
+  						<li><%= link_to 'Ver', demands_path, :style => "color:#049cbd" %></li>
+  					
+      			</div>
 			</ul>
       		
     		</div>
     	<div class="span10">
       		
-      		<div class="rowcent">
- 			 <div class="span6">
- 			 	
- 			 	<a href="/products"><table class="table table-striped"></a>
-  					<tr>
-    					<th>Nombre</th>
-    					<th>Precio</th>
-    				</tr>
-  
-					<% @products = Product.where(:user_id => current_user.id) %>
-					<% if Product.where(:user_id => current_user.id).count == 0 %>
-					  <div class="alert">
-  						<button type="button" class="close" data-dismiss="alert">&times;</button>
-  						<strong>Ojo!</strong> Tu lista de productos está vacia
-					  </div> 	
-					<%end%>
-					<% @products.each do |product| %>
-  					<tr>
-    					<td><%= product.title %></td>
-    					<td><%= product.price %></td>
-  					</tr>
-					<% end %>
-				</table>
- 			 	
- 			 </div>
-  			 <div class="span6">
-  				
-  			 	<a href="/clients"><table class="table table-striped"> </a>
-  					<tr>
-    					<th>CIF</th>
-    					<th>Nombre</th>
-    				</tr>
-  
-					<% @clients = Client.where(:user_id => current_user.id) %>
-					<% if Client.where(:user_id => current_user.id).count == 0 %>
-					  <div class="alert">
-  						<button type="button" class="close" data-dismiss="alert">&times;</button>
-  						<strong>Ojo!</strong> Tu lista de clientes está vacia
-					  </div> 	
-					<%end%>
-					
-					<% @clients.each do |client| %>
-					
-  					<tr>
-  						<td><%= client.cif %></td>
-    					<td><%= client.name %></td>
-  					</tr>
-					<% end %>
-				</table>
-  			 </div>
-			</div>
-			
 			<div class="rowcent">
 				<div id="demand_table">
  			 <a href="/demands"><table class="table table-striped"></a>
