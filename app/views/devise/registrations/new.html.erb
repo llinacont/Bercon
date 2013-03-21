@@ -18,17 +18,8 @@
   		<div id="input"><%= f.label :'Confirma tu contraseña'%><br />
   		<%= f.password_field :password_confirmation%></div>
   		
-  		<% if @current_method == "new" %>
-    
-  		<% end %>
-  			<% for role in Role.find(:all) %>
-    	<div>
-      		<%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-      		<%= role.name %>
-    	</div>
-  		<% end %>
-  			
-  
+  		<%= f.hidden_field :roles_mask, :value => '1'%>
+  		
   <div><%= f.submit "Acceder" %></div>
   
 </div>

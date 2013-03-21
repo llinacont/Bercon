@@ -47,6 +47,10 @@ GEM
       orm_adapter (~> 0.0.7)
       railties (~> 3.1)
       warden (~> 1.1.1)
+    devise_invitable (1.1.4)
+      actionmailer (~> 3.0)
+      devise (>= 2.1.0)
+      railties (~> 3.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -93,6 +97,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
+    role_model (0.8.1)
     sass (3.2.5)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -124,10 +129,12 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   composite_primary_keys
   devise (= 2.1)
+  devise_invitable
   jquery-rails
   pg
   rack (= 1.4.1)
   rails (= 3.2.11)
   rails-i18n
+  role_model
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

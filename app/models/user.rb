@@ -1,3 +1,4 @@
+require 'role_model'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -15,11 +16,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
+  include RoleModel
   
-  def role?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
-  end
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :roles_mask
+  
+  # optionally set the integer attribute to store the roles in,
+  # :roles_mask is the default
+  roles_attribute :roles_mask
+ 
+  # declare the valid roles -- do not change the order if you add more
+  # roles later, always append them at the end!
+  roles :admin, :seller, :dealer
   
 end

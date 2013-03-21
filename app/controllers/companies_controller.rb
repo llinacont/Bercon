@@ -1,6 +1,9 @@
 class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   def index
     @companies = Company.all
 

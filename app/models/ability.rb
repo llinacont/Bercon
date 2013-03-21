@@ -4,13 +4,13 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user
 
-    if user.role? :administrator
+    if user.has_role? :admin
       can :manage, :all
-    elsif user.role? :seller
+    elsif user.has_role? :seller
       can :manage, Client
       can :manage, Demand
       can :read, Product
-    elsif user.role? :dealer
+    elsif user.has_role? :dealer
       can :read, Demand
       can :update, Demand.state
     end
