@@ -20,8 +20,8 @@
 
 <body>
   <div>
-    <header>
-      <h2>Tu empresa</h2>
+  	<header>
+      <h2>Comercial</h2>
     </header>
    
 	<div class="container-fluid">
@@ -29,20 +29,19 @@
     		<div class="span2">
       		<!--Sidebar content-->
       		<ul class="nav nav-list">
-  				<li><%= link_to 'Comercial', seller_path %></li>
-	  			<li><%= link_to 'Repartidor', dealer_path %></li>
-	  			<li class="nav-header">Productos</li>
-	  				<li><%= link_to 'Crear', new_product_path, :style => "color:#049cbd"%></li>
-  				<li class="nav-header">Clientes</li>
-  					<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
-  				<li class="nav-header">Pedidos</li>
-  					<li><%= link_to 'Crear', new_demand_path, :style => "color:#049cbd" %></li>
-  				<li class="nav-header">Empleados</li>
-  					<li><%= link_to 'Crear', users_new_worker_path, :style => "color:#049cbd" %></li>
-  				<li class="divider"></li>
-  				<li><%= link_to 'Editar usuario', edit_user_registration_path %></li>
-  				
-  				
+  				<div class="span4">
+  						<%= image_tag("tabla.jpg", :alt => "tabla feed") %>
+  				</div>
+	  			<div class="span8">
+	  				<li>
+	  					
+	  				</li>
+					<li class="nav-header">Clientes</li>
+  						<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
+  					<li class="nav-header">Pedidos</li>
+  						<li><%= link_to 'Crear', new_demand_path, :style => "color:#049cbd" %></li>
+  					
+      			</div>
 			</ul>
       		
     		</div>

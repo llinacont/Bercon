@@ -34,8 +34,13 @@ Bercon::Application.routes.draw do
   
   resources :center
   
+  get 'dealer', :controller => 'center', :action => 'dealer'
+  
+  get 'seller', :controller => 'center', :action => 'seller'
+
+  
   get 'registration_companies', :controller => 'companies', :action => 'registration_companies'
-    
+   
   get 'registration_products', :controller => 'products', :action => 'registration_products'
   
   get 'registration_clients', :controller => 'clients', :action => 'registration_clients'
