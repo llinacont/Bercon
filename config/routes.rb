@@ -8,6 +8,10 @@ Bercon::Application.routes.draw do
 
   resources :roles
   
+    get    'users' , :controller => 'users', :action => 'index'  
+    post   'users' , :controller => 'users', :action => 'create'                           
+    get    'users/new', :controller => 'users', :action => 'new'                      
+  
   resources :demands do
     get :autocomplete_client_name, :on => :collection
     get :autocomplete_product_title, :on => :collection
@@ -27,7 +31,24 @@ Bercon::Application.routes.draw do
   
    
     
+    
+    get 'users_new_worker',:controller=>'devise/registrations',:action=>'new_worker'
+    post 'user_session',:controller=>'devise/sessions',:action=>'create'
+    get 'users/sign_in',:controller=>'devise/sessions',:action=>'new'
+    get 'users/sign_in',:controller=>'devise/sessions',:action=>'new'
+    post 'user_password',:controller=>'devise/passwords',:action=>'create'
+    post 'user_registration',:controller=>'devise_invitable/registrations',:action=>'create'
+    get 'user_session',:controller=>'devise/sessions',:action=>'create'
+    get 'destroy_user_session',:controller=>'devise/sessions',:action=>'destroy'
+    get 'new_user_password',:controller=>'devise/passwords',:action=>'new'
+    get 'edit_user_password',:controller=>'devise/passwords',:action=> 'edit'
+    get 'cancel_user_registration',:controller=>'devise_invitable/registrations',:action=>'cancel'
+    get 'new_user_registration',:controller=>'devise_invitable/registrations',:action=>'new'
+    get 'edit_user_registration',:controller=>'devise_invitable/registrations',:action=>'edit'
   end
+   
+    
+  
    
   namespace :home do
     get 'hello'
