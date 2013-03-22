@@ -43,9 +43,7 @@
     </div>
   <% end %>
   <%= f.hidden_field :user_id, :value => current_user.id%>
-  <div id="createDemand">
-  	<%= f.submit "Hacer Pedido" %>
-  </div>
+  
   
   <div class="field">
   	Cliente <br /> <br />
@@ -56,12 +54,14 @@
   <div class="field">
     <%= f.label :Estado %><br />
    <select name="line_item[state]">
-  	<option style= "color: #049cdb" value="Aceptado">Aceptado</option>
-  	<option style= "color: #f89406" value="En proceso">En proceso</option>
-  	<option style= "color: #ffc40d" value="En ruta">En ruta</option>
-  	<option style= "color: #46a546" value="Entregado">Entregado</option>
-	<option style= "color: red" value="Rechazado">Rechazado</option>
+  	<option style= "color: #049cdb" value='aceptado'>Aceptado</option>
+  	<option style= "color: #f89406" value="en proceso">En proceso</option>
+  	<option style= "color: #ffc40d" value="en ruta">En ruta</option>
+  	<option style= "color: #46a546" value="entregado">Entregado</option>
+	<option style= "color: red" value="rechazado">Rechazado</option>
 	</select>
   </div>
   
+  	<%= f.submit "Hacer Pedido" %>
+
 <% end %>

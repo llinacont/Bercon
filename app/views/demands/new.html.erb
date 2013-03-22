@@ -37,43 +37,9 @@
   <div class="span4">
 	<%= render 'form' %>
 
-	<%@line_item = LineItem.new%>
-	<!--<%= form_for (@line_item), :remote => true , :url=>{:controller => "line_items", 
-		:action => "create"} do |l| %> -->
-	<%= form_for (@line_item) do |l| %>
-  	<% if @line_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
-
-      <ul>
-      <% @line_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 	
-   <div class="field">
-  	Producto <br /> <br />
- 	<input id="product" name="line_item[product_id]" size="30" %>
- 	<input id="product_id" type="hidden" name="line_item[product_id]" %>
-  </div>
   
-   <div class="field">
-    <%= l.label :Cantidad %><br />
-    <%= l.number_field :quantity %>
-  </div>
-  
-  
-  <div class="field">
-    <%= l.hidden_field :demand_id, :value => @demand.id %>
-  </div>
-  
-  <div>
-	<%= button_to 'Añadir Producto', line_items_path(:product_id => @line_item.product_id, :demand_id => @line_item.demand_id, :quantity => @line_item.quantity) %>
-  </div>
-  <% end %>
-	</div>
+  	</div>
   
   <div class="span8">
   	<table class="table table-striped">
@@ -98,7 +64,6 @@
 	</div>
 
 </div>
-<%end%>
 <div style="text-align: center">
 	<a href="/center"><button class="btn btn-medium" type="button">Atrás</button></a>
 </div>
