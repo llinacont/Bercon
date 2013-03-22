@@ -7,6 +7,9 @@ Bercon::Application.routes.draw do
 
   resources :roles
   
+    get    'users' , :controller => 'users', :action => 'index'  
+    post   'users' , :controller => 'users', :action => 'create'                           
+    get    'users/new', :controller => 'users', :action => 'new'                      
   
   resources :demands do
     get :autocomplete_client_name, :on => :collection
@@ -40,7 +43,7 @@ Bercon::Application.routes.draw do
   end
    
     
-  resources :users, :controller=>'users'
+  
    
   namespace :home do
     get 'hello'
