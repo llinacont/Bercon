@@ -2,7 +2,6 @@ Bercon::Application.routes.draw do
 
   resources :events
 
-
   resources :companies
 
   resources :roles
@@ -16,11 +15,15 @@ Bercon::Application.routes.draw do
   
   devise_for :users do
     
+    get 'users/new_worker', :controller => 'devise/registrations', :action => 'new_worker'
+    
+    post 'users/worker', :controller => 'devise/registrations', :action => 'create_worker'
+    
     resources :products 
     
     resources :clients 
   
-    get 'users/new_worker', :controller => 'devise/registrations', :action => 'new_worker'
+   
     
   end
    
