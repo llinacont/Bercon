@@ -12,7 +12,6 @@ class RegistrationsController < Devise::RegistrationsController
   def create_worker
     build_worker
     redirect_to :back
-
   end
   
 end
