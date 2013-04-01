@@ -9,16 +9,18 @@ class User < ActiveRecord::Base
    
   has_many :client, :foreign_key => [:user_id]
   
+  
+  
   has_and_belongs_to_many :roles
   
-  has_and_belongs_to_many :events
+  has_many :events
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   include RoleModel
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :roles_mask
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id, :roles, :roles_mask
   
   # optionally set the integer attribute to store the roles in,
   # :roles_mask is the default

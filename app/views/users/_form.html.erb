@@ -23,6 +23,9 @@
   <div id="input"><%= f.label :'Rol'%><br />
   <%= f.number_field :roles_mask %></div>
   
+  <%= f.hidden_field :company_id, :value => current_user.company_id %>
+
+  
   <div class="actions">
     <%= f.submit %>
   </div>
