@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
       Demand.last
     end
     
+    def current_company
+      Company.find(:user_id => current_user.id)
+    end
+    
   private
   
     def after_sign_in_path_for(resource)

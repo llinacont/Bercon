@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130319193110) do
 
   create_table "events", :force => true do |t|
     t.integer  "company_id"
-    t.integer  "object_id"
+    t.integer  "user_id"
     t.integer  "type_mask"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

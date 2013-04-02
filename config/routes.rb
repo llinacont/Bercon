@@ -1,7 +1,5 @@
 Bercon::Application.routes.draw do
 
-  resources :events
-
   resources :companies
 
   resources :roles
@@ -23,6 +21,8 @@ Bercon::Application.routes.draw do
     
     resources :clients
     
+    resources :events
+    
     get 'users_new_worker',:controller=>'devise/registrations',:action=>'new_worker'
     post 'user_session',:controller=>'devise/sessions',:action=>'create'
     get 'users/sign_in',:controller=>'devise/sessions',:action=>'new'
@@ -36,7 +36,10 @@ Bercon::Application.routes.draw do
     get 'cancel_user_registration',:controller=>'devise_invitable/registrations',:action=>'cancel'
     get 'new_user_registration',:controller=>'devise_invitable/registrations',:action=>'new'
     get 'edit_user_registration',:controller=>'devise_invitable/registrations',:action=>'edit'
+ 
   end
+  
+  
    
     
   
@@ -62,8 +65,6 @@ Bercon::Application.routes.draw do
   
   get 'registration_clients', :controller => 'clients', :action => 'registration_clients'
   
- 
-    
   root :to => 'home#hello'
   # The priority is based upon order of creation:
   # first created -> highest priority.
