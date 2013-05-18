@@ -10,11 +10,6 @@ end
 
 def create
     @user = User.new(params[:user])
-    if @user.company_id != nil
-      @event = @user.events.build(:company_id => @user.company_id, :type_mask => '1')
-    else
-    @event = @user.events.build(:company_id => current_user.id, :type_mask => '1')
-    end
     
     respond_to do |format|
       if @user.save

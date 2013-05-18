@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
       Company.find(:user_id => current_user.id)
     end
     
+    def state_check
+      if current_user.state != 'active'
+        flash[:notice] = "Tu cuenta no ha sido activada aun"
+        redirect_to home_hello_path
+      end 
+    end
+    
   private
   
     def after_sign_in_path_for(resource)

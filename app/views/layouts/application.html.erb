@@ -5,12 +5,23 @@
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "bootstrap-dropdown.js" %>
     <%= javascript_include_tag 'jquery.min', 'jquery-ui-1.10.0.custom.min.js' %>
+    <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="/javascripts/jquery.masonry.min.js"></script>
     <%= stylesheet_link_tag 'cupertino/jquery-ui-1.10.0.custom.css' %>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
     <%= csrf_meta_tags %>
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
+  
+  	<% if flash[:error] %>
+	<script>alert('<%=flash[:error]%>')</script>
+	<% end %>
+	<% if flash[:notice] %>
+	<script>alert('<%=flash[:notice]%>')</script>
+	<% end %>
+	
 	<body class="home home-new  logged-out ">
 		
   		<nav class="navbar">

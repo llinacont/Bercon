@@ -65,6 +65,10 @@ Bercon::Application.routes.draw do
   
   get 'registration_clients', :controller => 'clients', :action => 'registration_clients'
   
+  post 'join_to_company', :controller => 'companies', :action => 'join_to_company'
+  
+  post 'new_message', :controller => 'center', :action => 'process_new_message'
+  
   root :to => 'home#hello'
   # The priority is based upon order of creation:
   # first created -> highest priority.
