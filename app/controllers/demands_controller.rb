@@ -111,4 +111,16 @@ class DemandsController < ApplicationController
     end
   end
   
+  def create_bill
+    @company = Company.find(current_user.company_id)
+    @client = Client.find(params[:client_id])
+    
+   
+  end
+  
+  def process_create_bill
+    
+    
+  end
+  
 end

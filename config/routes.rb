@@ -69,6 +69,8 @@ Bercon::Application.routes.draw do
   
   post 'new_message', :controller => 'center', :action => 'process_new_message'
   
+  post 'generate_bill', :controller => 'demands', :action => 'create_bill'
+   
   root :to => 'home#hello'
   # The priority is based upon order of creation:
   # first created -> highest priority.

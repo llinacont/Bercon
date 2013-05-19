@@ -1,35 +1,3 @@
-     <script>
- $(function() {
- 
-    $( "#client" ).autocomplete({
-      minLength: 0,
-      source: function(request, response) {
-		   $.ajax({
-				url: "/demands/autocomplete_client_name",
-				dataType: "json",
-				data: {term: request.term},
-			success: function( data ) {
-			response( data );
-				}
-			})
-		},
-      focus: function( event, ui ) {
-        $( "#client" ).val( ui.item.name);
-        return false;
-      },
-      select: function( event, ui ) {
-        $( "#client_id" ).val( ui.item.id );
-        return false;
-      }	
-    })
-    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-      return $( "<li>" )
-        .append( "<a>" + item.name + "</a>" )
-        .appendTo( ul );
-    };
-  });
-  </script>
-
 <%= form_for(@demand) do |f| %>
   <% if @demand.errors.any? %>
     <div id="error_explanation">
@@ -46,13 +14,14 @@
   
   
   <div class="field">
-  	Cliente <br /> <br />
- 	<input id="client" name="demand[client_id]" size= "30" %>
- 	<input id="client_id" type="hidden" name="demand[client_id]" %>
+  	
+  	<%= label_tag :Cliente%>
+	<%= text_field_tag :client %>
+
   </div>
   
   <div class="field">
-    <%= f.label :Estado %><br />
+    <%= f.label :Estado %>
    <select name="line_item[state]">
   	<option style= "color: #049cdb" value='aceptado'>Aceptado</option>
   	<option style= "color: #f89406" value="en proceso">En proceso</option>
@@ -63,5 +32,62 @@
   </div>
   
   	<%= f.submit "Hacer Pedido" %>
-
+  	
 <% end %>
+
+	<button id="opener" class="btn-medium">Generar Factura</button>
+
+	<div id="dialog" title="Factura Nueva">
+			<%= render 'create_bill' %>		
+	</div>
+	
+<script>
+	$(function() {
+	$( "#dialog" ).dialog({
+	autoOpen: false,
+	width: 650, 
+	show: {
+	effect: "scale",
+	duration: 500
+	},
+	hide: {
+	effect: "fade",
+	duration: 500
+	}
+	});
+	$( "#opener" ).click(function() {
+	$( "#dialog" ).dialog( "open" );
+	});
+	});
+	
+ $(function() {
+ 
+    $( "#client" ).autocomplete({
+      minLength: 0,
+      source: function(request, response) {
+		   $.ajax({
+				url: "/demands/autocomplete_client_name",
+				dataType: "json",
+				data: {term: request.term},
+			success: function( data ) {
+			response( data );
+				}
+			})
+		},
+      focus: function( event, ui ) {
+        $( "#client" ).val( ui.item.title);
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#client_id" ).val( ui.item.id );
+        return false;
+      }	
+    })
+    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.title + "</a>" )
+        .appendTo( ul );
+    };
+  });
+
+</script>	

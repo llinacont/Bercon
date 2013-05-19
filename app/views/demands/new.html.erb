@@ -1,4 +1,89 @@
-     <script>
+<h2>Nuevo Pedido</h2>
+
+<div class="row">
+	 
+	
+  <div class="span4" style="margin-top: 10%">
+	
+	<%= render 'form' %>
+	
+  </div>
+  
+  <div class="span8">
+  	
+  		  <div class="row" style="margin-left: 0%">
+		
+			<%@line_item = LineItem.new%>
+			<%= form_for(@line_item) do |l| %>
+			  <% if @line_item.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
+			
+			      <ul>
+			      <% @line_item.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+				
+				<div class="row"> 
+					<div class="span3">
+					  	<div class="field">
+						    <%= l.label :Producto %>
+						    <%= text_field_tag :product %>
+						    <%= l.hidden_field :product_id %>
+					  	</div>
+					</div>
+					  
+					<div class="span3">
+					  	 <div class="field">
+						    <%= l.label :quantity %>
+						    <%= l.number_field :quantity %>
+						  </div>
+					</div>  
+					
+					  <div class="field">
+					    <%= l.hidden_field :demand_id, :value => @demand.id %>
+					  </div>
+					  
+					<div class="span2" style="margin-top: 2.15%">
+					  	<p><%= l.submit 'Añadir Producto' %></p>	 
+					</div>  
+				
+				</div>
+			<% end %>
+			
+		</div>
+	
+  	<table class="table table-striped">
+  		
+    		
+    		  <tr>
+         		<th>Producto</th>
+         		<th>Cantidad</th>
+        	  </tr>
+			<% @demand = Demand.last %>
+  	 		<% @line_items = LineItem.where(:demand_id => @demand.id) %>
+  	 		<% @line_items.each do |item|%>
+ 			  <tr>	
+   	  			<td><%= Product.find(item.product_id).title %></td>
+   	  			<td><%= item.quantity %></td>
+   	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+   	  		  </tr>
+   	  		<%end%>
+    </table> 
+    	      
+	</div>
+
+</div>
+
+<div style="text-align: center;margin-top: 5%">
+	<a href="/center"><button class="btn btn-medium" type="button">Atrás</button></a>
+</div>
+
+<script>
  $(function() {
  
     $( "#product" ).autocomplete({
@@ -28,42 +113,4 @@
         .appendTo( ul );
     };
   });
-  </script>
-
-<h2>Nuevo Pedido</h2>
-
-<div class="row">
-  
-  <div class="span4">
-	<%= render 'form' %>
-
-	
-  
-  	</div>
-  
-  <div class="span8">
-  	<table class="table table-striped">
-  		
-    		
-    		  <tr>
-         		<th>Producto</th>
-         		<th>Cantidad</th>
-        	  </tr>
-			<% @demand = Demand.last %>
-  	 		<% @line_items = LineItem.where(:demand_id => @demand.id) %>
-  	 		<% @line_items.each do |item|%>
- 			  <tr>	
-   	  			<td><%= Product.find(item.product_id).title %></td>
-   	  			<td><%= item.quantity %></td>
-   	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
-   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
-   	  		  </tr>
-   	  		<%end%>
-    </table> 
-    	      
-	</div>
-
-</div>
-<div style="text-align: center">
-	<a href="/center"><button class="btn btn-medium" type="button">Atrás</button></a>
-</div>
+</script>

@@ -42,6 +42,10 @@ class CenterController < ApplicationController
     @message.sender_id = current_user.id
 
     @message.save!
+    if @message.save
+      debugger
+      event = Event.new
+    end
   end
   
 end
