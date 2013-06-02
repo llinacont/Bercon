@@ -5,16 +5,14 @@
 	
   <div class="span4" style="margin-top: 10%">
 	
-	<%= render 'form' %>
+	<%= render 'form', :object => @demand = @demand %>
 	
   </div>
   
   <div class="span8">
   	
   		  <div class="row" style="margin-left: 0%">
-		
-			<%@line_item = LineItem.new%>
-			<%= form_for(@line_item) do |l| %>
+			<%= form_for @line_item, :remote => true, :url => {:action => "create_line_item"} do |l| %>
 			  <% if @line_item.errors.any? %>
 			    <div id="error_explanation">
 			      <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
@@ -32,7 +30,6 @@
 					  	<div class="field">
 						    <%= l.label :Producto %>
 						    <%= text_field_tag :product %>
-						    <%= l.hidden_field :product_id %>
 					  	</div>
 					</div>
 					  
@@ -56,24 +53,9 @@
 			
 		</div>
 	
-  	<table class="table table-striped">
-  		
-    		
-    		  <tr>
-         		<th>Producto</th>
-         		<th>Cantidad</th>
-        	  </tr>
-			<% @demand = Demand.last %>
-  	 		<% @line_items = LineItem.where(:demand_id => @demand.id) %>
-  	 		<% @line_items.each do |item|%>
- 			  <tr>	
-   	  			<td><%= Product.find(item.product_id).title %></td>
-   	  			<td><%= item.quantity %></td>
-   	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
-   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
-   	  		  </tr>
-   	  		<%end%>
-    </table> 
+	  	<div id="line_items_table">
+			<%= render :partial => 'line_items_table', :object => @demand=@demand %>		
+		</div>
     	      
 	</div>
 
@@ -100,7 +82,6 @@
 		},
       focus: function( event, ui ) {
         $( "#product" ).val( ui.item.title);
-        $( "#product" ).val( ui.item.image_url);
         return false;
       },
       select: function( event, ui ) {
@@ -110,7 +91,7 @@
     })
     .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
     	return $( "<li>" )	
-	      .append("<a>"+"<img src:"+ item.image_url +"</img>"+ item.title +"</a>")
+	      .append("<a>"+ item.title +"</a>")
 	      .appendTo( ul );
 
     };

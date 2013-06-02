@@ -4,9 +4,11 @@ Bercon::Application.routes.draw do
 
   resources :roles
   
-    get    'users' , :controller => 'users', :action => 'index'  
-    post   'users' , :controller => 'users', :action => 'create'                           
-    get    'users/new', :controller => 'users', :action => 'new'                      
+  get    'users' , :controller => 'users', :action => 'index'  
+  post   'users' , :controller => 'users', :action => 'create'                           
+  get    'users/new', :controller => 'users', :action => 'new'                      
+  get    :create_line_item, :controller => 'demands'
+  post   '/create_line_item' , :controller => 'demands', :action => 'create_line_item' 
   
   resources :demands do
     get :autocomplete_client_name, :on => :collection
