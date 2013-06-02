@@ -35,7 +35,6 @@
 						<%= m.submit 'Enviar'%>
 					<% end %>
 				</div>
-				<% debugger %>
  			 	<div class="container" style="max-height: 300px;overflow-y: auto; overflow-x: none; width: 90%;">
  			 		<% @company = Company.find_by_user_id(current_user.id)%>
 	 			 	<% @events = Event.where(:company_id => @company.id)%>

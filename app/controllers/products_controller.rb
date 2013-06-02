@@ -41,19 +41,17 @@ class ProductsController < ApplicationController
   end
 
   # POST /products
-  # POST /products.json
+  # POST /products.json  
   def create
     @product = Product.new(params[:product])
-    
     product_id = @product.id
-
+    
     company = Company.find_by_user_id(current_user.id)
     
     respond_to do |format|
       if @product.save
         event = Event.create(:object_id => @product.id, :company_id => company.id, :type_mask => '2')
-        format.html { redirect_to :back, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -88,6 +86,8 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
   
   def registration_products
   end
