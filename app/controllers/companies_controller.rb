@@ -44,9 +44,13 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
-
+    user = User.find(current_user.id)
+    
     respond_to do |format|
       if @company.save
+        user.company_id = @company.id
+        user.state = 'active'
+        user.save!
         format.html { redirect_to registration_products_path, notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else
@@ -83,4 +87,42 @@ class CompaniesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def join_to_company
+    
+    company = Company.find_by_name(params[:name])
+    if(company == nil)
+      flash[:notice] = "La empresa no existe, comprueba los datos introducidos"
+      redirect_to :back
+    end
+    
+   user = User.find(current_user.id)
+   user.company_id = company.id
+   user.save!
+   
+   respond_to do |format|
+        event = Event.new(:company_id => user.company_id)
+        event.save!
+        format.html {redirect_to home_hello_path, notice: "Te has agregado a la empresa correctamente. Se te enviara una notificacion"}
+    end
+    
+  end  
+    
+  #def process_join_to_company
+    
+  #  begin
+  #  user = User.find(current_user.id)
+  #  user.company_id = company.id
+  #  user.save!
+    
+  #  respond_to do |format|
+  #    format.js
+  #  end
+    
+  #  rescue
+  #    flash['error'] = 'Se ha producido un error inesperado.'
+  #  end   
+   
+  #end
+  
 end

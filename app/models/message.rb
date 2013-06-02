@@ -1,4 +1,5 @@
 class Message < ActiveRecord::Base
+<<<<<<< HEAD
 
   is_private_message
   
@@ -7,3 +8,7 @@ class Message < ActiveRecord::Base
   attr_accessor :to
   
 end
+=======
+  attr_accessible :receiver, :sender_id, :text
+end
+>>>>>>> FETCH_HEAD

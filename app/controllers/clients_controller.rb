@@ -45,6 +45,8 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(params[:client])
 
+    @event = @product.events.build(:company_id => current_user.company_id, :type_mask => '3')
+    
     respond_to do |format|
       if @client.save
         format.html { redirect_to :back, notice: 'Client was successfully created.' }

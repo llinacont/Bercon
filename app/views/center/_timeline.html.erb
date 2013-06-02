@@ -1,0 +1,29 @@
+<div class="container" style="width: 90%">
+	
+	<div class="row" style="margin-top: 0.5%; margin-bottom: 1%;">
+		
+		<% if(@event.type_mask == 1) %>
+			<% @user = User.find(@event.object_id) %>
+
+				<div class="span2"><img style="max-width: 26%; max-height: 35%;" src="/client.png"/></div>
+			  	<div class="span6" style="vertical-align: bottom"><%= @user.email %></div>
+			  	<div class="span4"><%= @user.created_at.strftime('%e %B a las %l:%M %p') %></div>
+		
+		<%elsif(@event.type_mask == 2)%>	
+			<% @product = Product.find(@event.object_id) %>
+
+				<div class="span2"><img style="width: 26%; height: 35%;" src="/product.jpg"/></div>
+			  	<div class="span6" style="vertical-align: bottom"><%= @product.title %></div>
+			  	<div class="span4"><%= @product.created_at.strftime('%e %B a las %l:%M %p') %></div>	
+			  	
+		<%elsif(@event.type_mask == 3)%>
+		  	<% @client = Client.find(@event.object_id) %>
+				<div class="span2"><img style="width: 26%; height: 35%;" src="/client.png"/></div>
+			  	<div class="span6" style="vertical-align: bottom"><%= @client.name %></div>
+			  	<div class="span4"><%= @client.created_at.strftime('%e %B a las %l:%M %p') %></div>
+			  	
+		<% end -%>
+		
+	</div>
+ 
+</div>

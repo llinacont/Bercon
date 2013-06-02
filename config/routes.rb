@@ -1,5 +1,6 @@
 Bercon::Application.routes.draw do
 
+<<<<<<< HEAD
   
   
   resources :users do
@@ -18,6 +19,8 @@ Bercon::Application.routes.draw do
   
   resources :events
 
+=======
+>>>>>>> FETCH_HEAD
   resources :companies
 
   resources :roles
@@ -32,15 +35,16 @@ Bercon::Application.routes.draw do
   
   devise_for :users do
     
-    get 'users/new_worker', :controller => 'devise/registrations', :action => 'new_worker'
-    
-    post 'users/worker', :controller => 'devise/registrations', :action => 'create_worker'
-    
     resources :products 
     
+<<<<<<< HEAD
     resources :clients 
   
+=======
+    resources :clients
+>>>>>>> FETCH_HEAD
     
+    resources :events
     
     get 'users_new_worker',:controller=>'devise/registrations',:action=>'new_worker'
     post 'user_session',:controller=>'devise/sessions',:action=>'create'
@@ -55,10 +59,16 @@ Bercon::Application.routes.draw do
     get 'cancel_user_registration',:controller=>'devise_invitable/registrations',:action=>'cancel'
     get 'new_user_registration',:controller=>'devise_invitable/registrations',:action=>'new'
     get 'edit_user_registration',:controller=>'devise_invitable/registrations',:action=>'edit'
+ 
   end
   
+<<<<<<< HEAD
         
   
+=======
+  
+   
+>>>>>>> FETCH_HEAD
     
   
    
@@ -83,8 +93,12 @@ Bercon::Application.routes.draw do
   
   get 'registration_clients', :controller => 'clients', :action => 'registration_clients'
   
- 
-    
+  post 'join_to_company', :controller => 'companies', :action => 'join_to_company'
+  
+  post 'new_message', :controller => 'center', :action => 'process_new_message'
+  
+  post 'generate_bill', :controller => 'demands', :action => 'create_bill'
+   
   root :to => 'home#hello'
   # The priority is based upon order of creation:
   # first created -> highest priority.

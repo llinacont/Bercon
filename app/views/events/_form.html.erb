@@ -10,11 +10,15 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= f.hidden_field :company_id, :value => current_user.company_id %>
+  
+  <div id="input"><%= f.label :'Objeto'%><br />
+  <%= f.number_field :object_id %></div>
+  
+  <div id="input"><%= f.label :'Tipo'%><br />
+  <%= f.number_field :type_mask %></div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

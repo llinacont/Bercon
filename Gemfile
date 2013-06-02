@@ -36,7 +36,9 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+
+gem 'debugger'
+
 gem 'devise', '2.1'
 
 gem 'cancan'
@@ -51,3 +53,7 @@ gem 'role_model'
 
 gem 'devise_invitable'
 
+<<<<<<< HEAD
+=======
+gem 'wicked_pdf'
+>>>>>>> FETCH_HEAD

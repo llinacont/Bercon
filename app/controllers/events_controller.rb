@@ -24,12 +24,22 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = Event.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @event }
+    debugger
+    if(params[:type_mask] == 1)
+      user = User.find(params[:object_id])
+      @event = user.event.create
+    elsif(params[:type_mask] == 2)
+      product = Product.find(params[:object_id])
+      @event = product.event.create
+    elsif(params[:type_mask] == 3)
+      client = Client.find(params[:object_id])
+      @event = client.event.create
     end
+    
+    new_event_form = render_to_string :layout => false
+    new_event_form.gsub!("[#{@event.id}]", "[#{Time.now.to_i}]")
+    render :text => new_event_form, :layout => false
+    
   end
 
   # GET /events/1/edit
