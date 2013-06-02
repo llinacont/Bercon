@@ -89,12 +89,12 @@ class CompaniesController < ApplicationController
   end
   
   def join_to_company
+   if(company == nil)
+     flash[:notice] = "La empresa no existe, comprueba los datos introducidos"
+     redirect_to :back
+   end
     
-    company = Company.find_by_name(params[:name])
-    if(company == nil)
-      flash[:notice] = "La empresa no existe, comprueba los datos introducidos"
-      redirect_to :back
-    end
+   company = Company.find_by_name(params[:name])
     
    user = User.find(current_user.id)
    user.company_id = company.id

@@ -9,10 +9,10 @@ class UsersController < ApplicationController
 end
 
 def create
+  debugger
     @user = User.new(params[:user])
-    
     respond_to do |format|
-      if @user.save
+      if @user.save        
         format.html { redirect_to center_index_path }
         format.json { render json: @user, status: :created, location: @user }
       else
