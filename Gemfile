@@ -53,7 +53,4 @@ gem 'role_model'
 
 gem 'devise_invitable'
 
-<<<<<<< HEAD
-=======
 gem 'wicked_pdf'
->>>>>>> FETCH_HEAD

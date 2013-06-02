@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   
   has_many :events
   
-  has_private_messages
-  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   include RoleModel

@@ -1,31 +1,14 @@
 Bercon::Application.routes.draw do
 
-<<<<<<< HEAD
-  
-  
-  resources :users do
-             resources :messages do
-               collection do
-                 post :delete_selected
-                 get    'messages' , :controller => 'messages', :action => 'index'  
-  
-               end
-             end
-           end
 
-  get    'users' , :controller => 'users', :action => 'index'  
-  post   'users' , :controller => 'users', :action => 'create'                           
-  get    'users/new', :controller => 'users', :action => 'new'                
-  
-  resources :events
-
-=======
->>>>>>> FETCH_HEAD
   resources :companies
 
   resources :roles
   
-   
+    get   'users' , :controller => 'users', :action => 'index'
+    post  'users' , :controller => 'users', :action => 'create'
+    get   'users/new', :controller => 'users', :action => 'new'
+  
   resources :demands do
     get :autocomplete_client_name, :on => :collection
     get :autocomplete_product_title, :on => :collection
@@ -37,12 +20,7 @@ Bercon::Application.routes.draw do
     
     resources :products 
     
-<<<<<<< HEAD
-    resources :clients 
-  
-=======
     resources :clients
->>>>>>> FETCH_HEAD
     
     resources :events
     
@@ -61,15 +39,6 @@ Bercon::Application.routes.draw do
     get 'edit_user_registration',:controller=>'devise_invitable/registrations',:action=>'edit'
  
   end
-  
-<<<<<<< HEAD
-        
-  
-=======
-  
-   
->>>>>>> FETCH_HEAD
-    
   
    
   namespace :home do

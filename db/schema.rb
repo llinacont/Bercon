@@ -11,11 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130422153358) do
-=======
 ActiveRecord::Schema.define(:version => 20130518154058) do
->>>>>>> FETCH_HEAD
+
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -60,21 +57,10 @@ ActiveRecord::Schema.define(:version => 20130518154058) do
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
-<<<<<<< HEAD
-    t.integer  "recipient_id"
-    t.boolean  "sender_deleted",    :default => false
-    t.boolean  "recipient_deleted", :default => false
-    t.string   "subject"
-    t.text     "body"
-    t.datetime "read_at"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-=======
     t.integer  "receiver"
     t.text     "text"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
->>>>>>> FETCH_HEAD
   end
 
   create_table "products", :force => true do |t|
