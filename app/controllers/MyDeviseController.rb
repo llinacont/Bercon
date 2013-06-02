@@ -7,4 +7,5 @@ class MyDeviseController < DeviseController
     
   end
   
+  
 end

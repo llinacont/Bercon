@@ -50,3 +50,4 @@ gem 'rails-i18n'
 gem 'role_model'
 
 gem 'devise_invitable'
+

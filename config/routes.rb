@@ -1,6 +1,20 @@
 Bercon::Application.routes.draw do
 
-  resources :users
+  
+  
+  resources :users do
+             resources :messages do
+               collection do
+                 post :delete_selected
+                 get    'messages' , :controller => 'messages', :action => 'index'  
+  
+               end
+             end
+           end
+
+  get    'users' , :controller => 'users', :action => 'index'  
+  post   'users' , :controller => 'users', :action => 'create'                           
+  get    'users/new', :controller => 'users', :action => 'new'                
   
   resources :events
 
@@ -8,10 +22,7 @@ Bercon::Application.routes.draw do
 
   resources :roles
   
-    get    'users' , :controller => 'users', :action => 'index'  
-    post   'users' , :controller => 'users', :action => 'create'                           
-    get    'users/new', :controller => 'users', :action => 'new'                      
-  
+   
   resources :demands do
     get :autocomplete_client_name, :on => :collection
     get :autocomplete_product_title, :on => :collection
@@ -29,7 +40,6 @@ Bercon::Application.routes.draw do
     
     resources :clients 
   
-   
     
     
     get 'users_new_worker',:controller=>'devise/registrations',:action=>'new_worker'
@@ -46,7 +56,9 @@ Bercon::Application.routes.draw do
     get 'new_user_registration',:controller=>'devise_invitable/registrations',:action=>'new'
     get 'edit_user_registration',:controller=>'devise_invitable/registrations',:action=>'edit'
   end
-   
+  
+        
+  
     
   
    

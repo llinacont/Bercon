@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319193110) do
+ActiveRecord::Schema.define(:version => 20130422153358) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20130319193110) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
-    t.string   "state"    
+    t.string   "state",      :default => "creado"
   end
 
   create_table "events", :force => true do |t|
@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(:version => 20130319193110) do
     t.integer  "quantity",   :default => 1
   end
 
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.boolean  "sender_deleted",    :default => false
+    t.boolean  "recipient_deleted", :default => false
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "read_at"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -71,11 +83,6 @@ ActiveRecord::Schema.define(:version => 20130319193110) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
