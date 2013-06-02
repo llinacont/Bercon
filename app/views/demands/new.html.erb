@@ -100,6 +100,7 @@
 		},
       focus: function( event, ui ) {
         $( "#product" ).val( ui.item.title);
+        $( "#product" ).val( ui.item.image_url);
         return false;
       },
       select: function( event, ui ) {
@@ -108,7 +109,9 @@
       }	
     })
     .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-      return $( "<li>" )
+    	return $( "<li>" )	
+	      .append("<a>"+"<img src:"+ item.image_url +"</img>"+ item.title +"</a>")
+	      .appendTo( ul );
 
     };
   });
