@@ -1,25 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Nombre:</b>
-  <%= @product.title %>
-</p>
-
-<p>
-  <b>Descripción:</b>
-  <%= @product.description %>
-</p>
-
-<p>
-  <b>Precio:</b>
-  <%= @product.price %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @product.image_url %>
-</p>
-
-
-<%= link_to 'Editar', edit_product_path(@product) %> |
-<%= link_to 'Atrás', products_path %>
+<div class="span6">
+	<table class="table table-bordered">
+		<p id="notice"><%= notice %></p>
+		<tr>
+			<th><label class="nav-header">Nombre</label></th>
+			<td><%= @product.title %></td>
+		</tr>
+		<tr>
+			<th><label class="nav-header">Descripción</label></label></th>
+			<td><%= @product.description %></td>
+		</tr>
+		<tr>
+			<th><label class="nav-header">Precio</label></th>
+			<td><%= @product.price %></td>
+		</tr>
+		<tr>
+			<th><label class="nav-header">Imagen Url</label></th>
+			<td><%= @product.image_url %></td>
+		</tr>
+	</table>
+</div>
+<div class="span6">
+	<%= link_to 'Editar', edit_product_path(@product) %> |
+	<%= link_to 'Atrás', products_path %>
+</div>
