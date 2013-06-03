@@ -36,109 +36,139 @@
 	  				<li>
 	  					
 	  				</li>
-					<li class="nav-header">Clientes</li>
+					<li class="nav-header">Productos</li>
+	  					<li><%= link_to 'Crear', new_product_path, :style => "color:#049cbd"%></li>
+	  					<li><%= link_to 'Lista', products_path, :style => "color:#049cbd"%></li>
+  					<li class="nav-header">Clientes</li>
   						<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
+  						<li><%= link_to 'Lista', clients_path, :style => "color:#049cbd" %></li>
   					<li class="nav-header">Pedidos</li>
   						<li><%= link_to 'Crear', new_demand_path, :style => "color:#049cbd" %></li>
-  					
+  						<li><%= link_to 'Lista', demands_path, :style => "color:#049cbd" %></li>
+  					<li class="divider"></li>
+  					<button id="opener" class="btn-medium"><i class="icon-envelope"></i></button>
       			</div>
 			</ul>
       		
     		</div>
     	<div class="span10">
-      		
-      		<div class="rowcent">
- 			 <div class="span6">
- 			 	
- 			 	<a href="/products"><table class="table table-striped"></a>
-  					<tr>
-    					<th>Nombre</th>
-    					<th>Precio</th>
-    				</tr>
-  
-					<% @products = Product.where(:user_id => current_user.id) %>
-					<% if Product.where(:user_id => current_user.id).count == 0 %>
-					  <div class="alert">
-  						<button type="button" class="close" data-dismiss="alert">&times;</button>
-  						<strong>Ojo!</strong> Tu lista de productos está vacia
-					  </div> 	
-					<%end%>
-					<% @products.each do |product| %>
-  					<tr>
-    					<td><%= product.title %></td>
-    					<td><%= product.price %></td>
-  					</tr>
+      			<div id="dialog" title="Mensaje Nuevo">
+					<%= form_for Message.new, :remote => true , :url => {:action => "process_new_message"}, :html => { :id => 'new_message'} do |m| %>
+						<%= m.hidden_field :sender_id, :value => current_user.id%>
+						<tr>
+							<td><%= m.number_field :receiver %></td>
+						</tr>
+						<tr>
+							<td><%= m.text_area :text, {:title => 'Redacta tu mensaje' ,:style=>"width: 200px;height:150px;"} %></td>
+						</tr>
+						<%= m.submit 'Enviar'%>
 					<% end %>
-				</table>
- 			 	
- 			 </div>
-  			 <div class="span6">
-  				
-  			 	<a href="/clients"><table class="table table-striped"> </a>
-  					<tr>
-    					<th>CIF</th>
-    					<th>Nombre</th>
-    				</tr>
-  
-					<% @clients = Client.where(:user_id => current_user.id) %>
-					<% if Client.where(:user_id => current_user.id).count == 0 %>
-					  <div class="alert">
-  						<button type="button" class="close" data-dismiss="alert">&times;</button>
-  						<strong>Ojo!</strong> Tu lista de clientes está vacia
-					  </div> 	
-					<%end%>
-					
-					<% @clients.each do |client| %>
-					
-  					<tr>
-  						<td><%= client.cif %></td>
-    					<td><%= client.name %></td>
-  					</tr>
-					<% end %>
-				</table>
+				</div>
+ 			 	<div class="container" style="max-height: 300px;overflow-y: auto; overflow-x: none; width: 90%;">
+ 			 		<% @company = Company.find_by_user_id(current_user.id)%>
+	 			 	<% @events = Event.where(:company_id => @company.id)%>
+	 			 	<% @events.each do |e|%>
+	 			 	<div id="event"_<%= e.id %>" class="event_item_<%= e.type_mask %>" > 
+						<%= render "timeline", :object => @event = e %> 
+	 				</div>
+ 			 		<% end %>
+ 			 	</div>
+      		 
+      		 <div class="row" style="margin-top: 3%">
+	 			 <div class="span6">
+		 			 <div class="rowcent">	
+		 			 	
+		 			 	<table class="table table-striped">
+		  					<tr>
+		    					<th>Nombre</th>
+		    					<th>Precio</th>
+		    				</tr>
+		  
+							<% @products = Product.where(:user_id => current_user.id) %>
+							<% if Product.where(:user_id => current_user.id).count == 0 %>
+							  <div class="alert">
+		  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+		  						<strong>Ojo!</strong> Tu lista de productos está vacia
+							  </div> 	
+							<%end%>
+							<% @products.each do |product| %>
+		  					<tr>
+		    					<td><%= product.title %></td>
+		    					<td><%= product.price %></td>
+		  					</tr>
+							<% end %>
+						</table>
+		 			 </div>	
+	 			 </div>
+	  			 <div class="span6">
+		  			 <div class="rowcent">	
+		 			 
+		  			 	<table class="table table-striped">
+		  					<tr>
+		    					<th>CIF</th>
+		    					<th>Nombre</th>
+		    				</tr>
+		  
+							<% @clients = Client.where(:user_id => current_user.id) %>
+							<% if Client.where(:user_id => current_user.id).count == 0 %>
+							  <div class="alert">
+		  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+		  						<strong>Ojo!</strong> Tu lista de clientes está vacia
+							  </div> 	
+							<%end%>
+							
+							<% @clients.each do |client| %>
+							
+		  					<tr>
+		  						<td><%= client.cif %></td>
+		    					<td><%= client.name %></td>
+		  					</tr>
+							<% end %>
+						</table>
+		  			 </div>
+	  			 </div>
   			 </div>
-			</div>
-			
-			<div class="rowcent">
-				<div id="demand_table">
- 			 <a href="/demands"><table class="table table-striped"></a>
-  					<tr>
-    					<th>Fecha</th>
-    					<th>Cliente</th>
-    					<th>Estado</th>
-    				</tr>
-  
+			<div class="row">
+				<div class="rowcent">
+					<div id="demand_table">
+	 			 		<table class="table table-striped">
+		  					<tr>
+		    					<th>Fecha</th>
+		    					<th>Cliente</th>
+		    					<th>Estado</th>
+		    				</tr>
+		  
+							
+							<% if Demand.where(:user_id => current_user.id).count == 0 %>
+							  <div class="alert">
+		  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+		  						<strong>Ojo!</strong> Tu lista de pedidos está vacia
+							  </div> 	
+							<%end%>
+							<% @demands = Demand.where(:user_id => current_user.id)%>
+							<% @demands.each do |demand| %>
+		
+		  					<tr>
+		  						<td><%= localize(demand.created_at, :format => :long) %></td>
+		  							<% @clients = Client.where(:id => demand.client_id)%>
+		  							<% @clients.each do |client|%>
+		  						<td><%= client.name %></td>
+		    					<td><%= demand.state %></td>
+		    					<td><%= link_to '', demand_path(demand), :class => "icon-share" %></td>
+		    					<td><%= link_to '', edit_demand_path(demand), :class => "icon-edit" %></td>
+		    					<td><%= link_to '', demand, :class => 'destroyButton', method: :delete,
+		   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+		   					
+		   					<% end %>
+		  				    
+		  				    </tr>
+		  				    
+						<% end %>
 					
-					<% if Demand.where(:user_id => current_user.id).count == 0 %>
-					  <div class="alert">
-  						<button type="button" class="close" data-dismiss="alert">&times;</button>
-  						<strong>Ojo!</strong> Tu lista de pedidos está vacia
-					  </div> 	
-					<%end%>
-					<% @demands = Demand.where(:user_id => current_user.id)%>
-					<% @demands.each do |demand| %>
-
-  					<tr>
-  						<td><%= localize(demand.created_at, :format => :long) %></td>
-  							<% @clients = Client.where(:id => demand.client_id)%>
-  							<% @clients.each do |client|%>
-  						<td><%= client.name %></td>
-    					<td><%= demand.state %></td>
-    					<td><%= link_to '', demand_path(demand), :class => "icon-share" %></td>
-    					<td><%= link_to '', edit_demand_path(demand), :class => "icon-edit" %></td>
-    					<td><%= link_to '', demand, :class => 'destroyButton', method: :delete,
-   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
-   					
-   					<% end %>
-  				    
-  				    </tr>
-  				    
-				<% end %>
-				
-		     </table>
-		     </div>			
+			     	</table>
+			     </div>			
+				</div>
 			</div>
-			
     	</div>
   	</div>
   </div>
@@ -149,3 +179,21 @@
   </div>
 </body>
 </html>
+<script>
+$(function() {
+$( "#dialog" ).dialog({
+autoOpen: false,
+show: {
+effect: "scale",
+duration: 500
+},
+hide: {
+effect: "fade",
+duration: 500
+}
+});
+$( "#opener" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+});
+</script>	
