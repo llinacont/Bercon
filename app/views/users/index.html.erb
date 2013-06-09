@@ -9,6 +9,7 @@
     <th></th>
   </tr>
 
+<<<<<<< HEAD
 <% @Users = User.where(:company_id => current_user.company_id)%>
 <% @users.each do |user| %>
   <tr>
@@ -18,6 +19,14 @@
     <td><%= link_to '', edit_user_path(user), :class => "icon-edit" %></td>
     <td><%= link_to '', user, :class => 'destroyButton', method: :delete,
     		data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+=======
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+>>>>>>> FETCH_HEAD
   </tr>
 <% end %>
 </table>

@@ -1,0 +1,16 @@
+<table class="table table-striped">		
+	<tr>
+    	<th>Producto</th>
+        <th>Cantidad</th>
+    </tr>
+  	<% unless @line_item_array.nil? %>
+  	 	<% @line_item_array.each do |item|%>
+ 			<tr>	
+   	  			<td><%= Product.find(item.product_id).title %></td>
+   	  			<td><%= item.quantity %></td>
+   	  			<td><%= link_to '', item, :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+   	  		 </tr>
+   	  	<%end%>
+	<%end%>   	  	
+</table> 

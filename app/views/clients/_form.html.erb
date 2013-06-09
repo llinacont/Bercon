@@ -3,10 +3,9 @@
  
   
   <div class="span4">
-  	
   	<%@client = Client.new%>
-	<%= form_for(@client) do |f| %>
-	  <% if @client.errors.any? %>
+  	<%= form_for @client, :remote => true do |f| %>
+		<% if @client.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
 	
@@ -41,24 +40,9 @@
   </div>
   <div class="span8">
   	<div class="rowcent">
-  	<table class="table table-striped">
-  		<tr>
-    		<th>Nombre</th>
-    		<th>CIF</th>
-    		<th>Dirección</th>
-		</tr>
-		<% @clients = Client.where(:user_id => current_user.id)%>
-		<% @clients.each do |client| %>
-  		<tr>
-    		<td><%= client.name %></td>
-    		<td><%= client.cif %></td>
-    		<td><%= client.address %></td>
-    		<td><%= link_to '', edit_client_path(client), :class => "icon-edit" %></td>
-    		<td><%= link_to '', client, :class => 'destroyButton', method: :delete,
-   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
-		  </tr>
-		<% end %>
-	</table>
+  		<div id="clients_table">
+				<%= render :partial => 'clients_table' %>		
+		</div>
 	</div>
   </div>
 </div>

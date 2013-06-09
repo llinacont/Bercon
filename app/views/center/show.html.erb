@@ -1,0 +1,70 @@
+<div class="rowcent">
+  <table class="table table-striped">
+	  					<tr>
+	    					<th>Fecha</th>
+	    					<th>Empleado</th>
+	    					<th>Rol</th>
+	    					<th>Estado</th>
+	    				</tr>
+	  
+						<% @inactive_workers = User.where(:state => 'inactive') %>
+						<% if @inactive_workers.count == 0 %>
+						  <div class="alert">
+	  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+	  							No tienes ningún empleado esperando a ser activado
+						  </div> 	
+						<%end%>
+
+						<% @inactive_workers.each do |w| %>
+	
+	  					<tr>
+	  						<td><%= localize(w.created_at, :format => :long) %></td>
+	  						<td><%= w.name %></td>
+	  						<td><%= w.roles_mask %></td>
+	    					<td><%= w.state %></td>
+	    					<td><%= link_to '', center_path, :class => "icon-share" %></td>
+	    					<td><%= link_to '', center_path, :class => "icon-edit" %></td>
+	    					<td><%= link_to '', center_path, :class => 'destroyButton', method: :delete,
+	   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+	   					
+	   					<% end %>
+	  				    
+	  				    </tr>
+	</table>
+</div>
+
+<div class="rowcent">
+  <table class="table table-striped">
+	  					<tr>
+	    					<th>Fecha</th>
+	    					<th>Empleado</th>
+	    					<th>Rol</th>
+	    					<th>Estado</th>
+	    				</tr>
+	  
+						<% if @active_workers.count == 0 %>
+						  <div class="alert">
+	  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+	  							No tienes ningún empleado esperando a ser activado
+						  </div> 	
+						<%end%>
+
+						<% @active_workers.each do |w| %>
+	
+	  					<tr>
+	  						<td><%= localize(w.created_at, :format => :long) %></td>
+	  						<td><%= w.name %></td>
+	  						<td><%= w.roles_mask %></td>
+	    					<td><%= w.state %></td>
+	    					<td><%= link_to '', center_path, :class => "icon-share" %></td>
+	    					<td><%= link_to '', center_path, :class => "icon-edit" %></td>
+	    					<td><%= link_to '', center_path, :class => 'destroyButton', method: :delete,
+	   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+	   					
+	   					<% end %>
+	  				    
+	  				    </tr>
+	</table>
+</div>
+
+

@@ -41,24 +41,25 @@ class LineItemsController < ApplicationController
 
   # POST /line_items
   # POST /line_items.json
-  def create
-    
+  def create   
+   @product = Product.find_by_title(params[:product]) 
    @line_item = LineItem.new(params[:line_item])
+   @line_item.product_id = @product.id
    @line_items= LineItem.where(:demand_id => @line_item.demand_id, :product_id => @line_item.product_id)
+   
    @quantity = @line_item.quantity
    
    if @line_items != nil
-   @line_items.each do |item|
-     @quantity += item.quantity
-     LineItem.find(item.id).destroy
-   end
-   @line_item.update_attributes(:quantity => @quantity)
+     @line_items.each do |item|
+       @quantity += item.quantity
+       LineItem.find(item.id).destroy
+     end
+    @line_item.update_attributes(:quantity => @quantity)
    end
   
    respond_to do |format|
       if @line_item.save
-        format.html { redirect_to :back, notice: 'Line item was successfully created.' }
-        format.json { render json: @line_item, status: :created, location: @line_item }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
