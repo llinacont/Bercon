@@ -4,11 +4,11 @@
 		
 		<% if(@event.type_mask == 1) %>
 			<% @user = User.find(@event.object_id) %>
-
+			<a href="/users/<%= @user.id%>">
 				<div class="span2"><img style="max-width: 26%; max-height: 35%;" src="/client.png"/></div>
 			  	<div class="span6" style="vertical-align: bottom"><%= @user.email %></div>
 			  	<div class="span4"><%= @user.created_at.strftime('%e %B a las %l:%M %p') %></div>
-		
+			</a>
 		<%elsif(@event.type_mask == 2)%>	
 			<% @product = Product.find(@event.object_id) %>
 

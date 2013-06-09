@@ -1,15 +1,33 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= @user.image %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@company) %> |
-<%= link_to 'Back', user_path %>
+	<table class="table table-striped">
+		<tr>
+			<th>Fecha</th>
+		    <th>Empleado</th>
+		    <th>Rol</th>
+		    <th>Estado</th>
+		</tr>
+	
+		<tr>
+		  	
+		  	<td><%= localize(@user.created_at, :format => :long) %></td>
+		  	<td><%= @user.name %></td>
+		  	<td><%= @user.roles_mask %></td>
+		    <td><%= @user.state %></td>
+		    <td><%= link_to '', users_path, :class => 'destroyButton', method: :delete,
+		   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>				
+		</tr>
+	</table>	
+	<%= form_tag ('/users/update') do %>
+	<div id="user_form">
+		<div id="input"><%= label_tag :'Rol'%><br />
+	  	<%= text_field_tag :roles %></div>
+	  		  
+	  	<div id="input"><%= label_tag :'Estado'%><br />
+	  	<%= text_field_tag :state %></div>
+	  	<%debugger%>
+	  	<%= hidden_field_tag :id, :value => @user.id %>
+	  	<div>
+  			<%= submit_tag "Guardar" %>
+  		</div> 
+	</div>
+	<% end %>

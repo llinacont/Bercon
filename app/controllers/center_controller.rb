@@ -48,4 +48,14 @@ class CenterController < ApplicationController
     end
   end
   
+  def show
+    @inactive_workers = User.where(:state => 'inactive') 
+    
+    @active_workers = User.where(:state => 'active')
+  end
+  
+  def edit_worker
+    
+  end
+  
 end
