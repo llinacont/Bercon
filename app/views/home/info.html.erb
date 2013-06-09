@@ -1,16 +1,21 @@
   <%= stylesheet_link_tag    "aplication", :media => "all" %>
   <%= javascript_include_tag "aplication" %>
   <%= csrf_meta_tags %>
-
-<div id="titulo">
-	<h1>Información</h1>
-</div>
-
-<div id="contenido">
-	Aplicación web destinada a gestionar la distribución 
-	y venta de distintos productos al pormayor a comercios
-	de venta al público.
-	Gestión de pedidos, de clientes, de productos en stock
-	y rutas de reparto.
+<div class="span10">
+	<div id="titulo">
+		<h1>Información</h1>
+	</div>
 	
+	<div id="contenido">
+		<div class="span6">
+			Aplicación web destinada a gestionar la distribución 
+			y venta de distintos productos al pormayor a comercios
+			de venta al público.
+		</div>
+		<div class="span6">
+			Gestión de pedidos, de clientes, de productos en stock
+			y rutas de reparto.
+		</div>
+	</div>	
 </div>
+
