@@ -29,12 +29,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    debugger
     @user = User.find(params[:id])
-
+    roles = params[:user]
+    roles.each do |key,value|
+      @role = value.to_i
+    end
+    states = params[:post]
+    states.each do |key,value|
+      @state = value
+    end 
+ 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to center_path }
+      if @user.update_attributes(:roles_mask => @role,:state => @state)
+        format.html { render action: "show" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

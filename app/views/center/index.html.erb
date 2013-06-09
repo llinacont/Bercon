@@ -40,7 +40,7 @@
  			 	<div class="container" style="max-height: 300px;overflow-y: auto; overflow-x: none; width: 90%;">
  			 		<% @company = Company.find_by_user_id(current_user.id)%>
 	 			 	<% @events = Event.where(:company_id => @company.id)%>
-	 			 	<% @events.each do |e|%>
+	 			 	<% @events.order("updated_at DESC").each do |e|%>
 	 			 	<div id="event"_<%= e.id %>" class="event_item_<%= e.type_mask %>" > 
 						<%= render "timeline", :object => @event = e %> 
 	 				</div>
