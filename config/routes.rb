@@ -3,16 +3,7 @@ Bercon::Application.routes.draw do
   resources :companies
 
   resources :roles
-  
-  get    'users' , :controller => 'users', :action => 'index'  
-  post   'users' , :controller => 'users', :action => 'create'                           
-  get    'users/new', :controller => 'users', :action => 'new' 
-  get    'users/:id', :controller => 'users', :action => 'show' 
-  post   'users/update', :controller => 'users', :action => 'update'                   
-  get    :create_line_item, :controller => 'demands'
-  post   '/create_line_item' , :controller => 'demands', :action => 'create_line_item' 
-  
-  
+                          
   resources :demands do
     get :autocomplete_client_name, :on => :collection
     get :autocomplete_product_title, :on => :collection
@@ -28,21 +19,13 @@ Bercon::Application.routes.draw do
     
     resources :events
     
-    get 'users_new_worker',:controller=>'devise/registrations',:action=>'new_worker'
-    post 'user_session',:controller=>'devise/sessions',:action=>'create'
-    get 'users/sign_in',:controller=>'devise/sessions',:action=>'new'
-    get 'users/sign_in',:controller=>'devise/sessions',:action=>'new'
-    post 'user_password',:controller=>'devise/passwords',:action=>'create'
-    post 'user_registration',:controller=>'devise_invitable/registrations',:action=>'create'
-    get 'user_session',:controller=>'devise/sessions',:action=>'create'
-    get 'destroy_user_session',:controller=>'devise/sessions',:action=>'destroy'
-    get 'new_user_password',:controller=>'devise/passwords',:action=>'new'
-    get 'edit_user_password',:controller=>'devise/passwords',:action=> 'edit'
-    get 'cancel_user_registration',:controller=>'devise_invitable/registrations',:action=>'cancel'
-    get 'new_user_registration',:controller=>'devise_invitable/registrations',:action=>'new'
-    get 'edit_user_registration',:controller=>'devise_invitable/registrations',:action=>'edit'
+ end
  
-  end
+ get    'users/new', :controller => 'users', :action => 'new' 
+ get    'users/:id', :controller => 'users', :action => 'show' 
+ post   'users/update', :controller => 'users', :action => 'update'                   
+ get    '/create_line_item', :controller => 'demands', :action => 'create_line_item' 
+ post   '/create_line_item' , :controller => 'demands', :action => 'create_line_item' 
   
   
    
