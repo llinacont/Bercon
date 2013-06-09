@@ -21,12 +21,11 @@
   <%= f.password_field :password_confirmation%></div>
   
   <div id="input"><%= f.label :'Rol'%><br />
-  <%= f.number_field :roles_mask %></div>
+  <%= collection_select(:user, :roles_mask, Role.all, :id, :name) %> </div>
+
   
   <div id="input"><%= f.label :'Estado'%><br />
-  <%= f.text_field :state %></div>
-  
-  
+  <%= select("post", "category", ['active','inactive']) %> </div>
   
   <%= f.hidden_field :company_id, :value => current_user.id %>
 

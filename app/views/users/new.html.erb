@@ -1,5 +1,17 @@
-<h1>Crear usuario</h1>
-
-<%= render 'form' %>
+<h3>Crear usuario</h3>
 
 <%= link_to 'Atrás', href="/center" %>
+
+  <div class="row">
+
+	<div class="span4">		
+  		<%= render 'form' %>  		
+  	</div>
+  	
+  	<div class="span6"> 		
+  		<div id="users_table">
+			<%= render :partial => 'users_table', :object => @users = @users %> 
+		</div>
+	</div>
+
+</div>
