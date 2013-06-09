@@ -43,14 +43,10 @@ gem 'devise', '2.1'
 
 gem 'cancan'
 
-gem 'composite_primary_keys'
-
 gem 'bootstrap-sass', '2.1'
 
 gem 'rails-i18n'
 
 gem 'role_model'
-
-gem 'devise_invitable'
 
 gem 'wicked_pdf'

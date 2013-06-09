@@ -41,8 +41,6 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     columnize (0.3.6)
-    composite_primary_keys (5.0.10)
-      activerecord (~> 3.2.0, >= 3.2.9)
     debugger (1.2.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -51,14 +49,13 @@ GEM
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.1.5)
     devise (2.1.0)
+      actionmailer (~> 3.0)
       bcrypt-ruby (~> 3.0)
+      devise (>= 2.1.0)
       orm_adapter (~> 0.0.7)
+      railties (~> 3.0)
       railties (~> 3.1)
       warden (~> 1.1.1)
-    devise_invitable (1.1.4)
-      actionmailer (~> 3.0)
-      devise (>= 2.1.0)
-      railties (~> 3.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -137,10 +134,8 @@ DEPENDENCIES
   bootstrap-sass (= 2.1)
   cancan
   coffee-rails (~> 3.2.1)
-  composite_primary_keys
   debugger
   devise (= 2.1)
-  devise_invitable
   jquery-rails
   pg
   rack (= 1.4.1)
