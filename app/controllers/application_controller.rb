@@ -11,8 +11,13 @@ class ApplicationController < ActionController::Base
     
     def state_check
       if current_user.state != 'active'
+        if current_user.company_id.nil?
+           flash[:notice] = "No has creado o seleccionado una empresa aun"
+           redirect_to registration_companies_path
+        else
         flash[:notice] = "Tu cuenta no ha sido activada aun"
         redirect_to home_hello_path
+        end
       end 
     end
     

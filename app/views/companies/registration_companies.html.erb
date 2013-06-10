@@ -1,10 +1,10 @@
 <h3>Tu Empresa</h3>
 
-<% @company = Company.new %>
+<div style="margin-top: 5%">
+  <%= render 'form' %>
+</div>
 
-<%= render 'form' %>
-
-<div class="row" style="margin-top: 2%;">
+<div class="row" style="margin-top: 2%; margin-bottom: 5%">
 	<div style="text-align: right">
 		<a href="/center"><button class="btn btn-primary" type="button">Terminar Registro</button></a>
 	</div>

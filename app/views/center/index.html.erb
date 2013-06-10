@@ -1,45 +1,52 @@
 
 
-      <h2>Tu empresa</h2>
+      <h2><%= Company.find_by_user_id(current_user.id).name %></h2>
 	<div class="container-fluid">
   		<div class="row-fluid">
-    		<div class="span2">
+    		<div class="span2" style="margin-left: -3%;margin-top: 2%">
       		<!--Sidebar content-->
-      		<ul class="nav nav-list">
-  				<li><%= link_to 'Comercial', seller_path %></li>
-	  			<li><%= link_to 'Repartidor', dealer_path %></li>
-	  			<li><%= link_to 'Editar empresa', companies_path %></li>
-  				<li class="nav-header">Productos</li>
-	  				<li><%= link_to 'Crear', new_product_path, :style => "color:#049cbd"%></li>
-	  				<li><%= link_to 'Lista', products_path, :style => "color:#049cbd"%></li>
-  				<li class="nav-header">Clientes</li>
-  					<li><%= link_to 'Crear', new_client_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Lista', clients_path, :style => "color:#049cbd" %></li>
-  				<li class="nav-header">Pedidos</li>
-  					<li><%= link_to 'Crear', new_demand_path, :style => "color:#049cbd" %></li>
-  					<li><%= link_to 'Lista', demands_path, :style => "color:#049cbd" %></li>
-  				<li class="nav-header">Empleados</li>
-  					<li><%= link_to 'Crear', users_new_path, :style => "color:#049cbd" %></li>
+      		<ul class="nav nav-pills nav-stacked">
+	  			<li style="font-size: 110%"><%= link_to 'Editar empresa', companies_path %></li>
+  				
+	  				<li><%= link_to 'Productos', new_product_path, :style => "color:#049cbd"%></li>
+  				
+  					<li><%= link_to 'Clientes', new_client_path, :style => "color:#049cbd" %></li>
+  				
+  					<li><%= link_to 'Pedidos', new_demand_path, :style => "color:#049cbd" %></li>
+  				
+  					<li><%= link_to 'Empleados', users_new_path, :style => "color:#049cbd" %></li>
   				<li class="divider"></li>
-  				<button id="opener" class="btn-medium"><i class="icon-envelope"></i></button>
+  				<a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-envelope"></i></a>
 			</ul>
     		</div>
-    	<div class="span10">
-      			<div id="dialog" title="Mensaje Nuevo">
-					<%= form_for Message.new, :remote => true , :url => {:action => "process_new_message"}, :html => { :id => 'new_message'} do |m| %>
-						<%= m.hidden_field :sender_id, :value => current_user.id%>
-						<tr>
-							<td><%= m.number_field :receiver %></td>
-						</tr>
-						<tr>
-							<td><%= m.text_area :text, {:title => 'Redacta tu mensaje' ,:style=>"width: 200px;height:150px;"} %></td>
-						</tr>
-						<%= m.submit 'Enviar'%>
-					<% end %>
+    	<div class="span10" style="margin-left: 5%">
+   				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   					<%= form_for Message.new, :remote => true , :url => {:action => "process_new_message"}, :html => { :id => 'new_message'} do |m| %>
+					<%= m.hidden_field :sender_id, :value => current_user.id%>
+				  <div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				    <h3 id="myModalLabel">Nuevo Mensaje</h3>
+				  </div>
+				  <div class="modal-body">
+				    <p><%= m.number_field :receiver %></p>
+					<p><%= m.text_area :text, {:title => 'Redacta tu mensaje', :style => 'resize: none; width: 97%; height: 150px'} %></p>
+				  </div>
+				  <div class="modal-footer">
+				    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				     <%= m.submit 'Enviar', :class => "btn btn-primary" %>
+				  </div>
+				 	<% end %>
 				</div>
- 			 	<div class="container" style="max-height: 300px;overflow-y: auto; overflow-x: none; width: 90%;">
+      		
+ 			 	<div class="container" style="margin-top: 3%; max-height: 300px;overflow-y: auto; overflow-x: none; width: 90%;">
  			 		<% @company = Company.find_by_user_id(current_user.id)%>
 	 			 	<% @events = Event.where(:company_id => @company.id)%>
+	 			 	<% if @events.count == 0 %>
+						  <div class="alert">
+	  						<button type="button" class="close" data-dismiss="alert">&times;</button>
+	  						<strong>Ojo!</strong> Tu lista de eventos está vacia
+						  </div> 	
+					<%end%>
 	 			 	<% @events.order("updated_at DESC").each do |e|%>
 	 			 	<div id="event"_<%= e.id %>" class="event_item_<%= e.type_mask %>" > 
 						<%= render "timeline", :object => @event = e %> 
@@ -92,13 +99,10 @@
 						<%end%>
 						
 						<% @clients.each do |client| %>
-						<div class="rowcent">	
-	 			 
 	  					<tr>
 	  						<td><%= client.cif %></td>
 	    					<td><%= client.name %></td>
 	  					</tr>
-	  					</div>
 						<% end %>
 					</table>
 	  			 

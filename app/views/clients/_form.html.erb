@@ -1,8 +1,6 @@
-<div class="row">
-	
- 
   
-  <div class="span4">
+<div class="span4">
+  	
   	<%@client = Client.new%>
   	<%= form_for @client, :remote => true do |f| %>
 		<% if @client.errors.any? %>
@@ -19,7 +17,6 @@
 	  
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	
-	<div>
 	  <div>
 	    <%= f.label :Nombre%>
 	    <%= f.text_field :name %>
@@ -35,14 +32,5 @@
 	  <div>
 	    <%= f.submit :Crear%>
 	  </div>
-	</div>
 	<% end %>
-  </div>
-  <div class="span8">
-  	<div class="rowcent">
-  		<div id="clients_table">
-				<%= render :partial => 'clients_table' %>		
-		</div>
-	</div>
-  </div>
 </div>

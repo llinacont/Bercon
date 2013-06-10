@@ -2,9 +2,9 @@
 	<h3>Regístrate</h3>
 </div>
 
-<div style="text-align: center">
 
-  <div>
+
+
     
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   		<%= devise_error_messages! %>
@@ -31,15 +31,14 @@
 		  		
 		  		<%= f.hidden_field :roles_mask, :value => '1'%>
 		  		
-		  		<div style="margin-top:15%"><%= f.submit "Acceder" %></div>
+		  		<div style="margin-top:15%; margin-left: 65%">
+		  			<%= f.submit "Acceder" %>
+		  		</div>
   			</div>
   
-</div>
+		</div>
   
-<!-- <div class="progress progress-striped active">
-  <div class="bar" style="width: 25%;">Regístrate</div>
-</div> -->
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
-</div>
+		<div class="progress progress-striped active">
+			<div class="bar" style="width: 25%;">Regístrate</div>
+		</div>
+		<% end %>

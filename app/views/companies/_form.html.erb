@@ -27,10 +27,13 @@
 		    <%= f.text_field :name %>
 		  </div>
 		  <div class="field">
+			<%= f.label :CIF %><br />
+		    <%= f.text_field :cif %>
+		  </div>
+		  <div class="field">
 		    <%= f.label :Imagen %><br />
 		    <%= f.text_field :image %>
 		  </div>
-		
 		  <div class="actions">
 		    <%= f.submit 'Crea tu empresa' %>
 		  </div>
@@ -44,8 +47,8 @@
 
 	
 		  <div class="field">
-		    <%= label_tag :Nombre %><br />
-		    <%= text_field_tag :name %>
+		    <%= label_tag :CIF %><br />
+		    <%= text_field_tag :cif %>
 		  </div>
 	   	
 	   	  <div class="actions">
