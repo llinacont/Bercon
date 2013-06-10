@@ -1,47 +1,51 @@
   <%= stylesheet_link_tag    "aplication", :media => "all" %>
   <%= javascript_include_tag "aplication" %>
   <%= csrf_meta_tags %>
-
-<div id="titulo">
-	<h1>Productos</h1>
-</div>
-
-<div id="contenido">
-	<table id="table2">
-	<tr>
-	<td>
-		<div>
-			<div id="a1">
-				Rutas óptimas de reparto:
-			</div>
-			<div id="imagen">
-				<img src="/images/mapa.gif" />
-			</div>
+<div class="span12">
+	<div class="row" style="text-align: center">
+		<h1>Productos</h1>
+	</div>
+	
+	<div class="row">
+		<div class="span4">
+			<h5 style="text-align: center">Gestión de empleados</h5>
+			<%= image_tag("empleados.jpg", :alt => "tabla feed") %>
+			
 		</div>
-	</td>
-	<td>
-		<div>
-			<div id="a1">
-				Lista de productos:
-			</div>
-			<div>
-				<table id="table2">
-					<th>coca cola</th>
-					<th>fanta naranja</th>
-					<th>fanta limón</th>
-					<th>sprite</th>
-				</table>
-			</div>
+		<div class="span4" style="margin-bottom: 19.5%">
+			<h5 style="text-align: center">Gestión de productos, clientes y pedidos</h5>
+			<table class="table-striped table-bordered" style="width: 100%; margin-top: 15%">
+				<tr>
+					<th style="font-size: medium">Producto</th>
+					<th style="font-size: medium">Descripción</th>
+					<th style="font-size: medium">Precio</th>
+				</tr>
+				<tr>
+					<td>Refresco</td>
+					<td>Botellín</td>
+					<td>0.3€</td>
+				</tr>
+				<tr>
+					<td>Vino</td>
+					<td>Botella</td>
+					<td>1.8€</td>
+				</tr>
+				<tr>
+					<td>Cerveza</td>
+					<td>Botella</td>
+					<td>1.2€</td>
+				</tr>
+				<tr>
+					<td>Zumo</td>
+					<td>Litro</td>
+					<td>0.8€</td>
+				</tr>
+			</table>
 		</div>
-	</td>
-	<td>
-		<div id="a1">
-			Estadísticas de ventas:
+		<div class="span4">
+			<h5 style="text-align: center">Gráfica de ventas</h5>
+			<%= image_tag("grafica.jpg", :alt => "tabla feed") %>
+			
 		</div>
-		<div id="imagen">
-			<img src="/images/grafica.jpg" />
-		</div>
-	</td>
-	</tr>
-	</table>
+	</div>
 </div>
