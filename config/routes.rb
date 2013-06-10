@@ -22,7 +22,8 @@ Bercon::Application.routes.draw do
     
  end
  
- get    'users/new', :controller => 'users', :action => 'new' 
+ get    'users/new', :controller => 'users', :action => 'new'
+ post   'users/new', :controller => 'users', :action => 'create'
  get    'users/:id', :controller => 'users', :action => 'show' 
  post   'users/update', :controller => 'users', :action => 'update'                   
  get    '/create_line_item', :controller => 'demands', :action => 'create_line_item' 

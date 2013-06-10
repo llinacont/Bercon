@@ -1,0 +1,31 @@
+<div class="rowcent">
+  		<table class="table table-striped">
+ 		 <tr>
+ 		 	<th>email</th>
+ 		    <th>Rol</th>
+    		<th>Estado</th>
+  		</tr>
+  		</thead>
+  		<tbody>
+  		<% @users = User.where(:company_id => current_user.company_id) %>
+  		<% @users.each do |u| %>
+		  <tr>
+		    <td><%= u.email %></td>
+		    	<% @rol%>
+		    	<% if u.roles_mask == 1 %>
+		    	<% @rol = 'Admin'%>
+		    	<% elsif u.roles_mask == 2 %>
+		    	<% @rol = 'Comercial'%>
+		    	<% elsif u.roles_mask == 3 %>
+		    	<% @rol = 'Repartidor'%>
+		    	<% end %>
+		    <td><%= @rol %></td>
+    		<td><%= u.state %></td>
+    		<td><%= link_to '', edit_user_registration_path(u), :class => "icon-edit" %></td>
+    		<td><%= link_to '', registration_path(u), :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+  		  </tr>
+		<% end %>
+		</tbody>
+		</table>
+</div>

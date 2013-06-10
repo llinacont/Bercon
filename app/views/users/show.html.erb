@@ -13,21 +13,27 @@
 		  	<td><%= @user.name %></td>
 		  	<td><%= @user.roles_mask %></td>
 		    <td><%= @user.state %></td>
-		    <td><%= link_to '', users_path, :class => 'destroyButton', method: :delete,
+		    <td><%= link_to '', registration_path(@user), :class => 'destroyButton', method: :delete,
 		   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>				
 		</tr>
 	</table>	
 	<%= form_tag ('/users/update') do %>
 	<div id="user_form">
 		<div id="input"><%= label_tag :'Rol'%><br />
-	  	<%= text_field_tag :roles %></div>
-	  		  
-	  	<div id="input"><%= label_tag :'Estado'%><br />
-	  	<%= text_field_tag :state %></div>
-	  	<%debugger%>
-	  	<%= hidden_field_tag :id, :value => @user.id %>
-	  	<div>
-  			<%= submit_tag "Guardar" %>
-  		</div> 
+		<%= collection_select(:user, :roles_mask, Role.all, :id, :name) %> </div>
+		
+		  
+		<div id="input"><%= label_tag :'Estado'%><br />
+		<%= select("post", "category", ['active','inactive']) %> </div>
+	  	
+	  	<%= hidden_field_tag :id, @user.id %>
+	  	<div class="row-fluid">	  
+		  	<div class="span1">
+	  			<%= submit_tag "Guardar" %>
+	  		</div> 
+	  		<div class="span1 offset8">
+					<%= link_to "Atrás", :controller => "center", :action => "index" %>
+	  		</div> 
+  		</div>
 	</div>
 	<% end %>

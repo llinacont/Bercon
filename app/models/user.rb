@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   include RoleModel
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id, :roles, :roles_mask, :name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id, :roles, :roles_mask, :name, :last_name, :state
   
   # optionally set the integer attribute to store the roles in,
   # :roles_mask is the default
