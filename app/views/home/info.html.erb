@@ -2,20 +2,27 @@
   <%= javascript_include_tag "aplication" %>
   <%= csrf_meta_tags %>
 <div class="span10">
-	<div id="titulo">
+	<div class="row" style="text-align: center">
 		<h1>Información</h1>
 	</div>
-	
-	<div id="contenido">
-		<div class="span6">
-			Aplicación web destinada a gestionar la distribución 
-			y venta de distintos productos al pormayor a comercios
-			de venta al público.
+	<div class="row" style="margin-bottom: 3%">
+		<div class="span4 offset1">
+			<div id="imagen">
+				<%= image_tag("empresa.jpg", :alt => "tabla feed") %>
+			</div>
+			<p style="font-size: large">Bercon es una aplicación web destinada a gestionar empresas cuyo modelo de 
+				negocio consista en la distribución y venta de distintos productos a comercios
+				de venta al público.
+			</p>
 		</div>
-		<div class="span6">
-			Gestión de pedidos, de clientes, de productos en stock
-			y rutas de reparto.
+		<div class="span4" style="float: right; margin-top: 9.8%">
+			<div>
+				<%= image_tag("empresaG.jpg", :alt => "tabla feed") %>
+			</div>
+			<p style="font-size: large">Nuestra actividad principal consiste en la gestión empresas cuyos usuarios estén 
+				registrados en el sistema, y de los productos, clientes, pedidos y empleados registrados en dicha empresa.
+			</p>
 		</div>
-	</div>	
+	</div>
 </div>
 

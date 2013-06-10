@@ -1,20 +1,29 @@
-<div id="titulo">
-	<h1>Contacto</h1>
-</div>
+  <%= stylesheet_link_tag    "aplication", :media => "all" %>
+  <%= javascript_include_tag "aplication" %>
+  <%= csrf_meta_tags %>
 
-<div id="contenido">
-	<p id="a1">
-		Contacto:
-		<p>llinacont@gmail.com</p>
-		<p>angel.berenguel@gmail.com</p>
- 	</p>
- 	<p id="a1">
-		Teléfono de contacto:
- 	</p>
- 	<p id="a1">
-		Fax:
- 	</p>
- 	<p id="a1">
-		Dirección de correo:
-	</p>
+<div class="span12">
+	<div class="row" style="text-align: center">
+		<h1>Contacto</h1>
+	</div>
+	<div class="row" style="margin-top: 8%; margin-bottom: 1%">
+		<div class="span6" style="float: left">
+			<div style="text-align: center">
+				<%= image_tag("empleado.jpg", :alt => "tabla feed") %>
+				<h4>Ángel Berenguel Gallardo</h4>
+				<div style="color: blue">
+					angel.berenguel@gmail.com
+				</div>
+			</div>
+		</div>
+		<div class="span6" style="float: right">
+			<div style="text-align: center">
+				<%= image_tag("empleado.jpg", :alt => "tabla feed") %>
+				<h4>Carlos Contreras Llinares</h4>
+				<div style="color: blue">
+					llinacont@gmail.com
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

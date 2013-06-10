@@ -2,12 +2,16 @@
   <%= javascript_include_tag "aplication" %>
   <%= csrf_meta_tags %>
 
-<h1 id="titulo">Compañía</h1>
-
-<div id="contenido">
-	<p>
-		<p>BERCON.SA</p>
-		Sociedad anónima de desarrollo software de aplicaciones web y aplicaciones android.
-	</p>
+<div class="span12">
+	<div class="row" style="text-align: center">
+		<h1>Compañía</h1>
+	</div>
+	<div class="row" style="margin-top: 8%; margin-bottom: 15%">
+		<div style="text-align: center">
+			<p class="center"><%= image_tag("BerconLogo4.jpg", :alt => "tabla feed") %></p>
+			<p>Sociedad anónima de desarrollo software de aplicaciones web y aplicaciones android.</p>
+			<p>Especialización en productos software de servicio.</p>
+			<p>SaaS (Software as a Service)</p>
+		</div>
+	</div>
 </div>
-
