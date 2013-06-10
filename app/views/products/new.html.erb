@@ -1,5 +1,16 @@
 <h3>Nuevo Producto</h3>
 
-<%= render 'form' %>
+<div class="row">
+	<%= render 'form' %>
+
+  	<div class="span8">
+  		<div class="rowcent">
+  			<div id="products_table">
+				<%= render :partial => 'products_table' %>		
+			</div>
+		</div>
+  	</div>
+ </div>
+
 
 <%= link_to 'Atrás', :controller => '/center', :action => 'index' %>

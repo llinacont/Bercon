@@ -1,7 +1,5 @@
-
-<div class="row">
  
-  	<div class="span4">
+<div class="span4">
   		  		
   		<%@product = Product.new%>
   		<%= form_for @product, :remote => true do |f| %>
@@ -47,13 +45,4 @@
   				<%= f.submit "Crear Producto"%>
   			</div> 		
 	  <% end %>		
-  	</div>
-  	
-  	<div class="span8">
-  		<div class="rowcent">
-  			<div id="products_table">
-				<%= render :partial => 'products_table' %>		
-			</div>
-		</div>
-  	</div>
-  </div>
+</div>
