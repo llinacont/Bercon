@@ -1,5 +1,20 @@
 <h3>Nuevo Cliente</h3>
 
-<%= render 'form' %>
-
-<%= link_to 'Atrás', :controller => '/center', :action => 'index' %>
+	<div class="row-fluid">	
+		<div class="span1">
+	  		<a href="/center" ><button class="btn btn-small" type="button">Atrás</button></a>
+	  	</div>  	
+	 </div>
+	  	
+	<div class="row-fluid">
+			
+		<div class="span4" style="margin-top: 5%">
+			<%= render 'form' %>
+		</div>
+				
+		<div id="clients_table" class="span7">
+			<%= render 'clients_table'%>
+		</div>
+		
+	</div>
+	
