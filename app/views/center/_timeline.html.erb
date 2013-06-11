@@ -1,33 +1,44 @@
 <div class="container" style="width: 90%">
 	
-	<div class="row" style="margin-top: 0.5%; margin-bottom: 1%;">	
+	<div class="row" style="margin-top: 0.5%; margin-bottom: 1%; border-color: #aaaaaa; border-right-width: 0px ; border-top-width: 0px; border-radius: 5px ; border-bottom-width: 2px; border-style: solid; border-left-width: 1px;">	
 		<% if(@event.type_mask == 1) %>
-			<% @user = User.find(@event.object_id) %>
-			<a href="/users/<%= @user.id%>">
-				<div class="span2"><img style="max-width: 26%; max-height: 35%;" src="/empleado.jpg"></div>
-			  	<div class="span6" style="vertical-align: bottom"><%= @user.email %></div>
-			  	<div class="span4"><%= @user.created_at.strftime('%e %B a las %l:%M %p') %></div>
-			</a>
+			<div class="row span12" style="background-color: #d9edf7">
+				<% @user = User.find(@event.object_id) %>
+				<a href="/users/<%= @user.id%>">
+					<div class="span2"><img style="max-width: 26%; max-height: 35%;" src="/empleado.jpg"></div>
+				  	<div class="span6" style="vertical-align: bottom"><%= @user.email %></div>
+				  	<div class="span4"><%= @user.created_at.strftime('%e %B a las %l:%M %p') %></div>
+				</a>
+			</div>
+			
 		<%elsif(@event.type_mask == 2)%>	
-			<% @product = Product.find(@event.object_id) %>
-			<a href="/products/<%= @product.id%>">
-				<div class="span2"><img style="width: 26%; height: 35%;" src="/product.jpg"/></div>
-			  	<div class="span6" style="vertical-align: bottom"><%= @product.title %></div>
-			  	<div class="span4"><%= @product.created_at.strftime('%e %B a las %l:%M %p') %></div>	
-			 </a> 	
+			<div class="row span12" style="background-color: #fcf8e3">
+				<% @product = Product.find(@event.object_id) %>
+				<a href="/products/<%= @product.id%>">
+					<div class="span2"><img style="width: 26%; height: 35%;" src="/product.jpg"/></div>
+				  	<div class="span3" style="vertical-align: bottom"><%= @product.title %></div>
+				  	<div class="span4" style="vertical-align: bottom"><%= @product.description %></div>
+				  	<div class="span3"><%= @product.created_at.strftime('%e %B a las %l:%M %p') %></div>	
+				 </a>
+			</div>
 		<%elsif(@event.type_mask == 3)%>
-		  	<% @client = Client.find(@event.object_id) %>
-		  	<a href="/clients/<%= @client.id%>">
-				<div class="span2"><img style="width: 26%; height: 35%;" src="/empleado.jpg"/></div>
-			  	<div class="span6" style="vertical-align: bottom"><%= @client.name %></div>
-			  	<div class="span4"><%= @client.created_at.strftime('%e %B a las %l:%M %p') %></div>
-			 </a> 	
+			  <div class="row span12" style="background-color: #fcf8e3">
+			  		<% @client = Client.find(@event.object_id) %>
+				  	<a href="/clients/<%= @client.id%>">
+						<div class="span2"><img style="width: 26%; height: 35%;" src="/empleado.jpg"/></div>
+						<div class="span6" style="vertical-align: bottom"><%= @client.name %></div>
+						<div class="span4"><%= @client.created_at.strftime('%e %B a las %l:%M %p') %></div>
+					</a> 	
+			  </div>
 		<%elsif(@event.type_mask == 4)%>
-		  	<% @message = Message.find(@event.object_id) %><i class="icon-envelope"></i>
+		  	 <div class="row span12" style="background-color: #dff0d8">
+				<% @message = Message.find(@event.object_id) %><i class="icon-envelope"></i>
 				<div class="span2"><i class="icon-search" style="width: 26%; height: 35% ></i></div>
 			  	<div class="span6" style="vertical-align: bottom"><%= @client.name %></div>
 			  	<div class="span4"><%= @client.created_at.strftime('%e %B a las %l:%M %p') %></div>
-		<% end -%>		
+			 </div>
+		
+		<% end -%>	
 	</div>
  
 </div>
