@@ -89,7 +89,7 @@ class CompaniesController < ApplicationController
   end
   
   def join_to_company
-   company = Company.find_by_name(params[:name])
+   company = Company.find_by_cif(params[:cif])
    
    if(company == nil)
      flash[:notice] = "La empresa no existe, comprueba los datos introducidos"
@@ -104,7 +104,7 @@ class CompaniesController < ApplicationController
         event = Event.create(:object_id => current_user.id, :company_id => company.id, :type_mask => '1')
         event.save!
         session.destroy
-        format.html {redirect_to home_hello_path, notice: "Te has agregado a la empresa correctamente. Se te enviara una notificacion"}
+        format.html {redirect_to home_hello_path, notice: "Se te notificará por email cuando el admin </br> te acepte en la empresa"}
     end
     
   end  

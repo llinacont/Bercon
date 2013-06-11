@@ -7,17 +7,14 @@
       		<!--Sidebar content-->
       		<ul class="nav nav-pills nav-stacked">
 	  			<li style="font-size: 110%"><%= link_to 'Editar empresa', companies_path %></li>
-  				
-	  				<li><%= link_to 'Productos', new_product_path, :style => "color:#049cbd"%></li>
-  				
-  					<li><%= link_to 'Clientes', new_client_path, :style => "color:#049cbd" %></li>
-  				
-  					<li><%= link_to 'Pedidos', new_demand_path, :style => "color:#049cbd" %></li>
-  				
+	  				<li><%= link_to 'Productos', new_product_path, :style => "color:#049cbd"%></li>  				
+  					<li><%= link_to 'Clientes', new_client_path, :style => "color:#049cbd" %></li>  				
+  					<li><%= link_to 'Pedidos', new_demand_path, :style => "color:#049cbd" %></li>  				
   					<li><%= link_to 'Empleados', users_new_path, :style => "color:#049cbd" %></li>
-  				<li class="divider"></li>
-  				<a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-envelope"></i></a>
+ 	
 			</ul>
+			
+			<a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-envelope"></i></a>
     		</div>
     	<div class="span10" style="margin-left: 5%">
    				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -28,7 +25,7 @@
 				    <h3 id="myModalLabel">Nuevo Mensaje</h3>
 				  </div>
 				  <div class="modal-body">
-				    <p><%= m.number_field :receiver %></p>
+				    <p><%= collection_select(:post, :receiver_id, User.where(:company_id => Company.find_by_user_id(current_user.id) ), :id, :name) %></p>
 					<p><%= m.text_area :text, {:title => 'Redacta tu mensaje', :style => 'resize: none; width: 97%; height: 150px'} %></p>
 				  </div>
 				  <div class="modal-footer">
@@ -38,7 +35,7 @@
 				 	<% end %>
 				</div>
       		
- 			 	<div class="container" style="margin-top: 3%; max-height: 300px;overflow-y: auto; overflow-x: none; width: 90%;">
+ 			 	<div id="timeline" class="container" style="margin-top: 3%; max-height: 300px;overflow-y: auto; overflow-x: none; width: 90%;">
  			 		<% @company = Company.find_by_user_id(current_user.id)%>
 	 			 	<% @events = Event.where(:company_id => @company.id)%>
 	 			 	<% if @events.count == 0 %>

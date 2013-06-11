@@ -13,4 +13,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "Welcome to " + @company.name )
   end
   
+  def confirmation_email(user)
+    @user = user
+    @company  = @user.company
+     mail(:to => user.email, :subject => "Tu perfil de usuario ha sido activado en " + @company.name )
+  end
+  
 end

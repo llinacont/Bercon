@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    debugger
     @user = User.find(params[:id])
     roles = params[:user]
     roles.each do |key,value|
@@ -41,8 +42,9 @@ class UsersController < ApplicationController
  
     respond_to do |format|
       if @user.update_attributes(:roles_mask => @role,:state => @state)
-        format.html { render action: "show" }
-        format.json { head :no_content }
+        flash[:notice] = "Empleado actualizado correctamente"
+        UserMailer.confirmation_email(self).deliver
+        format.html { redirect_to :controller => "center" }
       else
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }

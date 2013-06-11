@@ -40,11 +40,10 @@ class CenterController < ApplicationController
     debugger
     @message = Message.new(params[:message])
     @message.sender_id = current_user.id
-
-    @message.save!
+    
     if @message.save
-      debugger
-      event = Event.new
+      event = Event.create(:object_id => @message.id, :company_id => company.id, :type_mask => '4')
+      format.js
     end
   end
   

@@ -1,39 +1,57 @@
-<p id="notice"><%= notice %></p>
-	<table class="table table-striped">
-		<tr>
-			<th>Fecha</th>
-		    <th>Empleado</th>
-		    <th>Rol</th>
-		    <th>Estado</th>
-		</tr>
 	
-		<tr>
-		  	
-		  	<td><%= localize(@user.created_at, :format => :long) %></td>
-		  	<td><%= @user.name %></td>
-		  	<td><%= @user.roles_mask %></td>
-		    <td><%= @user.state %></td>
-		    <td><%= link_to '', registration_path(@user), :class => 'destroyButton', method: :delete,
-		   	  						data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>				
-		</tr>
-	</table>	
-	<%= form_tag ('/users/update') do %>
-	<div id="user_form">
-		<div id="input"><%= label_tag :'Rol'%><br />
-		<%= collection_select(:user, :roles_mask, Role.all, :id, :name) %> </div>
-		
-		  
-		<div id="input"><%= label_tag :'Estado'%><br />
-		<%= select("post", "category", ['active','inactive']) %> </div>
-	  	
-	  	<%= hidden_field_tag :id, @user.id %>
-	  	<div class="row-fluid">	  
-		  	<div class="span1">
-	  			<%= submit_tag "Guardar" %>
-	  		</div> 
-	  		<div class="span1 offset8">
-					<%= link_to "Atrás", :controller => "center", :action => "index" %>
-	  		</div> 
-  		</div>
+	<div class="row-fluid">
+
+	  	<div class="span1">
+	  			<%= button_to 'Atrás', center_path, :class => "btn btn-small" %>
+	  	</div>
+	
 	</div>
-	<% end %>
+	
+	<div class="row-fluid" style="margin-top: 5%">
+		
+		<div class="span4">
+		<%= form_tag ('/users/update') do %>
+		  <div id="input"><%= label_tag :'Rol'%><br />
+		  <%= collection_select(:user, :roles_mask, Role.all, :id, :name) %> </div>
+		  
+		  <div id="input"><%= label_tag :'Estado'%><br />
+		  <%= select("post", "category", ['active','inactive']) %> </div>
+		  
+  		  <div class="actions" style="margin-top: 10%">
+    		<%= submit_tag "update", :class => "btn btn-primary" %>
+  		  </div>
+  		  <%= hidden_field_tag :id, @user.id%>
+  		<% end %>
+		</div>
+		
+		<div class="span8"style="margin-bottom: 40%">
+		  <table class="table table-striped">
+ 		 <tr>
+ 		 	<th>email</th>
+ 		    <th>Rol</th>
+    		<th>Estado</th>
+  		</tr>
+  		</thead>
+  		<tbody>
+		  <tr>
+		    <td><%= @user.email %></td>
+		    	<% @rol%>
+		    	<% if @user.roles_mask == 1 %>
+		    	<% @rol = 'Admin'%>
+		    	<% elsif @user.roles_mask == 2 %>
+		    	<% @rol = 'Comercial'%>
+		    	<% elsif @user.roles_mask == 3 %>
+		    	<% @rol = 'Repartidor'%>
+		    	<% end %>
+		    <td><%= @rol %></td>
+    		<td><%= @user.state %></td>
+    		<td><%= link_to '', edit_user_registration_path(@user), :class => "icon-edit" %></td>
+    		<td><%= link_to '', registration_path(@user), :class => 'destroyButton', method: :delete,
+   	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>
+  		  </tr>
+
+		</tbody>
+		</table>
+		</div>
+		
+	</div>
