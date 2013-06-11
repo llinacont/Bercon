@@ -20,9 +20,6 @@ class CenterController < ApplicationController
     
   end
   
-  def timeline_processing
-    
-  end
   
   def messages
     @messages = Message.where(:receiver_id => current_user.id)

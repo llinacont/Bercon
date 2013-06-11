@@ -78,7 +78,6 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    debugger
     @product = Product.find(params[:id])
     @product.destroy
 
@@ -86,11 +85,6 @@ class ProductsController < ApplicationController
       format.js
       format.json { head :no_content }
     end
-  end
-  
-
-  
-  def registration_products
   end
    
 end

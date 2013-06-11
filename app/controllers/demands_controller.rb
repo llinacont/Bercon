@@ -27,7 +27,6 @@ class DemandsController < ApplicationController
   # GET /demands/new
   # GET /demands/new.json
   def new
-    debugger
     @line_item = LineItem.new
     @demand = Demand.last
     if @demand.nil?
@@ -97,8 +96,6 @@ class DemandsController < ApplicationController
     end
   end
   
-  respond_to :js
-  
   def autocomplete_client_name
     @clients = Client.where(["LOWER(name) LIKE ? AND user_id=?", "#{params[:term].downcase}%", current_user.id])
     
@@ -144,8 +141,15 @@ class DemandsController < ApplicationController
   end
   
   def line_items_table
-    debugger
     @demand = Demand.last
+     if @demand.nil?
+      @demand = Demand.create
+    elsif @demand.client_id.nil?
+        @demand
+      else
+        @demand = Demand.create
+    end
+    
     line_items = LineItem.where(:demand_id => @demand.id)
     
     @line_item_array = Array.new
