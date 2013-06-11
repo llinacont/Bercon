@@ -3,8 +3,8 @@ Bercon::Application.routes.draw do
 
   resources :companies
 
-  resources :roles
-                          
+  resources :roles                      
+  
   resources :demands do
     get :autocomplete_client_name, :on => :collection
     get :autocomplete_product_title, :on => :collection
@@ -21,6 +21,7 @@ Bercon::Application.routes.draw do
     resources :events
     
  end
+ 
  
  get    'users/new', :controller => 'users', :action => 'new'
  post   'users/new', :controller => 'users', :action => 'create'
@@ -55,7 +56,7 @@ Bercon::Application.routes.draw do
   
   post 'new_message', :controller => 'center', :action => 'process_new_message'
   
-  post 'generate_bill', :controller => 'demands', :action => 'create_bill'
+  post 'generate_bill', :controller => 'demands', :action => 'process_create_bill'
    
   root :to => 'home#hello'
   # The priority is based upon order of creation:

@@ -164,14 +164,17 @@ class DemandsController < ApplicationController
   end
   
   def create_bill
-    debugger
     @client_name = params[:client]
     @company = Company.find(current_user.company_id)
-    @client = Client.find(params[:client_id])
+    @client = Client.find_by_name(@client_name)
+    @demand = Demand.find(params[:id])
+    @line_items = LineItem.where(@demand.id)
   end
   
   def process_create_bill
+    debugger
     
+    render_to pdf
     
   end
   

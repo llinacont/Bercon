@@ -1,5 +1,11 @@
- <%debugger%>
+ 
+ <%@client_name = params[:client]%>
+ <%@company = Company.find(current_user.company_id)%>
+ <%@client = Client.find_by_name(@client_name)%>
+ <%@demand = Demand.find(params[:id])%>
+ <%@line_items = LineItem.where(:demand_id => @demand.id)%>
 
+<div class="span8 offset2">
 <table width="620" border="0" cellpadding="5" cellspacing="0">
 			<tbody>
 				<tr>
@@ -33,7 +39,7 @@
 
 									</td>
 									<td align="right" colspan="2">
-										Client: @client_name
+										Cliente: <%= @client.name %>
 									</td>
 								</tr>
 								<tr >
@@ -94,20 +100,22 @@
 								</tr>
 								<tr bgcolor="#999999" style="">
 									<td valign="top">
-										Jun 2, 2008
+										<%= localize(@demand.created_at, :format => :short) %>
+									</td>
+									<% @line_items.each do |l| %>
+									<td valign="top">
+										<%= Product.find(l.product_id).description %>
 									</td>
 									<td valign="top">
-										Finish:Wood trim and painting - Began installing trim moulding to bathroom vanity
+										<%= l.quantity%>
 									</td>
 									<td valign="top">
-										4.00
-									</td>
-									<td valign="top">
-										$100.00
+										<%=  Product.find(l.product_id).price %>
 									</td>
 									<td valign="top" align="right">
-										$400.00
+										<%= Product.find(l.product_id).price * l.quantity %>
 									</td>
+									<% end %>
 								</tr>
 								<tr >
 									<td colspan="5">
@@ -120,60 +128,10 @@
 										&nbsp;
 									</td>
 								</tr>
+								
 								<tr >
 									<td colspan="2" width="300">
-										&nbsp;
-									</td>
-									<td colspan="2" width="225" align="right">
-										<strong>Subtotal:</strong>&nbsp;&nbsp;
-									</td>
-									<td width="75" align="right">
-										<strong>$415.96</strong>
-									</td>
-								</tr>
-								<tr >
-									<td colspan="2" width="300">
-										&nbsp;
-									</td>
-									<td width="75" align="right">
-										<strong>($20.80)</strong>
-									</td>
-								</tr>
-								<tr >
-									<td colspan="4" width="525" align="right">
-										<strong>Total:</strong>&nbsp;&nbsp;
-									</td>
-									<td width="75" align="right">
-										<strong>$395.16</strong>
-									</td>
-								</tr>
-								<tr >
-									<td colspan="2" width="300">
-										<dl>
-											<dt>
-												
-											</dt>
-											<dd>
-												
-											</dd>
-										</dl>
-									</td>
-									<td colspan="2" width="225" align="right" valign="bottom">
-										<strong>Total Payments:</strong>&nbsp;&nbsp;
-									</td>
-									<td width="75" align="right" valign="bottom">
-										<strong>$200.00</strong>
-									</td>
-								</tr>
-								<tr >
-									<td colspan="2" width="300">
-										Thanks for your business!
-									</td>
-									<td colspan="2" width="225" align="right">
-										<strong>Amount Due:</strong>&nbsp;&nbsp;
-									</td>
-									<td width="75" align="right">
-										<strong>$195.16</strong>
+										Gracias!
 									</td>
 								</tr>
 							</tbody>
@@ -182,3 +140,6 @@
 				</tr>
 			</tbody>
 		</table>
+		
+		<%= button_to 'Finalizar', generate_bill_path, :class => "btn btn-primary" %>
+</div>
