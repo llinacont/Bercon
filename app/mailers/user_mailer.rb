@@ -19,4 +19,10 @@ class UserMailer < ActionMailer::Base
      mail(:to => user.email, :subject => "Tu perfil de usuario ha sido activado en " + @company.name )
   end
   
+  def bill_email(user, client, demand)
+    @user = user
+    @client  = @client
+     mail(:to => client.email, :subject => "Pedido nº "+ demand.id)
+  end
+  
 end

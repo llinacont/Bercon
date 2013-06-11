@@ -171,11 +171,5 @@ class DemandsController < ApplicationController
     @line_items = LineItem.where(@demand.id)
   end
   
-  def process_create_bill
-    debugger
-    
-    render_to pdf
-    
-  end
   
 end

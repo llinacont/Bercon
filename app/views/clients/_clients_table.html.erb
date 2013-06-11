@@ -3,6 +3,7 @@
     		<th>Nombre</th>
     		<th>CIF</th>
     		<th>Dirección</th>
+    		<th>Email</th>
 		</tr>
 		<% @clients = Client.where(:user_id => current_user.id)%>
 		<% @clients.each do |client| %>
@@ -10,6 +11,7 @@
     		<td><%= client.name %></td>
     		<td><%= client.cif %></td>
     		<td><%= client.address %></td>
+    		<td><%= client.email %></td>
     		<td><%= link_to '', edit_client_path(client), :class => "icon-edit" %></td>
     		<td><%= link_to '', client, :class => 'destroyButton', method: :delete,
    	  				 data: { confirm: '¿Estás seguro?' }, :class  => "icon-trash" %></td>

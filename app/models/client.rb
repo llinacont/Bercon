@@ -4,5 +4,5 @@ class Client < ActiveRecord::Base
   has_many :demands
   has_many :events
   
-  attr_accessible :user_id, :address, :cif, :name
+  attr_accessible :user_id, :address, :cif, :name,:email 
 end
