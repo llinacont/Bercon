@@ -1,4 +1,4 @@
-<%= form_for @demand, :remote => true do |f| %>
+<%= form_for @demand do |f| %>
   <% if @demand.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@demand.errors.count, "error") %> prohibited this demand from being saved:</h2>
@@ -22,43 +22,21 @@
   
   <div class="field">
     <%= f.label :Estado %>
-	   <select name="line_item[state]">
+	   <select name="state">
 		  	<option style= "color: #049cdb" value='aceptado'>Aceptado</option>
 		  	<option style= "color: #f89406" value="en proceso">En proceso</option>
 		  	<option style= "color: #ffc40d" value="en ruta">En ruta</option>
 		  	<option style= "color: #46a546" value="entregado">Entregado</option>
 			<option style= "color: red" value="rechazado">Rechazado</option>
 		</select>
-  </div>
-  
-  <%= f.submit "Hacer Pedido" %>
+  </div> 
+	
+  <%= f.submit "Hacer Pedido", :class => 'btn btn-primary' %>
   	
 <% end %>
-
-	<button id="opener" class="btn-medium">Generar Factura</button>
-
-	<div id="dialog" title="Factura Nueva">
-			<%= render 'create_bill' %>		
-	</div>
 	
 <script>
-	$(function() {
-	$( "#dialog" ).dialog({
-	autoOpen: false,
-	width: 650, 
-	show: {
-	effect: "scale",
-	duration: 500
-	},
-	hide: {
-	effect: "fade",
-	duration: 500
-	}
-	});
-	$( "#opener" ).click(function() {
-	$( "#dialog" ).dialog( "open" );
-	});
-	});
+	
 	
  $(function() {
  

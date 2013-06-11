@@ -27,16 +27,16 @@ class DemandsController < ApplicationController
   # GET /demands/new
   # GET /demands/new.json
   def new
+    debugger
     @line_item = LineItem.new
     @demand = Demand.last
-    if @demand == nil
+    if @demand.nil?
       @demand = Demand.create
-    elsif @demand.client_id == nil
+    elsif @demand.client_id.nil?
         @demand
       else
         @demand = Demand.create
     end
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @demand }
@@ -68,10 +68,16 @@ class DemandsController < ApplicationController
   # PUT /demands/1.json
   def update
     @demand = Demand.find(params[:id])
+    client = Client.find_by_name(params[:client])
+
+    @demand.client_id = client.id
+    @demand.state = params[:state]
+    @demand.user_id = params[:demand][:user_id]
     
+    @demand.save!
     respond_to do |format|
-      if @demand.update_attributes(params[:demand])
-        format.html { redirect_to :back, notice: 'Demand was successfully updated.' }
+      if @demand.save
+        format.html { render action: "create_bill", :object => @demand = @demand }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -119,7 +125,7 @@ class DemandsController < ApplicationController
      @line_items = LineItem.where(:demand_id => @line_item.demand_id, :product_id => @line_item.product_id)
      @quantity = @line_item.quantity
      
-     if @line_items != nil
+     if @line_items != nil      
        @line_items.each do |item|
          @quantity += item.quantity
          LineItem.find(item.id).destroy
@@ -138,6 +144,7 @@ class DemandsController < ApplicationController
   end
   
   def line_items_table
+    debugger
     @demand = Demand.last
     line_items = LineItem.where(:demand_id => @demand.id)
     
@@ -153,6 +160,8 @@ class DemandsController < ApplicationController
   end
   
   def create_bill
+    debugger
+    @client_name = params[:client]
     @company = Company.find(current_user.company_id)
     @client = Client.find(params[:client_id])
   end

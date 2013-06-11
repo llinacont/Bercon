@@ -2,7 +2,7 @@
 	<h2>Accede</h2>
 </div>
 
-<div style="text-align: center">
+<div style="text-align: center; margin-bottom: 15%; margin-top: 5%">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div id="input"><%= f.label :email %><br />
   <%= f.email_field :email %></div>
@@ -14,9 +14,10 @@
     <div><%= f.check_box :remember_me %> <%= f.label :Recuerdame %></div>
   <% end -%>
 
-  <div><%= f.submit "Acceder" %></div>
+  <div style="margin-bottom: 6%"><%= f.submit "Acceder" %></div>
+  
+  <%= render :partial => "devise/shared/links" %>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
-
 </div>
+
