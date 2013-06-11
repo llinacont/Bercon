@@ -104,7 +104,7 @@ class CompaniesController < ApplicationController
         event = Event.create(:object_id => current_user.id, :company_id => company.id, :type_mask => '1')
         event.save!
         session.destroy
-        format.html {redirect_to home_hello_path, notice: "Se te notificará por email cuando el admin </br> te acepte en la empresa"}
+        format.html {redirect_to home_hello_path, notice: "Se te notificara por email cuando el admin </br> te acepte en la empresa"}
     end
     
   end  
